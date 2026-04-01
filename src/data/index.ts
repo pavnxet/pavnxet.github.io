@@ -33,6 +33,14 @@ export const projects = [
     url: "https://link-manager-xi.vercel.app/",
     github: "https://github.com/pavnxet/link-manager",
     tags: ["Next.js", "TypeScript", "Tailwind"],
+  }
+  {
+  id: 4,
+  title: "Study Flow",
+  description: "StudyFlow is a modern, beautifully designed web application built to help students and professionals track their study sessions, manage their daily tasks, and visualize their productivity.",
+  url: "https://pumta.vercel.app/",
+  github: "https://github.com/pavnxet/study-flow",
+  tags: ["JS", "CSS"],
   },
 ];
 
