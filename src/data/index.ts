@@ -41,7 +41,7 @@ export const projects = [
   url: "https://pumta.vercel.app/",
   github: "https://github.com/pavnxet/study-flow",
   tags: ["JS", "CSS"],
-  },
+  }
 ];
 
 export const songs = [
