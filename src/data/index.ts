@@ -33,7 +33,7 @@ export const projects = [
     url: "https://link-manager-xi.vercel.app/",
     github: "https://github.com/pavnxet/link-manager",
     tags: ["Next.js", "TypeScript", "Tailwind"],
-  }
+  },
   {
   id: 4,
   title: "Study Flow",
