@@ -50,6 +50,14 @@ export const projects = [
     github: "https://github.com/pavnxet/treebundle",
     tags: ["Cloudflare", "Workers", "JS"],
   },
+  {
+    id: 6,
+    title: "Quiz HTML Maker",
+    description: "Turn a JSON question bank into a standalone, interactive HTML quiz with bilingual support and detailed analytics.",
+    url: "https://quiz-maker.pavneet1804.workers.dev/",
+    github: "https://github.com/pavnxet/quiz-html-maker",
+    tags: ["Cloudflare", "Workers", "Tailwind", "JS"],
+  },
 ];
 
 export const songs = [
