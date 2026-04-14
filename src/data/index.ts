@@ -35,13 +35,21 @@ export const projects = [
     tags: ["Next.js", "TypeScript", "Tailwind"],
   },
   {
-  id: 4,
-  title: "Study Flow",
-  description: "StudyFlow is a modern, beautifully designed web application built to help students and professionals track their study sessions, manage their daily tasks, and visualize their productivity.",
-  url: "https://pumta.vercel.app/",
-  github: "https://github.com/pavnxet/study-flow",
-  tags: ["JS", "CSS"],
-  }
+    id: 4,
+    title: "Study Flow",
+    description: "StudyFlow is a modern, beautifully designed web application built to help students and professionals track their study sessions, manage their daily tasks, and visualize their productivity.",
+    url: "https://pumta.vercel.app/",
+    github: "https://github.com/pavnxet/study-flow",
+    tags: ["JS", "CSS"],
+  },
+  {
+    id: 5,
+    title: "TreeBundle",
+    description: "A specialized tool or bundle manager hosted on Cloudflare Workers.",
+    url: "https://treebundle.pavneet1804.workers.dev/",
+    github: "https://github.com/pavnxet/treebundle",
+    tags: ["Cloudflare", "Workers", "JS"],
+  },
 ];
 
 export const songs = [
@@ -50,7 +58,6 @@ export const songs = [
     title: "Aap Is Dhoop Mein",
     artist: "Arijit Singh",
     file: "/songs/Aap-Is-Dhoop-Mein.flac",
-    cover:
-      "https://resources.tidal.com/images/f9bde40f/95fb/4fec/8b66/173ede1fc3e8/320x320.jpg",
+    cover: "https://resources.tidal.com/images/f9bde40f/95fb/4fec/8b66/173ede1fc3e8/320x320.jpg",
   },
 ];
