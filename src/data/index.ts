@@ -30,7 +30,7 @@ export const projects = [
     id: 3,
     title: "Link Manager",
     description: "Manage and organize your important links.",
-    url: "https://link-manager-xi.vercel.app/",
+    url: "https://link-manager-lake.vercel.app/",
     github: "https://github.com/pavnxet/link-manager",
     tags: ["Next.js", "TypeScript", "Tailwind"],
   },
