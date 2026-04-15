@@ -8,32 +8,46 @@ export function MusicPlayer() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [volume, setVolume] = useState(50);
+  const [playbackError, setPlaybackError] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const currentSong = songs[currentSongIndex];
 
   // Robust path resolution for both GitHub Pages and Vercel
   const getAudioPath = (path: string) => {
-    const baseUrl = import.meta.env.BASE_URL || "";
+    // With base: "/", we can return the path directly or keep it normalized
+    const baseUrl = import.meta.env.BASE_URL || "/";
     if (path.startsWith("/")) {
-      // Normalize path by removing double slashes
       return `${baseUrl}${path}`.replace(/\/+/g, "/");
     }
     return path;
   };
 
+  const playAudio = () => {
+    if (audioRef.current) {
+      setPlaybackError(null);
+      audioRef.current.play().catch((err) => {
+        console.error("Playback failed:", err);
+        setPlaybackError("Cannot play audio. Try again or check format.");
+        setIsPlaying(false);
+      });
+    }
+  };
+
   useEffect(() => {
     if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.play().catch((err) => {
-          console.error("Playback failed:", err);
-          setIsPlaying(false);
-        });
-      } else {
+      if (!isPlaying) {
         audioRef.current.pause();
       }
     }
-  }, [isPlaying, currentSongIndex]);
+  }, [isPlaying]);
+
+  // Handle song changes separately
+  useEffect(() => {
+    if (isPlaying) {
+      playAudio();
+    }
+  }, [currentSongIndex]);
 
   useEffect(() => {
     if (audioRef.current) {
@@ -42,7 +56,12 @@ export function MusicPlayer() {
   }, [volume]);
 
   const togglePlayPause = () => {
-    setIsPlaying(!isPlaying);
+    if (isPlaying) {
+      setIsPlaying(false);
+    } else {
+      setIsPlaying(true);
+      playAudio();   // ← direct call from user gesture
+    }
   };
 
   const nextSong = () => {
@@ -175,6 +194,12 @@ export function MusicPlayer() {
                   className="max-w-[120px]"
                 />
               </div>
+
+              {playbackError && (
+                <p className="text-danger text-tiny mt-2 text-center animate-pulse">
+                  {playbackError}
+                </p>
+              )}
             </div>
           </div>
         </CardBody>

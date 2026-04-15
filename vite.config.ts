@@ -5,5 +5,5 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   // Use relative base path to ensure assets work correctly on both GH Pages and Vercel
-  base: "./",
+  base: "/",
 });

@@ -65,7 +65,7 @@ export const songs = [
     id: 1,
     title: "Aap Is Dhoop Mein",
     artist: "Arijit Singh",
-    file: "/songs/Aap-Is-Dhoop-Mein.flac",
+    file: "/songs/Aap-Is-Dhoop-Mein.mp3",
     cover: "https://resources.tidal.com/images/f9bde40f/95fb/4fec/8b66/173ede1fc3e8/320x320.jpg",
   },
 ];
