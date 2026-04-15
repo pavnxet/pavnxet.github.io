@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main, setup-github-pages-workflow-5375177459387749607]
+    branches: [main, testing-mobile-fixes, setup-github-pages-workflow-5375177459387749607]
 
 permissions:
   contents: read
