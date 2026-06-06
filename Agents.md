@@ -1,6 +1,8 @@
 # AI Instructions: How to Create a Blog Post on this Website
 
-Before creating, editing, or publishing any new blog post in this repository, **read this file carefully**. You must follow these guidelines to keep layouts, assets, and features consistent.
+> [!IMPORTANT]
+> **Default Posting Branch**:
+> Always use branch `main2.0` for posting. It is the default branch for updates. Make sure you check out and commit your work to `main2.0` unless explicitly instructed otherwise.
 
 ---
 
