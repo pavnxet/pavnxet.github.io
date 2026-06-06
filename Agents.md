@@ -3,7 +3,7 @@
 > [!IMPORTANT]
 > **Default Posting Branch**
 >
-> Always use branch `main2.0` for updates unless explicitly instructed otherwise.
+> Always use branch `main3.0` for updates unless explicitly instructed otherwise.
 
 ---
 
@@ -21,7 +21,7 @@ This repository uses a **Classic Grid Theme** optimized for **GitHub Pages**.
 - Deployment should remain as simple as:
 
 ```bash
-git push origin main2.0
+git push origin main3.0
 ```
 
 ---

@@ -34,7 +34,7 @@ To host this website on your GitHub Pages domain (`https://pavnxet.github.io`):
 
 2. **Select Build and Deployment**:
    - Under **Build and deployment -> Source**, select **Deploy from a branch**.
-   - Under **Branch**, click the dropdown and choose the branch you pushed (e.g., `dashboard-site`).
+   - Under **Branch**, click the dropdown and choose the default branch: `main3.0`.
    - Select `/ (root)` folder, then click **Save**.
 
 Within a few minutes, GitHub Actions will compile your build and launch it live!
