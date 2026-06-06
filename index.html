@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -36,12 +36,10 @@
       <li><a href="#writing">Writing</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="mailto:example@example.com" class="nav-cta">Say hello →</a></li>
-      <li class="search-container">
-        <span class="search-icon">&#x1F50D;</span>
-        <input type="text" id="searchInput" class="search-input" placeholder="Search posts..." autocomplete="off">
-        <div id="searchResults" class="search-results"></div>
-      </li>
     </ul>
+    <button class="nav-toggle" aria-label="Toggle navigation">
+      <span class="hamburger"></span>
+    </button>
   </div>
 </nav>
 
@@ -57,10 +55,19 @@
     </p>
   </div>
   <div class="hero-right fade-in d3">
-    <div class="hero-count">2</div>
+    <div class="hero-count" id="heroCount">2</div>
     <div class="hero-count-label">posts</div>
   </div>
 </section>
+
+<!-- â”€â”€ SEARCH BAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+<div class="search-wrap fade-up d3">
+  <div class="search-container">
+    <span class="search-icon">&#x1F50D;</span>
+    <input type="text" id="searchInput" class="search-input" placeholder="Search posts..." autocomplete="off">
+    <div id="searchResults" class="search-results"></div>
+  </div>
+</div>
 
 <!-- ── FILTERS ────────────────────────────────────────────── -->
 <div id="writing" class="filters-wrap">

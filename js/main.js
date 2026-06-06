@@ -1,4 +1,4 @@
-﻿// ── Scroll reveal ─────────────────────────────────────────
+// ── Scroll reveal ─────────────────────────────────────────
 const revealEls = document.querySelectorAll('.reveal');
 const obs = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => {
@@ -78,4 +78,34 @@ window.addEventListener('scroll', () => {
       link.classList.add('active');
     }
   });
+});
+
+// ── Mobile Navigation Toggle ──────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinksList = document.querySelector('.nav-links');
+  
+  if (navToggle && navLinksList) {
+    navToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navToggle.classList.toggle('active');
+      navLinksList.classList.toggle('active');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!navToggle.contains(e.target) && !navLinksList.contains(e.target)) {
+        navToggle.classList.remove('active');
+        navLinksList.classList.remove('active');
+      }
+    });
+
+    // Close menu when clicking any nav link
+    navLinksList.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('active');
+        navLinksList.classList.remove('active');
+      });
+    });
+  }
 });
