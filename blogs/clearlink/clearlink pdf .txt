@@ -1,0 +1,275 @@
+# ClearLink-PDF
+
+---
+
+## 📝 Description
+
+ClearLink-PDF is a privacy-focused tool designed to remove hyperlinks, widgets, and sensitive metadata from PDF files. It helps users clean their documents before sharing them to prevent tracking and data leaks. The project provides a web interface, a desktop GUI, and a Telegram bot so you can use it anywhere.
+
+---
+
+## 🚀 Live Demo
+
+Try the web version here: [Live Preview](https://pavnxet.github.io/ClearLink-PDF/)
+
+---
+
+## ✨ Features
+
+* Removes all visible and hidden hyperlinks from PDF pages.
+* Purges sensitive metadata including author, title, creator, and timestamps.
+* Deletes structural bookmarks and tables of contents that might contain trackable links.
+* Compresses file sizes using object optimization and deflation.
+* Extracts plain text and embedded images into local folders.
+* Merges multiple PDFs into a single document or splits them into individual pages.
+* Rotates pages and protects files with AES-256 encryption.
+* Works entirely offline or on local environments to ensure complete privacy.
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology | Purpose |
+| --- | --- | --- |
+| **Frontend** | HTML5, CSS3, JavaScript, pdf-lib | Builds the responsive web interface and processes PDFs locally in the browser. |
+| **Backend** | Python, PySide6, pyTelegramBotAPI, PyMuPDF, Flask | Powers the desktop graphical interface and manages the automated Telegram bot logic. |
+| **Database** | None | Does not store any user files or data to ensure absolute privacy. |
+| **Deployment** | Vercel | Hosts the application resources and executes serverless webhook functions. |
+
+---
+
+## 📂 Folder Structure
+
+```text
+clearlink-pdf/
+├── api/
+│   └── webhook.py          # Flask backend for handling Telegram bot webhooks.
+├── web/
+│   ├── index.html          # Web application structure and layout.
+│   ├── script.js           # Client-side PDF processing logic using pdf-lib.
+│   └── style.css           # Glassmorphic user interface styling and animations.
+├── requirements.txt        # Python library dependencies.
+└── vercel.json             # Vercel configuration for serverless functions and routing.
+
+```
+
+---
+
+## 📋 Getting Started
+
+### Prerequisites
+
+* Python 3.8 or higher installed on your machine.
+* A modern web browser supporting ES6 JavaScript features.
+* A Telegram bot token obtained from BotFather if running the bot interface.
+
+---
+
+## 💻 Installation
+
+1. Clone the repository to your local machine:
+```bash
+git clone https://github.com/pavnxet/ClearLink-PDF.git
+cd ClearLink-PDF
+
+```
+
+
+2. Install the required Python dependencies:
+```bash
+pip install -r requirements.txt
+
+```
+
+
+3. Configure your environment variable (if using the bot interface):
+```bash
+set BOT_TOKEN=your_telegram_bot_token_here
+
+```
+
+
+4. Run the desktop application layout:
+```bash
+python main.py
+
+```
+
+
+5. Run the Telegram bot script:
+```bash
+python telegram_bot.py
+
+```
+
+
+
+---
+
+## ⚙️ Environment Variables
+
+| Variable Name | Description | Example Value |
+| --- | --- | --- |
+| `BOT_TOKEN` | Secret authorization token used to connect your script with the Telegram Bot API. | `123456789:ABCdefGhIJKlmNoPQRsTUVwxyZ` |
+
+---
+
+## 🛠️ Available Scripts
+
+| Command | Description |
+| --- | --- |
+| `python main.py` | Launches the desktop graphical user interface application. |
+| `python telegram_bot.py` | Starts the Telegram bot in long-polling mode to handle messages. |
+| `python -m http.server 3000 --directory web` | Starts a local web server to preview the web interface at port 3000. |
+
+---
+
+## 🌐 Deployment Guide
+
+### Deploying to Vercel
+
+1. Install the Vercel CLI tool globally on your system:
+```bash
+npm install -g vercel
+
+```
+
+
+2. Log in to your personal Vercel account via the terminal:
+```bash
+vercel login
+
+```
+
+
+3. Run the initial setup command from the repository root folder:
+```bash
+vercel
+
+```
+
+
+4. Set your production environment variable `BOT_TOKEN` in the Vercel dashboard settings.
+5. Deploy the final build directly to production:
+```bash
+vercel --prod
+
+```
+
+
+6. Set up your Telegram webhook by visiting your deployment URL followed by `/setup` in your browser.
+
+---
+
+## 🤝 Contributing
+
+1. Fork the project repository on GitHub.
+2. Create a new feature branch to track your updates:
+```bash
+git checkout -b feature/your-feature-name
+
+```
+
+
+3. Commit your changes with clear and concise messages:
+```bash
+git commit -m "Add your short commit message here"
+
+```
+
+
+4. Push the branch to your remote fork repository:
+```bash
+git push origin feature/your-feature-name
+[IMAGE: Blog cover banner for social sharing]
+
+# How I Built a Multi-Platform, Privacy-First Tool to Strip Trackable Links and Metadata from PDFs
+
+⏱️ **Estimated Read Time:** 4 minutes
+
+🔗 **Quick Link:** [Try ClearLink-PDF Live Right Now](https://pavnxet.github.io/ClearLink-PDF/)
+
+---
+
+## Why I Built This
+
+Every time we share a PDF document, we are often sharing a lot more data than we realize. I built this tool because I noticed how easy it is for companies, schools, and marketing platforms to embed hidden tracking links, interactive form checkers, and detailed background metadata inside standard PDF files. Whenever someone clicks an innocent-looking hyperlink in a document, their background information can easily be logged by third-party tracking scripts.
+
+I wanted a clean, absolute way to sanitize my documents before hitting "send" without relying on sketchy online converters that upload your private files to their remote servers. I needed something that kept my data completely under my control. Since I couldn't find a lightweight, cross-platform tool that did exactly what I wanted with complete transparency, I decided to build it myself.
+
+---
+
+## What ClearLink-PDF Does
+
+ClearLink-PDF is an open-source security application designed to strip away invisible trackers, active hyperlinks, nested page annotations, and embedded system metadata entirely from your files. Whether you have a single document or a large batch of text files, the application strips out the tracking elements while leaving your visible layout completely untouched.
+
+[GIF: Demo of link removal in the browser]
+
+Beyond link removal, the tool also cleans out system tags like the author's name, creation software, editing timestamps, and embedded table of contents arrays that could potentially point back to your local identity.
+
+---
+
+## How It Works
+
+The core engine uses a deliberate "pointer-based" cleaning cycle. When you upload or choose a document, the application reads the file's low-level dictionary object structure page by page. Instead of searching for text strings, it explicitly goes into the structural annotation layers where interactive links are registered.
+
+To do this across different devices, I implemented two separate engines that follow the exact same logic. For the web portal, everything runs locally in your browser memory using `pdf-lib`. For the desktop interface and the automation engine, the code relies on PyMuPDF to modify the binary cross-reference tables directly. This double-check ensures that even links hiding inside interactive form fields or complex nested formats are wiped clean.
+
+---
+
+## The Three Ways to Use It
+
+To make the tool accessible no matter your workflow, I built three distinct versions depending on where you are working.
+
+### 1. The Web Portal
+
+The web application is a static, dark-themed interface built using glassmorphism styling principles. Because it runs entirely client-side, your documents never touch an external server. You just drag your files onto the screen, check your cleanup settings, and immediately download the polished results.
+
+[SCREENSHOT: Glassmorphic web interface processing a document]
+
+### 2. The Native Desktop App
+
+For local batch file management, I built a desktop GUI application using PySide6. It features full high-DPI scaling display configurations, allows you to pick specific output directories, and lets you drag and drop local files seamlessly into your desktop workspace panel.
+
+[SCREENSHOT: Desktop application showing processing configuration checkboxes]
+
+### 3. The Telegram Bot
+
+When you need to clean a document on your phone, you can forward files directly to the automated Telegram bot channel. It uses inline buttons to trigger various actions like text extraction, compression, splitting, and link stripping, handling the heavy lifting using serverless webhook routing.
+
+[SCREENSHOT: Telegram bot displaying available PDF action buttons]
+
+---
+
+## Challenges I Faced
+
+Building a cross-platform engine brought along a few technical hurdles. The trickiest issue was a classic deletion loop bug. When iterating through a PDF's annotations sequentially, deleting an item shifts all subsequent indexes forward by one space. If you use a standard forward loop, your application will skip every other link. I resolved this issue by writing backward-looping array traversals that safely delete link nodes without throwing off the structural indexes.
+
+Another challenge came up when deploying the automated Telegram bot handler as a serverless script. Free cloud functions enforce a strict 10-second processing window limit. This timeout caused errors when handling massive multi-page files. To address this constraint, I optimized the Python engine's garbage collection parameters, moving from basic file copies to highly compressed object table rewriting.
+
+---
+
+## Try It Yourself
+
+The complete project is open source and available for everyone to use, modify, or host independently.
+
+* 🌐 **Web Interface**: [Launch ClearLink-PDF in Web Browser](https://pavnxet.github.io/ClearLink-PDF/)
+* 📦 **Source Files**: [Explore the Repository on GitHub](https://github.com/pavnxet/ClearLink-PDF)
+
+*Note: For step-by-step developer environment setup rules and technical command guidelines, please review the complete installation instructions inside the repository's main document text.*
+
+---
+
+## What's Next
+
+I am planning to expand the local engine to support smart pattern recognition. This feature will let users scan text content for tracking pixels or malicious redirect URLs, instead of just wiping out the metadata and link layers entirely. I also want to optimize the web portal's rendering speed to better support massive, image-heavy textbooks.
+
+If you want to contribute new code changes, optimize the script workflows, or report a bug, feel free to open a pull request directly on the repository page.
+
+---
+
+### Author Bio
+
+Hi! I'm Pavneet, an open-source software developer focused on creating privacy utilities and functional software tools. You can follow my latest software building journey and check out my other open-source projects directly through my personal profile page at [github.com/pavnxet](https://github.com/pavnxet).
+
+`#privacy` `#python` `#pdf` `#opensource` `#buildinpublic`

@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How I Built ClearLink-PDF — Pavneet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+<style>
+/* ─── Design Tokens ──────────────────────────────────────── */
+:root {
+  --cream:       #faf6f0;
+  --cream2:      #f4ede2;
+  --cream3:      #ecdfd0;
+  --ink:         #1e1a15;
+  --ink2:        #4a4038;
+  --ink3:        #8c7e6e;
+  --warm:        #c9a87c;
+  --warm2:       #e8d5b7;
+  --accent:      #b07d4a;
+  --accent-soft: #f0e4d0;
+  --white:       #fffdf9;
+  --radius:      16px;
+  --radius-sm:   10px;
+  --sans:        'Sora', 'Segoe UI Variable', 'Segoe UI', system-ui, sans-serif;
+  --serif:       'Lora', Georgia, serif;
+  --shadow:      0 4px 20px rgba(160,120,70,0.08);
+  --shadow-md:   0 10px 32px rgba(140,100,50,0.12);
+}
+
+/* ─── Reset ──────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.8;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; height: auto; }
+
+/* ─── Nav ────────────────────────────────────────────────── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(250,246,240,0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--warm2);
+  padding: 0 clamp(20px, 5vw, 80px);
+}
+
+.nav-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 62px;
+}
+
+.back-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink2);
+  padding: 6px 14px;
+  border-radius: 20px;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.back-link:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+  transform: translateX(-3px);
+}
+
+.back-icon {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  fill: none;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-text {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--accent);
+  letter-spacing: -0.01em;
+}
+
+.logo-x {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: #c9a96e;
+  font-weight: 600;
+}
+
+/* ─── Article Header (Hero) ──────────────────────────────── */
+.article-header {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: clamp(40px, 8vw, 70px) 20px 30px;
+  text-align: center;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.article-title {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4.5vw, 44px);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+
+.article-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 13.5px;
+  color: var(--ink3);
+  font-weight: 400;
+  flex-wrap: wrap;
+}
+
+.meta-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  object-fit: contain;
+  background: var(--cream2);
+  padding: 1.5px;
+  border: 1px solid var(--warm2);
+}
+
+.meta-author {
+  font-weight: 500;
+  color: var(--ink2);
+}
+
+.meta-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--warm);
+}
+
+.hero-image-wrap {
+  max-width: 960px;
+  margin: 20px auto 40px;
+  padding: 0 20px;
+}
+
+.hero-banner {
+  background: var(--cream2);
+  border-radius: var(--radius);
+  border: 1px solid var(--warm2);
+  padding: clamp(20px, 6vw, 60px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--shadow);
+}
+
+.hero-banner img {
+  max-height: 320px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 18px rgba(142, 124, 104, 0.15));
+}
+
+/* ─── Page Content Grid ──────────────────────────────────── */
+.page-layout {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 60px;
+}
+
+/* Sticky TOC Sidebar */
+.toc-sidebar {
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+  align-self: start;
+}
+
+.toc-card {
+  background: var(--white);
+  border: 1px solid var(--warm2);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+
+.toc-heading {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink3);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--cream2);
+}
+
+.toc-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.toc-link {
+  display: block;
+  font-size: 13.5px;
+  color: var(--ink3);
+  font-weight: 400;
+  transition: all 0.25s cubic-bezier(.22,.68,0,1.1);
+  padding-left: 0;
+  border-left: 2px solid transparent;
+}
+
+.toc-link:hover {
+  color: var(--accent);
+  padding-left: 8px;
+}
+
+.toc-link.active {
+  color: var(--accent);
+  font-weight: 600;
+  padding-left: 10px;
+  border-left: 2.5px solid var(--accent);
+}
+
+/* Main Article Column */
+.article-container {
+  max-width: 720px;
+}
+
+article {
+  font-family: var(--serif);
+  font-size: 17.5px;
+  color: var(--ink2);
+}
+
+article p {
+  margin-bottom: 24px;
+}
+
+article p strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+article h2 {
+  font-family: var(--sans);
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 48px 0 20px;
+  letter-spacing: -0.01em;
+  scroll-margin-top: 90px;
+}
+
+article h3 {
+  font-family: var(--sans);
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 32px 0 16px;
+  scroll-margin-top: 90px;
+}
+
+/* ─── Elements Styling ────────────────────────────────────── */
+blockquote {
+  border-left: 3px solid var(--accent);
+  padding: 8px 0 8px 24px;
+  margin: 32px 0;
+  font-style: italic;
+  font-size: 19px;
+  color: var(--accent);
+  line-height: 1.6;
+}
+
+/* Code block styles */
+pre, code {
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 14.5px;
+  background: var(--cream2);
+  border-radius: var(--radius-sm);
+}
+
+code {
+  padding: 2.5px 6px;
+  border: 1px solid var(--warm2);
+  color: var(--accent);
+}
+
+pre {
+  padding: 18px;
+  overflow-x: auto;
+  border: 1px solid var(--warm2);
+  margin-bottom: 28px;
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+}
+
+pre code {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--ink2);
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0;
+  font-family: var(--sans);
+  font-size: 14.5px;
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--warm2);
+}
+
+th, td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--cream2);
+}
+
+th {
+  background: var(--cream2);
+  color: var(--accent);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* Embedded Media / Showcase Image */
+.showcase-card {
+  background: var(--cream2);
+  border: 1px solid var(--warm2);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin: 32px 0;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s;
+}
+
+.showcase-card:hover {
+  transform: translateY(-2px);
+}
+
+.showcase-image {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--warm2);
+}
+
+.showcase-caption {
+  font-family: var(--sans);
+  font-size: 12.5px;
+  color: var(--ink3);
+  text-align: center;
+  margin-top: 12px;
+  font-style: italic;
+}
+
+/* Bullet list styling */
+article ul {
+  list-style: none;
+  margin: 20px 0 28px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+article ul li {
+  position: relative;
+  padding-left: 24px;
+}
+
+article ul li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 14px;
+}
+
+/* Author Bio Card */
+.author-card {
+  margin-top: 64px;
+  padding-top: 40px;
+  border-top: 1px solid var(--warm2);
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.author-card .meta-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-sm);
+  padding: 3px;
+}
+
+.author-info h4 {
+  font-family: var(--sans);
+  font-size: 16px;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.author-info p {
+  font-size: 14.5px;
+  color: var(--ink3);
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+/* ─── Responsive Adjustments ──────────────────────────────── */
+@media (max-width: 900px) {
+  .page-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-bottom: 60px;
+  }
+  
+  .toc-sidebar {
+    position: sticky;
+    top: 61px;
+    z-index: 40;
+    margin: 0 -20px;
+    width: calc(100% + 40px);
+    border-radius: 0;
+    box-shadow: none;
+  }
+  
+  .toc-card {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid var(--warm2);
+    border-bottom: 1px solid var(--warm2);
+    padding: 12px 20px;
+    background: rgba(250,246,240,0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  
+  .toc-heading {
+    display: none;
+  }
+  
+  .toc-list {
+    flex-direction: row;
+    gap: 16px;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 2px;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .toc-list::-webkit-scrollbar {
+    height: 3px;
+  }
+  
+  .toc-list::-webkit-scrollbar-thumb {
+    background: var(--cream3);
+    border-radius: 2px;
+  }
+  
+  .toc-link {
+    padding: 4px 14px;
+    border-left: none;
+    border-bottom: 2.5px solid transparent;
+    font-size: 13px;
+    background: var(--cream2);
+    border-radius: 20px;
+  }
+  
+  .toc-link.active {
+    background: var(--accent-soft);
+    border-bottom-color: var(--accent);
+    padding-left: 14px;
+  }
+  
+  .article-header {
+    padding-bottom: 10px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ───────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="../../index.html" class="back-link">
+      <svg viewBox="0 0 24 24" class="back-icon"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to home
+    </a>
+    <div class="logo">
+      <span class="logo-text">pavn<span class="logo-x">x</span>et</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ── ARTICLE HERO ──────────────────────────────────────── -->
+<header class="article-header">
+  <span class="tag">Tech</span>
+  <h1 class="article-title">How I Built a Multi-Platform, Privacy-First Tool to Strip Trackable Links and Metadata from PDFs</h1>
+  <div class="article-meta">
+    <img class="meta-avatar" src="../../my logo .jpg" alt="Pavneet Logo">
+    <span class="meta-author">pavn<span class="logo-x">x</span>et</span>
+    <span class="meta-dot"></span>
+    <span>June 6, 2026</span>
+    <span class="meta-dot"></span>
+    <span>4 min read</span>
+  </div>
+</header>
+
+<div class="hero-image-wrap">
+  <div class="hero-banner">
+    <img src="clearlink.svg" alt="ClearLink-PDF Cover Logo">
+  </div>
+</div>
+
+<!-- ── PAGE LAYOUT ────────────────────────────────────────── -->
+<div class="page-layout">
+  
+  <!-- Left Side: TOC Sidebar -->
+  <aside class="toc-sidebar">
+    <div class="toc-card">
+      <h3 class="toc-heading">Table of Contents</h3>
+      <ul class="toc-list">
+        <li><a href="#why-i-built-this" class="toc-link active">Why I Built This</a></li>
+        <li><a href="#what-it-does" class="toc-link">What It Does</a></li>
+        <li><a href="#how-it-works" class="toc-link">How It Works</a></li>
+        <li><a href="#three-ways-to-use" class="toc-link">Three Ways to Use</a></li>
+        <li><a href="#challenges-faced" class="toc-link">Challenges I Faced</a></li>
+        <li><a href="#developer-setup" class="toc-link">Try It Yourself</a></li>
+        <li><a href="#whats-next" class="toc-link">What's Next</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Right Side: Article Body -->
+  <main class="article-container">
+    <article>
+      
+      <!-- SECTION 1 -->
+      <section id="why-i-built-this">
+        <h2>Why I Built This</h2>
+        <p>Every time we share a PDF document, we are often sharing a lot more data than we realize. I built this tool because I noticed how easy it is for companies, schools, and marketing platforms to embed hidden tracking links, interactive form checkers, and detailed background metadata inside standard PDF files. Whenever someone clicks an innocent-looking hyperlink in a document, their background information can easily be logged by third-party tracking scripts.</p>
+        <p>I wanted a clean, absolute way to sanitize my documents before hitting <strong>"send"</strong> without relying on sketchy online converters that upload your private files to their remote servers. I needed something that kept my data completely under my control. Since I couldn't find a lightweight, cross-platform tool that did exactly what I wanted with complete transparency, I decided to build it myself.</p>
+      </section>
+
+      <!-- SECTION 2 -->
+      <section id="what-it-does">
+        <h2>What ClearLink-PDF Does</h2>
+        <p>ClearLink-PDF is an open-source security application designed to strip away invisible trackers, active hyperlinks, nested page annotations, and embedded system metadata entirely from your files. Whether you have a single document or a large batch of files, the application strips out the tracking elements while leaving your visible layout completely untouched.</p>
+        <p>Beyond link removal, the tool also cleans out system tags like the author's name, creation software, editing timestamps, and embedded table of contents arrays that could potentially point back to your local identity.</p>
+        
+        <h3>Key Features Checklist</h3>
+        <ul>
+          <li><strong>Removes all visible and hidden hyperlinks</strong> from PDF pages.</li>
+          <li><strong>Purges sensitive metadata</strong> including author, title, creator, and timestamps.</li>
+          <li><strong>Deletes structural bookmarks</strong> and tables of contents that might contain trackable links.</li>
+          <li><strong>Compresses file sizes</strong> using object table optimization and deflation.</li>
+          <li><strong>Extracts plain text and embedded images</strong> into organized local folders.</li>
+          <li><strong>Merges multiple PDFs</strong> into a single document or splits them into individual pages.</li>
+          <li><strong>Rotates pages</strong> and protects files with robust AES-256 encryption.</li>
+          <li><strong>Works entirely offline</strong> to ensure absolute data privacy.</li>
+        </ul>
+      </section>
+
+      <!-- SECTION 3 -->
+      <section id="how-it-works">
+        <h2>How It Works</h2>
+        <p>The core engine uses a deliberate <strong>"pointer-based"</strong> cleaning cycle. When you upload or choose a document, the application reads the file's low-level dictionary object structure page by page. Instead of searching for text strings, it explicitly goes into the structural annotation layers where interactive links are registered.</p>
+        <p>To do this across different devices, I implemented two separate engines that follow the exact same logic. For the web portal, everything runs locally in your browser memory using <code>pdf-lib</code>. For the desktop interface and the automation engine, the code relies on <code>PyMuPDF</code> to modify the binary cross-reference tables directly. This double-check ensures that even links hiding inside interactive form fields or complex nested formats are wiped clean.</p>
+        
+        <h3>Technology Stack Overview</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Layer</th>
+              <th>Technology</th>
+              <th>Purpose</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Frontend</strong></td>
+              <td>HTML5, CSS3, JavaScript, pdf-lib</td>
+              <td>Builds the responsive web interface and processes PDFs locally in the browser.</td>
+            </tr>
+            <tr>
+              <td><strong>Backend</strong></td>
+              <td>Python, PySide6, pyTelegramBotAPI, PyMuPDF, Flask</td>
+              <td>Powers the desktop graphical interface and manages the automated Telegram bot logic.</td>
+            </tr>
+            <tr>
+              <td><strong>Database</strong></td>
+              <td>None</td>
+              <td>Does not store any user files or data to ensure absolute privacy.</td>
+            </tr>
+            <tr>
+              <td><strong>Deployment</strong></td>
+              <td>Vercel</td>
+              <td>Hosts the application resources and executes serverless webhook functions.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- SECTION 4 -->
+      <section id="three-ways-to-use">
+        <h2>Three Ways to Use</h2>
+        <p>To make the tool accessible no matter your workflow, I built three distinct versions depending on where you are working.</p>
+        
+        <h3>1. The Web Portal</h3>
+        <p>The web application is a static, dark-themed interface built using glassmorphism styling principles. Because it runs entirely client-side, your documents never touch an external server. You just drag your files onto the screen, check your cleanup settings, and immediately download the polished results.</p>
+        
+        <div class="showcase-card">
+          <img src="preview of website.png" alt="ClearLink-PDF Web Portal Preview" class="showcase-image">
+          <div class="showcase-caption">ClearLink-PDF Web Portal Preview — Clean, glassmorphic layout for instant local PDF operations.</div>
+        </div>
+
+        <h3>2. The Native Desktop App</h3>
+        <p>For local batch file management, I built a desktop GUI application using PySide6. It features full high-DPI scaling display configurations, allows you to pick specific output directories, and lets you drag and drop local files seamlessly into your desktop workspace panel.</p>
+
+        <h3>3. The Telegram Bot</h3>
+        <p>When you need to clean a document on your phone, you can forward files directly to the automated Telegram bot channel. It uses inline buttons to trigger various actions like text extraction, compression, splitting, and link stripping, handling the heavy lifting using serverless webhook routing.</p>
+      </section>
+
+      <!-- SECTION 5 -->
+      <section id="challenges-faced">
+        <h2>Challenges I Faced</h2>
+        <p>Building a cross-platform engine brought along a few technical hurdles. The trickiest issue was a classic deletion loop bug. When iterating through a PDF's annotations sequentially, deleting an item shifts all subsequent indexes forward by one space. If you use a standard forward loop, your application will skip every other link. I resolved this issue by writing backward-looping array traversals that safely delete link nodes without throwing off the structural indexes.</p>
+        <blockquote>
+          "Iterating forwards during list modifications causes index shifts. Reversing the loop direction is the simplest, most elegant fix for pointer array safety."
+        </blockquote>
+        <p>Another challenge came up when deploying the automated Telegram bot handler as a serverless script. Free cloud functions enforce a strict 10-second processing window limit. This timeout caused errors when handling massive multi-page files. To address this constraint, I optimized the Python engine's garbage collection parameters, moving from basic file copies to highly compressed object table rewriting.</p>
+      </section>
+
+      <!-- SECTION 6 -->
+      <section id="developer-setup">
+        <h2>Try It Yourself &amp; Developer Setup</h2>
+        <p>The complete project is open source and available for everyone to use, modify, or host independently. To get started with the codebase, check out the steps below:</p>
+
+        <h3>1. Repository Installation</h3>
+        <p>Clone the repository to your local machine and install the required dependencies:</p>
+        <pre><code>git clone https://github.com/pavnxet/ClearLink-PDF.git
+cd ClearLink-PDF
+pip install -r requirements.txt</code></pre>
+
+        <h3>2. Running the Software</h3>
+        <p>To run the desktop GUI layout locally:</p>
+        <pre><code>python main.py</code></pre>
+        
+        <p>To start the Telegram bot channel (requires setting up a token with BotFather):</p>
+        <pre><code>set BOT_TOKEN=your_telegram_bot_token_here
+python telegram_bot.py</code></pre>
+
+        <p>To launch a local web server for testing the Web Portal interface on port 3000:</p>
+        <pre><code>python -m http.server 3000 --directory web</code></pre>
+
+        <h3>3. Vercel Serverless Deployment</h3>
+        <p>Deploy the Flask bot webhooks serverlessly to Vercel using their CLI tool:</p>
+        <pre><code>npm install -g vercel
+vercel login
+vercel
+vercel --prod</code></pre>
+      </section>
+
+      <!-- SECTION 7 -->
+      <section id="whats-next">
+        <h2>What's Next</h2>
+        <p>I am planning to expand the local engine to support smart pattern recognition. This feature will let users scan text content for tracking pixels or malicious redirect URLs, instead of just wiping out the metadata and link layers entirely. I also want to optimize the web portal's rendering speed to better support massive, image-heavy textbooks.</p>
+        <p>If you want to contribute new code changes, optimize the script workflows, or report a bug, feel free to open a pull request directly on the repository page on <a href="https://github.com/pavnxet/ClearLink-PDF" target="_blank" style="color: var(--accent); font-weight: 500; border-bottom: 1px dotted var(--accent);">GitHub</a>.</p>
+      </section>
+
+      <!-- AUTHOR CARD -->
+      <div class="author-card">
+        <img class="meta-avatar" src="../../my logo .jpg" alt="Pavneet Logo">
+        <div class="author-info">
+          <h4>Written by pavn<span class="logo-x">x</span>et</h4>
+          <p>Hi! I'm Pavneet, an open-source software developer focused on creating privacy utilities and functional software tools. You can follow my building journey directly on <a href="https://github.com/pavnxet" target="_blank" style="color: var(--accent); font-weight: 500;">GitHub</a>.</p>
+        </div>
+      </div>
+
+    </article>
+  </main>
+
+</div>
+
+<script>
+// ── Active Table of Contents Highlighter ──────────────────
+document.addEventListener("DOMContentLoaded", () => {
+  const links = document.querySelectorAll(".toc-link");
+  const sections = document.querySelectorAll("article section");
+
+  const observerOptions = {
+    root: null,
+    rootMargin: "-15% 0px -55% 0px",
+    threshold: 0
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute("id");
+        links.forEach(link => {
+          if (link.getAttribute("href") === `#${id}`) {
+            link.classList.add("active");
+            
+            // Auto scroll TOC horizontally on mobile
+            if (window.innerWidth <= 900) {
+              const tocList = document.querySelector(".toc-list");
+              const linkRect = link.getBoundingClientRect();
+              const listRect = tocList.getBoundingClientRect();
+              
+              const scrollOffset = linkRect.left - listRect.left - (listRect.width / 2) + (linkRect.width / 2);
+              tocList.scrollBy({ left: scrollOffset, behavior: "smooth" });
+            }
+          } else {
+            link.classList.remove("active");
+          }
+        });
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach(section => observer.observe(section));
+});
+</script>
+</body>
+</html>
