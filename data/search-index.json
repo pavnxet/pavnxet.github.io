@@ -1,0 +1,16 @@
+[
+  {
+    "title": "How I Built an AI-Ready Project Bundler — Turning Massive Codebases into LLM-Friendly Packages",
+    "type": "tech",
+    "url": "blogs/treebundle/index.html",
+    "description": "TreeBundle is a browser-based tool that gathers source code and documents from multiple sources, organizes them into a structured project bundle, and prepares them for AI analysis, running entirely in the browser.",
+    "tags": ["tech", "ai", "bundler"]
+  },
+  {
+    "title": "How I Built a Multi-Platform, Privacy-First Tool to Strip Trackable Links and Metadata from PDFs",
+    "type": "tech",
+    "url": "blogs/clearlink/index.html",
+    "description": "Every time we share a PDF document, we share more data than we realize. I built ClearLink-PDF to strip away trackable hyperlinks, structural bookmarks, and sensitive system metadata entirely from documents, running 100% offline.",
+    "tags": ["tech", "pdf", "privacy"]
+  }
+]
