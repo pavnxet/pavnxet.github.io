@@ -12,5 +12,12 @@
     "url": "blogs/clearlink/index.html",
     "description": "Every time we share a PDF document, we share more data than we realize. I built ClearLink-PDF to strip away trackable hyperlinks, structural bookmarks, and sensitive system metadata entirely from documents, running 100% offline.",
     "tags": ["tech", "pdf", "privacy"]
+  },
+  {
+    "title": "I Made 3rd Grade Result Website — A Faster Way to Search RSSB Results Without Scrolling PDFs",
+    "type": "tech",
+    "url": "blogs/3rd%20grade%20results/index.html",
+    "description": "This project turns the RSSB 3rd Grade result PDF into a fast and simple web-based search tool, allowing candidates to search by name and instantly view detailed results.",
+    "tags": ["tech", "education", "javascript", "html", "rssb"]
   }
 ]
