@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pavneet | Dashboard & Blog</title>
+  <meta name="description" content="All-rounder blog and showcase for my ongoing and completed projects. Designed in light creamy dashboard style.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- MOBILE TOP HEADER -->
+  <header class="mobile-top-header" id="mobile-header">
+    <div class="mobile-profile">
+      <div class="profile-avatar" style="width: 36px; height: 36px; margin: 0; background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-cocoa) 100%);"></div>
+      <span class="mobile-title">Pavneet's Hub</span>
+    </div>
+    <div class="status-badge" style="padding: 2px 8px;">
+      <span class="status-dot"></span>
+      <span style="font-size: 0.7rem;">Building</span>
+    </div>
+  </header>
+
+  <div class="app-container">
+    
+    <!-- DESKTOP SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div>
+        <!-- Profile details -->
+        <div class="profile-section">
+          <!-- Premium abstract profile image placeholder -->
+          <div class="profile-avatar" style="background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-cocoa) 100%); display: flex; align-items: center; justify-content: center; color: var(--text-inverse); font-weight: 700; font-size: 2rem;">P</div>
+          <h2 class="profile-name">Pavneet</h2>
+          <div class="status-badge">
+            <span class="status-dot"></span>
+            <span>Coding right now</span>
+          </div>
+        </div>
+
+        <!-- Dashboard menu -->
+        <nav>
+          <ul class="nav-menu">
+            <li class="nav-item active" data-tab="overview">
+              <a>
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+                Overview
+              </a>
+            </li>
+            <li class="nav-item" data-tab="projects">
+              <a>
+                <svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                Projects Showcase
+              </a>
+            </li>
+            <li class="nav-item" data-tab="blog">
+              <a>
+                <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                Blog Feed
+              </a>
+            </li>
+            <li class="nav-item" data-tab="about">
+              <a>
+                <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                About Me
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Sidebar Footer -->
+      <div class="sidebar-footer">
+        <div class="social-links">
+          <!-- GitHub Icon -->
+          <a href="https://github.com" target="_blank" class="social-icon" aria-label="GitHub">
+            <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </a>
+          <!-- LinkedIn Icon -->
+          <a href="https://linkedin.com" target="_blank" class="social-icon" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <!-- Mail Icon -->
+          <a href="mailto:example@example.com" class="social-icon" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+        </div>
+        <p class="footer-copy">© 2026 Pavneet. All rights reserved.</p>
+      </div>
+    </aside>
+
+    <!-- MOBILE FLOATING BOTTOM NAV BAR -->
+    <nav class="mobile-bottom-nav">
+      <ul class="mobile-bottom-menu">
+        <li class="mobile-bottom-item active" data-tab="overview">
+          <a>
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+            <span>Overview</span>
+          </a>
+        </li>
+        <li class="mobile-bottom-item" data-tab="projects">
+          <a>
+            <svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            <span>Projects</span>
+          </a>
+        </li>
+        <li class="mobile-bottom-item" data-tab="blog">
+          <a>
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            <span>Blog</span>
+          </a>
+        </li>
+        <li class="mobile-bottom-item" data-tab="about">
+          <a>
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>About</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- MAIN DASHBOARD CONTENT AREA -->
+    <main class="main-content" id="main-content">
+
+      <!-- ==========================================
+           TAB 1: OVERVIEW PANEL
+           ========================================== -->
+      <section class="content-panel active" id="panel-overview">
+        <!-- Greeting widget -->
+        <div class="welcome-widget">
+          <div class="welcome-text">
+            <h1>Welcome to my Creative Hub</h1>
+            <p>I build elegant, functional web applications and write about engineering, design aesthetics, and mindful living. Explore my active projects and blog posts below.</p>
+          </div>
+          <!-- Tiny floating logo details -->
+          <div style="font-size: 3rem; opacity: 0.8; filter: grayscale(0.2);">🌾</div>
+        </div>
+
+        <!-- Quick Stats counter row -->
+        <div class="quick-stats">
+          <div class="stat-card">
+            <div class="stat-icon">
+              <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div class="stat-info">
+              <span class="stat-value" id="stat-active-projects">3</span>
+              <span class="stat-label">Active Works</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            </div>
+            <div class="stat-info">
+              <span class="stat-value" id="stat-blog-posts">3</span>
+              <span class="stat-label">Articles Published</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">
+              <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <div class="stat-info">
+              <span class="stat-value">1,420</span>
+              <span class="stat-label">Hub Views</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Split Grid layout -->
+        <div class="dashboard-grid">
+          <!-- Left side: Featured Projects -->
+          <div>
+            <div class="dashboard-section-header">
+              <h2 class="dashboard-section-title">
+                <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: var(--accent-cocoa); stroke-width: 2.5; fill: none;"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="12" y1="2" x2="12" y2="22"/></svg>
+                Featured Projects
+              </h2>
+              <a class="section-action-link nav-trigger" data-target="projects">
+                See all projects
+                <svg viewBox="0 0 24 24" style="width: 14px; height: 14px; stroke: currentColor; stroke-width: 2.5; fill: none;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+            <div class="cards-grid" id="overview-projects-container" style="grid-template-columns: 1fr;">
+              <!-- Dynamic content injected by app.js -->
+            </div>
+          </div>
+
+          <!-- Right side: Latest Blog posts -->
+          <div>
+            <div class="dashboard-section-header">
+              <h2 class="dashboard-section-title">
+                <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: var(--accent-cocoa); stroke-width: 2.5; fill: none;"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                Latest Articles
+              </h2>
+              <a class="section-action-link nav-trigger" data-target="blog">
+                Read all posts
+                <svg viewBox="0 0 24 24" style="width: 14px; height: 14px; stroke: currentColor; stroke-width: 2.5; fill: none;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+            <div class="recent-list" id="overview-blog-container">
+              <!-- Dynamic content injected by app.js -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           TAB 2: PROJECTS SHOWCASE PANEL
+           ========================================== -->
+      <section class="content-panel" id="panel-projects">
+        <div class="view-header">
+          <span class="view-pretitle">Showcase</span>
+          <h2 class="view-title">Websites & Projects</h2>
+          <p class="view-description">A curated look at my personal creations, coding workspaces, and ongoing web systems.</p>
+        </div>
+
+        <!-- Filter bar -->
+        <div class="filters-bar">
+          <div class="filter-pills" id="project-filters">
+            <button class="filter-pill active" data-filter="all">All Projects</button>
+            <button class="filter-pill" data-filter="Web App">Web Applications</button>
+            <button class="filter-pill" data-filter="Web Tool">Tools & Audio</button>
+            <button class="filter-pill" data-filter="UI/UX Design">UI/UX Designs</button>
+          </div>
+        </div>
+
+        <!-- Cards container -->
+        <div class="cards-grid" id="projects-grid-container">
+          <!-- Dynamic content injected by app.js -->
+        </div>
+      </section>
+
+      <!-- ==========================================
+           TAB 3: BLOG FEED PANEL
+           ========================================== -->
+      <section class="content-panel" id="panel-blog">
+        <div class="view-header">
+          <span class="view-pretitle">Articles</span>
+          <h2 class="view-title">Mind, Code & Creation</h2>
+          <p class="view-description">Thought pieces on modern web practices, aesthetics, developer lifestyle, and personal insights.</p>
+        </div>
+
+        <!-- Filters & Search bar -->
+        <div class="filters-bar">
+          <div class="filter-pills" id="blog-filters">
+            <button class="filter-pill active" data-filter="all">All Topics</button>
+            <button class="filter-pill" data-filter="Coding">Development</button>
+            <button class="filter-pill" data-filter="Design">Aesthetics</button>
+            <button class="filter-pill" data-filter="Lifestyle">Slow Living</button>
+          </div>
+
+          <div class="search-box-container">
+            <svg class="search-icon-svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" class="search-input" id="blog-search" placeholder="Search articles...">
+          </div>
+        </div>
+
+        <!-- Cards container -->
+        <div class="cards-grid" id="blog-grid-container">
+          <!-- Dynamic content injected by app.js -->
+        </div>
+      </section>
+
+      <!-- ==========================================
+           TAB 4: ABOUT ME PANEL
+           ========================================== -->
+      <section class="content-panel" id="panel-about">
+        <div class="view-header">
+          <span class="view-pretitle">Biography</span>
+          <h2 class="view-title">Behind the Dashboard</h2>
+        </div>
+
+        <div class="about-layout">
+          <!-- Left side Card -->
+          <div class="about-card-left">
+            <div class="about-large-avatar" style="background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-cocoa) 100%); display: flex; align-items: center; justify-content: center; color: var(--text-inverse); font-weight: 700; font-size: 3rem;">P</div>
+            <h3 class="about-name">Pavneet</h3>
+            <p class="about-title-tag">Full-Stack Engineer & Designer</p>
+            
+            <p class="card-desc" style="-webkit-line-clamp: initial; display: block; font-size: 0.92rem; border-top: 1px solid var(--border-light); padding-top: 16px; margin-bottom: 20px;">
+              Designing digital spaces with natural textures, cream hues, and high-performance code configurations.
+            </p>
+
+            <h4 style="font-size: 0.85rem; text-transform: uppercase; color: var(--accent-cocoa); font-weight: 700; letter-spacing: 1px; margin-bottom: 12px; text-align: left;">Technical Toolkit</h4>
+            <div class="skills-grid">
+              <div class="skill-badge">React & Next.js</div>
+              <div class="skill-badge">Vanilla JavaScript</div>
+              <div class="skill-badge">CSS Layouts</div>
+              <div class="skill-badge">Figma Designs</div>
+              <div class="skill-badge">Node.js</div>
+              <div class="skill-badge">Git & GitHub</div>
+            </div>
+          </div>
+
+          <!-- Right side Panels -->
+          <div class="about-card-right">
+            <!-- Story Box -->
+            <div class="about-block">
+              <h3>
+                <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                My Mission
+              </h3>
+              <p>Hello! I am Pavneet, a creator focused on building web experiences that are not just fast, but also pleasant and comfortable to use. I believe that digital systems should adapt to humans, bringing peace, utility, and delight to everyday interactions.</p>
+              <p>This dashboard is a central command of my work, designed with a clean, low-contrast, light cream layout. Here I track my active code projects and write my thoughts on coding, design aesthetics, and the values of slowing down in our highly accelerated industry.</p>
+            </div>
+
+            <!-- Timeline Box -->
+            <div class="about-block">
+              <h3>
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Journey Timeline
+              </h3>
+              <div class="timeline">
+                <div class="timeline-item">
+                  <div class="timeline-date">2024 - Present</div>
+                  <div class="timeline-title">Independent Web Developer & Designer</div>
+                  <div class="timeline-desc">Building full-stack platforms, developing customized minimal component design systems, and deploying sites directly to serverless architectures.</div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-date">2022 - 2024</div>
+                  <div class="timeline-title">UI Engineering Lead</div>
+                  <div class="timeline-desc">Engineered beautiful responsive design systems for SaaS analytics panels. Standardized components using native CSS grid, nesting, and performance frameworks.</div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-date">2020 - 2022</div>
+                  <div class="timeline-title">Software Developer</div>
+                  <div class="timeline-desc">Coded and managed REST API integrations, web tools, and database layouts, solidifying core Javascript logic practices.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- FULL SCREEN/SLIDE-OUT BLOG ARTICLE MODAL -->
+  <div class="reader-modal" id="reader-modal">
+    <div class="reader-container">
+      
+      <!-- Modal Header Bar -->
+      <header class="reader-header">
+        <button class="reader-close-btn" id="reader-close-btn">
+          <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Back to Dashboard
+        </button>
+        <span class="reader-category-pill" id="reader-category">Category</span>
+      </header>
+
+      <!-- Modal Body Content -->
+      <div class="reader-body">
+        <div class="reader-meta">
+          <span id="reader-date">June 6, 2026</span>
+          <span class="blog-meta-dot"></span>
+          <span id="reader-time">5 min read</span>
+        </div>
+        <h1 class="reader-title" id="reader-title">Post Title</h1>
+        
+        <img src="assets/blog_creamy_design.png" alt="Cover Image" class="reader-cover-img" id="reader-image">
+        
+        <article class="reader-article-content" id="reader-content">
+          <!-- Dynamic article content injected here -->
+        </article>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Include data first, then core application scripting -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
