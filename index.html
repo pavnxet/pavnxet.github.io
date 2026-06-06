@@ -97,11 +97,15 @@ nav {
 }
 
 .nav-logo-img {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   object-fit: cover;
   border: 1.5px solid var(--warm);
+  transition: transform 0.2s ease;
+}
+.nav-logo-img:hover {
+  transform: scale(1.05);
 }
 
 .logo-mark {
@@ -685,11 +689,22 @@ footer {
   font-size: 13px;
   color: var(--ink3);
   font-weight: 300;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .footer-left strong {
   color: var(--ink2);
   font-weight: 500;
+}
+
+.footer-logo-img {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--warm2);
 }
 
 .footer-links {
@@ -746,7 +761,6 @@ footer {
   <div class="nav-inner">
     <div class="nav-logo">
       <img src="my logo .jpg" alt="Pavneet Logo" class="nav-logo-img">
-      <span class="logo-mark">Pavneet</span>
     </div>
     <ul class="nav-links">
       <li><a href="#" class="active">Home</a></li>
@@ -808,11 +822,8 @@ footer {
           I didn't go looking for peace. I went looking for altitude and trekking routes. But somewhere between Manali and Spiti, with no phone signal and hours of walking through broken roads, something shifted in the way I think.
         </p>
         <div class="card-footer">
-          <img class="avatar" src="my logo .jpg" alt="Pavneet">
-          <div>
-            <div class="card-author">Pavneet</div>
-            <div class="card-date">May 28, 2025</div>
-          </div>
+          <img class="avatar" src="my logo .jpg" alt="Pavneet Logo">
+          <span class="card-date">May 28, 2025</span>
           <div class="card-arrow">→</div>
         </div>
       </div>
@@ -831,11 +842,8 @@ footer {
         <h2 class="card-title">The best things I ate in Jaipur this season</h2>
         <p class="card-desc">Dal baati, laal maas, and the chai that made me miss everything about home — a city full of flavour.</p>
         <div class="card-footer">
-          <img class="avatar" src="my logo .jpg" alt="Pavneet">
-          <div>
-            <div class="card-author">Pavneet</div>
-            <div class="card-date">May 12, 2025</div>
-          </div>
+          <img class="avatar" src="my logo .jpg" alt="Pavneet Logo">
+          <span class="card-date">May 12, 2025</span>
           <div class="card-arrow">→</div>
         </div>
       </div>
@@ -854,11 +862,8 @@ footer {
         <h2 class="card-title">Building things for fun — why side projects matter</h2>
         <p class="card-desc">I've built twelve side projects in the past two years. Most of them went nowhere. Here's why I keep doing it anyway.</p>
         <div class="card-footer">
-          <img class="avatar" src="my logo .jpg" alt="Pavneet">
-          <div>
-            <div class="card-author">Pavneet</div>
-            <div class="card-date">Apr 30, 2025</div>
-          </div>
+          <img class="avatar" src="my logo .jpg" alt="Pavneet Logo">
+          <span class="card-date">Apr 30, 2025</span>
           <div class="card-arrow">→</div>
         </div>
       </div>
@@ -877,11 +882,8 @@ footer {
         <h2 class="card-title">On reading slowly and not finishing every book</h2>
         <p class="card-desc">Somewhere I got the idea that abandoning a book was failure. It took me years to unlearn that completely.</p>
         <div class="card-footer">
-          <img class="avatar" src="my logo .jpg" alt="Pavneet">
-          <div>
-            <div class="card-author">Pavneet</div>
-            <div class="card-date">Apr 18, 2025</div>
-          </div>
+          <img class="avatar" src="my logo .jpg" alt="Pavneet Logo">
+          <span class="card-date">Apr 18, 2025</span>
           <div class="card-arrow">→</div>
         </div>
       </div>
@@ -900,11 +902,8 @@ footer {
         <h2 class="card-title">Why cream and warm tones are having a moment in UI</h2>
         <p class="card-desc">The shift from cold, clinical whites to warm, organic palettes isn't just aesthetic — it reflects something deeper about how we want tech to feel.</p>
         <div class="card-footer">
-          <img class="avatar" src="my logo .jpg" alt="Pavneet">
-          <div>
-            <div class="card-author">Pavneet</div>
-            <div class="card-date">Apr 3, 2025</div>
-          </div>
+          <img class="avatar" src="my logo .jpg" alt="Pavneet Logo">
+          <span class="card-date">Apr 3, 2025</span>
           <div class="card-arrow">→</div>
         </div>
       </div>
@@ -923,11 +922,8 @@ footer {
         <h2 class="card-title">Varanasi at dawn — standing at the edge of something ancient</h2>
         <p class="card-desc">No photograph prepares you for the ghats at 5am. The smoke, the chanting, the river — all of it arrives at once.</p>
         <div class="card-footer">
-          <img class="avatar" src="my logo .jpg" alt="Pavneet">
-          <div>
-            <div class="card-author">Pavneet</div>
-            <div class="card-date">Mar 22, 2025</div>
-          </div>
+          <img class="avatar" src="my logo .jpg" alt="Pavneet Logo">
+          <span class="card-date">Mar 22, 2025</span>
           <div class="card-arrow">→</div>
         </div>
       </div>
@@ -946,11 +942,8 @@ footer {
         <h2 class="card-title">Learning to sketch again — badly, on purpose</h2>
         <p class="card-desc">I stopped drawing at 14. Picked it back up at 23. Here's why being terrible at something can be the most freeing thing.</p>
         <div class="card-footer">
-          <img class="avatar" src="my logo .jpg" alt="Pavneet">
-          <div>
-            <div class="card-author">Pavneet</div>
-            <div class="card-date">Mar 10, 2025</div>
-          </div>
+          <img class="avatar" src="my logo .jpg" alt="Pavneet Logo">
+          <span class="card-date">Mar 10, 2025</span>
           <div class="card-arrow">→</div>
         </div>
       </div>
@@ -969,11 +962,8 @@ footer {
         <h2 class="card-title">The only morning routine that actually worked for me</h2>
         <p class="card-desc">No cold showers. No journaling. No elaborate rituals. Just one very boring thing I do before anything else.</p>
         <div class="card-footer">
-          <img class="avatar" src="my logo .jpg" alt="Pavneet">
-          <div>
-            <div class="card-author">Pavneet</div>
-            <div class="card-date">Feb 27, 2025</div>
-          </div>
+          <img class="avatar" src="my logo .jpg" alt="Pavneet Logo">
+          <span class="card-date">Feb 27, 2025</span>
           <div class="card-arrow">→</div>
         </div>
       </div>
@@ -990,7 +980,7 @@ footer {
     </div>
     <div class="about-content">
       <div class="about-label">About Me</div>
-      <h2 class="about-title">Hi, I'm Pavneet</h2>
+      <h2 class="about-title" style="display: flex; align-items: center; gap: 8px;">Hi, I'm <img src="my logo .jpg" alt="Pavneet Logo" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--warm2);"></h2>
       <ul class="about-bullets">
         <li><span class="bullet-icon">🛠️</span> I build software, digital tools, and whatever creative ideas I want to see exist.</li>
         <li><span class="bullet-icon">📖</span> Spend a lot of my free time reading non-fiction, mostly Stoic philosophy and psychology.</li>
@@ -1018,7 +1008,7 @@ footer {
 <footer>
   <div class="footer-inner">
     <div class="footer-left">
-      © 2026 <strong>Pavneet</strong> — made with curiosity
+      © 2026 <img src="my logo .jpg" alt="Pavneet Logo" class="footer-logo-img"> — made with curiosity
     </div>
     <div class="footer-links">
       <a href="https://github.com/pavnxet" target="_blank">GitHub</a>
