@@ -37,6 +37,7 @@
   --radius-sm:   10px;
   --sans:        'Sora', 'Segoe UI Variable', 'Segoe UI', system-ui, sans-serif;
   --serif:       'Lora', Georgia, serif;
+  --shadow-sm:   0 2px 8px rgba(160,120,70,0.06);
   --shadow:      0 4px 20px rgba(160,120,70,0.08);
   --shadow-md:   0 10px 32px rgba(140,100,50,0.12);
 }
@@ -489,30 +490,22 @@ article ul li::before {
 /* ─── Responsive Adjustments ──────────────────────────────── */
 @media (max-width: 900px) {
   .page-layout {
-    display: block;
+    grid-template-columns: 1fr;
+    gap: 24px;
     padding-bottom: 60px;
   }
   
   .toc-sidebar {
-    position: sticky;
-    top: 61px;
-    z-index: 40;
-    margin: 0 -20px;
-    width: calc(100% + 40px);
-    border-radius: 0;
-    box-shadow: none;
+    position: static;
+    order: -1;
+  }
+  
+  .article-container {
+    max-width: 100%;
   }
   
   .toc-card {
-    border-radius: 0;
-    border-left: none;
-    border-right: none;
-    border-top: 1px solid var(--warm2);
-    border-bottom: 1px solid var(--warm2);
-    padding: 12px 20px;
-    background: rgba(250,246,240,0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    padding: 16px 20px;
   }
   
   .toc-heading {
@@ -806,7 +799,7 @@ vercel --prod</code></pre>
       <section id="whats-next">
         <h2>What's Next</h2>
         <p>I am planning to expand the local engine to support smart pattern recognition. This feature will let users scan text content for tracking pixels or malicious redirect URLs, instead of just wiping out the metadata and link layers entirely. I also want to optimize the web portal's rendering speed to better support massive, image-heavy textbooks.</p>
-        <p>If you want to contribute new code changes, optimize the script workflows, or report a bug, feel free to open a pull request directly on the repository page on <a href="https://github.com/pavnxet/ClearLink-PDF" target="_blank" style="color: var(--accent); font-weight: 500; border-bottom: 1px dotted var(--accent);">GitHub</a>.</p>
+        <p>If you want to contribute new code changes, optimize the script workflows, or report a bug, feel free to open a pull request directly on the repository page on <a href="https://github.com/pavnxet/ClearLink-PDF" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 500; border-bottom: 1px dotted var(--accent);">GitHub</a>.</p>
       </section>
 
       <!-- AUTHOR CARD -->
@@ -814,7 +807,7 @@ vercel --prod</code></pre>
         <img class="meta-avatar" src="../../images/logo.jpg" alt="Pavneet Logo">
         <div class="author-info">
           <h4>Written by pavn<span class="logo-x">x</span>et</h4>
-          <p>Hi! I'm Pavneet, an open-source software developer focused on creating privacy utilities and functional software tools. You can follow my building journey directly on <a href="https://github.com/pavnxet" target="_blank" style="color: var(--accent); font-weight: 500;">GitHub</a>.</p>
+          <p>Hi! I'm Pavneet, an open-source software developer focused on creating privacy utilities and functional software tools. You can follow my building journey directly on <a href="https://github.com/pavnxet" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 500;">GitHub</a>.</p>
         </div>
       </div>
 

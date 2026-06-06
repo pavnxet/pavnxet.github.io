@@ -1,3 +1,12 @@
+// ── Dynamic Post Count ────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  const heroCount = document.getElementById('heroCount');
+  if (heroCount) {
+    const count = document.querySelectorAll('.card, .card-featured').length;
+    heroCount.textContent = count;
+  }
+});
+
 // ── Scroll reveal ─────────────────────────────────────────
 const revealEls = document.querySelectorAll('.reveal');
 const obs = new IntersectionObserver((entries) => {

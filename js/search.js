@@ -12,10 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(response => response.json())
     .then(data => {
       searchData = data;
-      const heroCount = document.getElementById('heroCount');
-      if (heroCount) {
-        heroCount.textContent = data.length;
-      }
     })
     .catch(error => console.error('Error loading search index:', error));
 
