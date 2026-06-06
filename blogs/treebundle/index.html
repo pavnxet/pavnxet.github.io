@@ -206,8 +206,9 @@ nav {
 }
 
 .hero-banner img {
+  max-width: 100%;
+  height: auto;
   max-height: 320px;
-  width: auto;
   object-fit: contain;
   filter: drop-shadow(0 6px 18px rgba(142, 124, 104, 0.15));
 }
@@ -287,6 +288,9 @@ article {
   font-family: var(--serif);
   font-size: 17.5px;
   color: var(--ink2);
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 article p {
@@ -543,6 +547,32 @@ article ul li::before {
   
   .article-header {
     padding-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    padding: 0 15px;
+  }
+  .nav-inner {
+    height: 56px;
+  }
+  .back-link {
+    font-size: 12px;
+    padding: 4px 10px;
+  }
+  .logo-text {
+    font-size: 17px;
+  }
+  .article-title {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+  .hero-banner {
+    padding: 20px;
+  }
+  .hero-banner img {
+    max-height: 200px;
   }
 }
 </style>
