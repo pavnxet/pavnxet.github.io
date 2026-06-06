@@ -363,7 +363,7 @@ pre code {
 }
 
 /* Table styles */
-.table-container {
+.table-wrapper {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -582,6 +582,38 @@ article ul li::before {
   .hero-banner img {
     max-height: 200px;
   }
+  .author-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+}
+
+/* ─── Mobile Safety & Layout Constraints ─────────────────── */
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+img,
+svg,
+video,
+iframe,
+canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+.article-container,
+article {
+    width: 100%;
+    min-width: 0;
+}
+
+pre {
+    overflow-x: auto;
+    max-width: 100%;
 }
 </style>
 </head>
@@ -676,7 +708,7 @@ article ul li::before {
         <p>To do this across different devices, I implemented two separate engines that follow the exact same logic. For the web portal, everything runs locally in your browser memory using <code>pdf-lib</code>. For the desktop interface and the automation engine, the code relies on <code>PyMuPDF</code> to modify the binary cross-reference tables directly. This double-check ensures that even links hiding inside interactive form fields or complex nested formats are wiped clean.</p>
         
         <h3>Technology Stack Overview</h3>
-        <div class="table-container">
+        <div class="table-wrapper">
         <table>
           <thead>
             <tr>

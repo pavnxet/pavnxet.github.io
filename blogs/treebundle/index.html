@@ -574,6 +574,38 @@ article ul li::before {
   .hero-banner img {
     max-height: 200px;
   }
+  .author-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+}
+
+/* ─── Mobile Safety & Layout Constraints ─────────────────── */
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+img,
+svg,
+video,
+iframe,
+canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+.article-container,
+article {
+    width: 100%;
+    min-width: 0;
+}
+
+pre {
+    overflow-x: auto;
+    max-width: 100%;
 }
 </style>
 </head>
