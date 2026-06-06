@@ -6,54 +6,15 @@
 
 ---
 
-## 1. Branch & Theme Detection
+## 1. Theme and Structure
 
-This repository contains two main branches, each implementing a different theme and structure. Before doing any work, run `git status` to determine which branch is active:
-
-### Branch A: `dashboard-site` (Dynamic Dashboard Theme)
-* **Logic**: Articles are loaded dynamically via JavaScript from a central data file (`data.js`).
-* **Display**: Clicking a post card slides up a fullscreen overlay reader modal.
-
-### Branch B: `creamy-blog-theme` (Classic Grid Theme)
+This repository uses a **Classic Grid Theme** (Method B) implemented on the `main2.0` branch.
 * **Logic**: The landing page features a static grid of card modules in `index.html`.
 * **Display**: Clicking a post card redirects to a standalone HTML page nested inside the `blogs/` directory.
 
 ---
 
-## 2. Publishing Guide: Branch A (`dashboard-site`)
-
-To add a new article to the dynamic dashboard:
-
-1. Open [data.js](file:///e:/Codes/My%20website/data.js).
-2. Append a new post object to the `blogData` array matching this schema:
-   ```javascript
-   {
-     id: "blog-[post-slug]",
-     title: "[Catchy, Elegant Post Title]",
-     description: "[A concise 2-line summary of the post content]",
-     category: "[Design | Coding | Lifestyle | Tech | Art]", // Choose one category
-     date: "[Current Date, e.g. June 6, 2026]",
-     readTime: "[X min read]",
-     image: "[assets/image-name.png or external URL]",
-     content: `
-       <p>First paragraph text...</p>
-       
-       <h3>Subheading Title</h3>
-       <p>Second paragraph text...</p>
-       
-       <blockquote>
-         "A notable blockquote citation."
-       </blockquote>
-       
-       <pre><code>// code blocks if any</code></pre>
-     `
-   }
-   ```
-3. Save the file. The dashboard scripts will automatically update the total counts, category filters, search keyword filters, and load the modal content when the card is clicked.
-
----
-
-## 3. Publishing Guide: Branch B (`creamy-blog-theme`)
+## 2. Publishing Guide
 
 To add a new article to the classic grid layout:
 
@@ -123,7 +84,7 @@ The post page must feature a **light-creamy theme** and a **Table of Contents (T
 
 ---
 
-## 4. Design Guidelines (Both Themes)
+## 3. Design Guidelines
 
 * **Colors**: Stick to the warm creamy palette variables:
   - `--cream`: `#faf6f0` (Background)
