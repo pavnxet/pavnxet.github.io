@@ -75,7 +75,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const title = document.createElement('div');
         title.className = 'search-result-title';
-        title.textContent = result.title;
+        const typeLabel = result.type === 'project' ? '📁 Project' : '📝 Blog Post';
+        title.textContent = `${typeLabel} • ${result.title}`;
         
         const desc = document.createElement('div');
         desc.className = 'search-result-desc';
