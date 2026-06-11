@@ -1,23 +1,55 @@
-// ── Dynamic Post Count ────────────────────────────────────
+// ── Card Sorting & Layout Automation ──────────────────────
 document.addEventListener('DOMContentLoaded', () => {
+  const postsGrid = document.getElementById('postsGrid');
+  if (postsGrid) {
+    const cards = Array.from(postsGrid.querySelectorAll('.card, .card-featured'));
+    
+    // Sort cards by date descending
+    cards.sort((a, b) => {
+      const dateAEl = a.querySelector('.card-date');
+      const dateBEl = b.querySelector('.card-date');
+      const dateA = dateAEl ? new Date(dateAEl.textContent.trim()) : new Date(0);
+      const dateB = dateBEl ? new Date(dateBEl.textContent.trim()) : new Date(0);
+      return dateB - dateA;
+    });
+    
+    // Re-append cards to grid in sorted order with updated classes
+    cards.forEach((card, index) => {
+      // Reset classes
+      card.classList.remove('card', 'card-featured', 'reveal');
+      const delayClasses = Array.from(card.classList).filter(c => /^d\d+$/.test(c));
+      delayClasses.forEach(c => card.classList.remove(c));
+      
+      // Assign appropriate type and delay
+      if (index === 0) {
+        card.classList.add('card-featured', 'reveal', 'd5');
+      } else {
+        card.classList.add('card', 'reveal', `d${5 + index}`);
+      }
+      
+      postsGrid.appendChild(card);
+    });
+  }
+
+  // ── Dynamic Post Count ────────────────────────────────────
   const heroCount = document.getElementById('heroCount');
   if (heroCount) {
     const count = document.querySelectorAll('.card, .card-featured').length;
     heroCount.textContent = count;
   }
-});
 
-// ── Scroll reveal ─────────────────────────────────────────
-const revealEls = document.querySelectorAll('.reveal');
-const obs = new IntersectionObserver((entries) => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('visible'), i * 60);
-      obs.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.08 });
-revealEls.forEach(el => obs.observe(el));
+  // ── Scroll reveal ─────────────────────────────────────────
+  const revealEls = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, idx) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), idx * 60);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  revealEls.forEach(el => obs.observe(el));
+});
 
 // ── Filter ────────────────────────────────────────────────
 function filterPosts(cat, btn) {
