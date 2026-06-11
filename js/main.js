@@ -38,23 +38,34 @@ document.addEventListener('DOMContentLoaded', () => {
     heroCount.textContent = count;
   }
 
-  // ── Scroll reveal ─────────────────────────────────────────
+  // ── Scroll reveal with Global Delay Staggering ────────────
   const revealEls = document.querySelectorAll('.reveal');
+  let revealCount = 0;
+  let revealTimeout;
   const obs = new IntersectionObserver((entries) => {
-    entries.forEach((e, idx) => {
+    entries.forEach((e) => {
       if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), idx * 60);
+        const currentReveal = revealCount++;
+        setTimeout(() => e.target.classList.add('visible'), currentReveal * 60);
         obs.unobserve(e.target);
+        
+        clearTimeout(revealTimeout);
+        revealTimeout = setTimeout(() => { revealCount = 0; }, 300);
       }
     });
   }, { threshold: 0.08 });
   revealEls.forEach(el => obs.observe(el));
 });
 
-// ── Filter ────────────────────────────────────────────────
+// ── Filter with Race Condition Mitigation ────────────────
+let filterTimeouts = [];
 function filterPosts(cat, btn) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('on'));
   btn.classList.add('on');
+
+  // Cancel all pending card transition timeouts
+  filterTimeouts.forEach(t => clearTimeout(t));
+  filterTimeouts = [];
 
   const cards = document.querySelectorAll('#postsGrid [data-cat]');
   cards.forEach((card, i) => {
@@ -62,26 +73,28 @@ function filterPosts(cat, btn) {
     card.style.transition = 'opacity 0.3s, transform 0.3s';
     if (match) {
       card.style.display = '';
-      setTimeout(() => {
+      const t = setTimeout(() => {
         card.style.opacity = '1';
         card.style.transform = '';
       }, i * 40);
+      filterTimeouts.push(t);
     } else {
       card.style.opacity = '0';
       card.style.transform = 'translateY(8px)';
-      setTimeout(() => card.style.display = 'none', 300);
+      const t = setTimeout(() => card.style.display = 'none', 300);
+      filterTimeouts.push(t);
     }
   });
 }
 
-// ── Newsletter button ────────────────────────────────────
+// ── Newsletter button with Regex Validation ──────────────
 document.querySelector('.nl-btn').addEventListener('click', function() {
   const input = document.querySelector('.nl-input');
-  if (input.value.includes('@')) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (emailRegex.test(input.value.trim())) {
     this.textContent = 'You\'re in ✓';
     this.style.background = '#4a7c59';
     input.value = '';
-    input.disabled = true;
     input.disabled = true;
     this.disabled = true;
   } else {
@@ -90,7 +103,7 @@ document.querySelector('.nl-btn').addEventListener('click', function() {
   }
 });
 
-// ── Nav Active States & Scroll Observer ──────────────────
+// ── Nav Active States & Scroll Observer (Throttled) ──────
 const navLinks = document.querySelectorAll('.nav-links a:not(.nav-cta)');
 navLinks.forEach(link => {
   link.addEventListener('click', function() {
@@ -99,26 +112,33 @@ navLinks.forEach(link => {
   });
 });
 
+let isScrolling = false;
 window.addEventListener('scroll', () => {
-  let current = 'top';
-  const scrollPos = window.scrollY + 120;
-  
-  const aboutEl = document.getElementById('about');
-  const writingEl = document.getElementById('writing');
-  
-  if (aboutEl && scrollPos >= aboutEl.offsetTop) {
-    current = 'about';
-  } else if (writingEl && scrollPos >= writingEl.offsetTop) {
-    current = 'writing';
+  if (!isScrolling) {
+    window.requestAnimationFrame(() => {
+      let current = 'top';
+      const scrollPos = window.scrollY + 120;
+      
+      const aboutEl = document.getElementById('about');
+      const writingEl = document.getElementById('writing');
+      
+      if (aboutEl && scrollPos >= aboutEl.offsetTop) {
+        current = 'about';
+      } else if (writingEl && scrollPos >= writingEl.offsetTop) {
+        current = 'writing';
+      }
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        const href = link.getAttribute('href');
+        if ((current === 'top' && (href === '#' || href === '#top')) || href === '#' + current) {
+          link.classList.add('active');
+        }
+      });
+      isScrolling = false;
+    });
+    isScrolling = true;
   }
-  
-  navLinks.forEach(link => {
-    link.classList.remove('active');
-    const href = link.getAttribute('href');
-    if ((current === 'top' && (href === '#' || href === '#top')) || href === '#' + current) {
-      link.classList.add('active');
-    }
-  });
 });
 
 // ── Mobile Navigation Toggle ──────────────────────────────

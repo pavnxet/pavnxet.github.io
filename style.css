@@ -1315,7 +1315,7 @@ body::-webkit-scrollbar-thumb:hover {
   
   .sidebar.active {
     transform: translateX(0);
-    width: var(--sidebar-width);
+    width: 280px;
   }
   
   .mobile-top-header {
