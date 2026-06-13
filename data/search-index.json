@@ -1,5 +1,12 @@
 [
   {
+    "title": "FitGirl DirectLink Extractor: Stopping the 40-Part Download Nightmare",
+    "type": "project",
+    "url": "blogs/fitgirl-direct-link-extractor/index.html",
+    "description": "FuckingFast Scraper is a serverless utility to bypass host redirect chains, resolve up to 30 URLs in parallel, and batch extract direct links.",
+    "tags": ["tech", "automation", "cloudflare-workers", "javascript", "gaming"]
+  },
+  {
     "title": "FitGirl Repacks Archive Scanner: A Faster Way to Search and Explore the Archive",
     "type": "project",
     "url": "blogs/fitgirl-extractor/index.html",

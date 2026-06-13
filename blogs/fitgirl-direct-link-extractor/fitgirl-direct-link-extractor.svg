@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;1,500&amp;family=Sora:wght@300;400;500;600&amp;display=swap');
+      
+      .title-text { font-family: 'Lora', Georgia, serif; font-weight: 500; fill: #1e1a15; }
+      .title-italic { font-family: 'Lora', Georgia, serif; font-style: italic; fill: #b07d4a; }
+      .sans-text { font-family: 'Sora', system-ui, sans-serif; }
+      
+      /* Smooth pulsing micro-animation for the core network vectors */
+      @keyframes corePulse {
+        0% { transform: scale(1); opacity: 0.9; }
+        50% { transform: scale(1.03); opacity: 1; filter: drop-shadow(0 0 8px rgba(176,125,74,0.2)); }
+        100% { transform: scale(1); opacity: 0.9; }
+      }
+      .animated-core {
+        transform-origin: 400px 150px;
+        animation: corePulse 4s ease-in-out infinite;
+      }
+    </style>
+
+    <filter id="elementShadow" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#a07846" flood-opacity="0.06"/>
+    </filter>
+
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fffdf9"/>
+      <stop offset="100%" stop-color="#faf6f0"/>
+    </linearGradient>
+
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#b07d4a"/>
+      <stop offset="100%" stop-color="#c9a87c"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="#f4ede2"/>
+
+  <path d="M450 0 L800 0 L800 500 L320 500 Z" fill="#ecdfd0" opacity="0.6"/>
+
+  <g opacity="0.65">
+    <line x1="50" y1="60" x2="750" y2="60" stroke="#e8d5b7" stroke-width="1" stroke-dasharray="4 6"/>
+    <line x1="50" y1="320" x2="750" y2="320" stroke="#e8d5b7" stroke-width="1"/>
+    <line x1="120" y1="30" x2="120" y2="470" stroke="#e8d5b7" stroke-width="1" stroke-dasharray="4 6"/>
+    <line x1="680" y1="30" x2="680" y2="470" stroke="#e8d5b7" stroke-width="1" stroke-dasharray="4 6"/>
+    <line x1="400" y1="30" x2="400" y2="320" stroke="#e8d5b7" stroke-width="0.75" stroke-dasharray="2 4"/>
+    
+    <path d="M 45 60 L 55 60 M 50 55 L 50 65" stroke="#c9a87c" stroke-width="1"/>
+    <path d="M 745 60 L 755 60 M 750 55 L 750 65" stroke="#c9a87c" stroke-width="1"/>
+  </g>
+
+  <g transform="translate(0, 0)">
+    
+    <g opacity="0.4" stroke="#c9a87c" stroke-width="1.5" fill="none" stroke-linecap="round">
+      <path d="M 220 180 C 280 180, 310 110, 400 110 S 520 210, 580 210" stroke-dasharray="4 4"/>
+      <path d="M 220 130 C 290 130, 320 200, 400 200 S 500 120, 580 120"/>
+    </g>
+
+    <rect x="290" y="85" width="250" height="150" rx="16" fill="#faf6f0" opacity="0.5" stroke="#e8d5b7" stroke-width="1"/>
+
+    <rect x="270" y="75" width="260" height="150" rx="16" fill="url(#cardGrad)" filter="url(#elementShadow)"/>
+    <rect x="270" y="75" width="260" height="150" rx="16" fill="none" stroke="#e8d5b7" stroke-width="1"/>
+    
+    <circle cx="295" cy="95" r="4" fill="#e8d5b7"/>
+    <circle cx="310" cy="95" r="4" fill="#e8d5b7"/>
+    <circle cx="325" cy="95" r="4" fill="#e8d5b7"/>
+    <line x1="290" y1="112" x2="510" y2="112" stroke="#faf6f0" stroke-width="2" stroke-linecap="round"/>
+
+    <g transform="translate(290, 130)" opacity="0.25">
+      <rect x="0" y="0" width="140" height="6" rx="3" fill="#1e1a15"/>
+      <rect x="0" y="14" width="180" height="6" rx="3" fill="#1e1a15"/>
+      <rect x="0" y="28" width="110" height="6" rx="3" fill="#1e1a15"/>
+      <rect x="0" y="42" width="150" height="6" rx="3" fill="#1e1a15"/>
+    </g>
+
+    <g class="animated-core">
+      <circle cx="400" cy="150" r="45" fill="none" stroke="#e8d5b7" stroke-width="1" stroke-dasharray="3 3"/>
+      
+      <circle cx="400" cy="150" r="36" fill="#fffdf9" filter="url(#elementShadow)"/>
+      <circle cx="400" cy="150" r="36" fill="none" stroke="#b07d4a" stroke-width="1.25"/>
+      
+      <path d="M403 126 L387 151 L399 151 L397 174 L413 149 L401 149 Z" fill="url(#accentGrad)"/>
+    </g>
+
+    <g stroke="#b07d4a" stroke-width="1" fill="none">
+      <circle cx="230" cy="150" r="3" fill="#b07d4a"/>
+      <line x1="233" y1="150" x2="255" y2="150"/>
+      <line x1="255" y1="146" x2="255" y2="154"/>
+
+      <circle cx="570" cy="150" r="3" fill="#b07d4a"/>
+      <line x1="567" y1="150" x2="545" y2="150"/>
+      <line x1="545" y1="146" x2="545" y2="154"/>
+    </g>
+
+    <text x="400" y="260" class="sans-text" font-size="10" font-weight="600" fill="#c9a87c" letter-spacing="3" text-anchor="middle">PARALLEL MATRIX v3.5</text>
+  </g>
+
+  <g transform="translate(0, 0)">
+    <text x="400" y="365" class="title-text" font-size="28" text-anchor="middle">
+      fitgirl-<tspan class="title-italic">directlink</tspan>-extractor
+    </text>
+
+    <text x="400" y="402" class="sans-text" font-size="14" font-weight="300" fill="#4a4038" text-anchor="middle">
+      High-speed parallel streamliner to bypass host redirect chains and batch direct URLs.
+    </text>
+
+    <rect x="370" y="432" width="60" height="1.5" fill="#e8d5b7"/>
+  </g>
+</svg>
