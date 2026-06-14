@@ -405,7 +405,7 @@ Add a JSON object to `/data/search-index.json` following the schema:
 If the new post features a digital tool or utility (i.e. `"type": "project"`), you MUST also add it to the centralized tools directory page:
 1. Open `/blogs/tools/index.html`.
 2. Insert a new `.tool-card` block inside the `<div class="tools-list">` container containing:
-   - Tool title and a list of technology tags.
+   - Tool title.
    - Short functional description of the tool.
    - Primary button "Launch Live Tool ↗" linking to the live demo.
    - Secondary button "Read Story" linking to the tool's blog post (`../[post-slug]/index.html`).
