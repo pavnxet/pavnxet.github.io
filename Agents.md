@@ -409,7 +409,6 @@ If the new post features a digital tool or utility (i.e. `"type": "project"`), y
    - Short functional description of the tool.
    - Primary button "Launch Live Tool ↗" linking to the live demo.
    - Secondary button "Read Story" linking to the tool's blog post (`../[post-slug]/index.html`).
-   - Tertiary link to its GitHub repository.
 3. Update the Table of Contents (TOC) sidebar `<ul class="toc-list">` by adding a link to the new section.
 4. Update the sidebar TOC link list inside `/blogs/tools/index.html` to align with Scroll Spy.
 
