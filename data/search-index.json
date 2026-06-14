@@ -33,5 +33,12 @@
     "url": "blogs/clearlink/index.html",
     "description": "Every time we share a PDF document, we share more data than we realize. I built ClearLink-PDF to strip away trackable hyperlinks, structural bookmarks, and sensitive system metadata entirely from documents, running 100% offline.",
     "tags": ["tech", "pdf", "privacy"]
+  },
+  {
+    "title": "My Tools Directory: Direct Access to All Built Projects",
+    "type": "project",
+    "url": "blogs/tools/index.html",
+    "description": "A centralized directory providing quick, direct access to the live demos, GitHub repositories, and original stories of all digital tools I have built, including TreeBundle, ClearLink-PDF, and more.",
+    "tags": ["tech", "utility", "tools", "directory"]
   }
 ]

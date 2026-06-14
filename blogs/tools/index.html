@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Tools Directory: Direct Access to All Built Projects — Pavneet</title>
+<meta name="description" content="A centralized directory providing quick, direct access to the live demos, GitHub repositories, and original stories of all digital tools I have built.">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pavnxet.github.io/blogs/tools/index.html">
+<meta property="og:title" content="My Tools Directory: Direct Access to All Built Projects — Pavneet">
+<meta property="og:description" content="A centralized directory providing quick, direct access to the live demos, GitHub repositories, and original stories of all digital tools I have built.">
+<meta property="og:image" content="https://pavnxet.github.io/blogs/tools/tools.svg">
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://pavnxet.github.io/blogs/tools/index.html">
+<meta property="twitter:title" content="My Tools Directory: Direct Access to All Built Projects — Pavneet">
+<meta property="twitter:description" content="A centralized directory providing quick, direct access to the live demos, GitHub repositories, and original stories of all digital tools I have built.">
+<meta property="twitter:image" content="https://pavnxet.github.io/blogs/tools/tools.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/article.css">
+<style>
+  /* Extra styling for the tools cards directory */
+  .tools-list {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    margin-top: 24px;
+  }
+  
+  .tool-card {
+    background: var(--white);
+    border: 1px solid var(--warm2);
+    border-radius: var(--radius);
+    padding: 32px;
+    box-shadow: var(--shadow);
+    transition: transform 0.25s cubic-bezier(.22,.68,0,1.1), box-shadow 0.25s ease;
+    scroll-margin-top: 90px;
+  }
+  
+  .tool-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .tool-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .tool-title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .tool-name {
+    font-family: var(--sans);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0;
+  }
+  
+  .tool-tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .tool-tech-stack li {
+    padding-left: 0 !important;
+    font-size: 11px;
+    font-weight: 500;
+    background: var(--cream2);
+    color: var(--ink2);
+    padding: 3px 10px;
+    border-radius: 12px;
+    border: 1px solid var(--warm2);
+  }
+  
+  .tool-tech-stack li::before {
+    content: none !important;
+  }
+  
+  .tool-description {
+    font-family: var(--serif);
+    font-size: 16px;
+    color: var(--ink2);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  
+  .tool-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .btn-primary, .btn-secondary, .btn-tertiary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    font-family: var(--sans);
+    font-size: 13.5px;
+    font-weight: 500;
+    border-radius: 24px;
+    transition: all 0.25s cubic-bezier(.22,.68,0,1.1);
+    cursor: pointer;
+    min-height: 44px; /* Touch target size safety */
+  }
+  
+  .btn-primary {
+    background: var(--accent);
+    color: var(--white);
+    border: 1px solid var(--accent);
+  }
+  
+  .btn-primary:hover {
+    background: var(--ink);
+    border-color: var(--ink);
+    transform: translateY(-1px);
+  }
+  
+  .btn-secondary {
+    background: var(--white);
+    color: var(--accent);
+    border: 1px solid var(--warm2);
+  }
+  
+  .btn-secondary:hover {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+  
+  .btn-tertiary {
+    background: transparent;
+    color: var(--ink3);
+    border: 1px solid transparent;
+  }
+  
+  .btn-tertiary:hover {
+    color: var(--ink);
+  }
+
+  @media (max-width: 480px) {
+    .tool-card {
+      padding: 24px 20px;
+    }
+    .tool-actions {
+      flex-direction: column;
+      width: 100%;
+    }
+    .btn-primary, .btn-secondary, .btn-tertiary {
+      width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ───────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="../../index.html" class="back-link">
+      <svg viewBox="0 0 24 24" class="back-icon"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to home
+    </a>
+    <div class="logo">
+      <span class="logo-text">pavn<span class="logo-x">x</span>et</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ── ARTICLE HERO ──────────────────────────────────────── -->
+<header class="article-header">
+  <span class="tag">Tech</span>
+  <h1 class="article-title">My Tools Directory: Direct Access to All Built Projects</h1>
+  <div class="article-meta">
+    <img class="meta-avatar" src="../../images/logo.jpg" alt="Pavneet Logo">
+    <span class="meta-author">pavn<span class="logo-x">x</span>et</span>
+    <span class="meta-dot"></span>
+    <span>June 14, 2026</span>
+    <span class="meta-dot"></span>
+    <span>2 min read</span>
+  </div>
+</header>
+
+<div class="hero-image-wrap">
+  <div class="hero-banner">
+    <img src="tools.svg" alt="Tools Directory Cover Logo">
+  </div>
+</div>
+
+<!-- ── PAGE LAYOUT ────────────────────────────────────────── -->
+<div class="page-layout">
+  
+  <!-- Left Side: TOC Sidebar -->
+  <aside class="toc-sidebar">
+    <div class="toc-card">
+      <h3 class="toc-heading">Table of Contents</h3>
+      <ul class="toc-list">
+        <li><a href="#overview" class="toc-link active">Overview</a></li>
+        <li><a href="#treebundle" class="toc-link">TreeBundle</a></li>
+        <li><a href="#clearlink-pdf" class="toc-link">ClearLink-PDF</a></li>
+        <li><a href="#archive-scanner" class="toc-link">Archive Scanner</a></li>
+        <li><a href="#directlink-extractor" class="toc-link">DirectLink Extractor</a></li>
+        <li><a href="#results-search" class="toc-link">3rd Grade Results</a></li>
+        <li><a href="#youtube-notes" class="toc-link">YouTube Notes</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Right Side: Article Body -->
+  <main class="article-container">
+    <article>
+      
+      <!-- SECTION 1: OVERVIEW -->
+      <section id="overview">
+        <h2>Overview</h2>
+        <p>Welcome to my centralized tools directory. Over the course of my building journey, I've developed several client-side applications, serverless scraper scripts, and security/privacy utilities to solve specific friction points in my day-to-day workflow.</p>
+        <p>This page gathers direct links to all live web deployment links, dashboards, and GitHub repositories so I can easily navigate, launch, and run them whenever needed.</p>
+      </section>
+
+      <!-- SECTION 2: TOOLS LIST -->
+      <section id="tools-section">
+        <h2>Built Utilities</h2>
+        <div class="tools-list">
+          
+          <!-- Tool 1: TreeBundle -->
+          <div class="tool-card" id="treebundle">
+            <div class="tool-header">
+              <div class="tool-title-group">
+                <h3 class="tool-name">TreeBundle</h3>
+                <ul class="tool-tech-stack">
+                  <li>Cloudflare Workers</li>
+                  <li>Vanilla JS</li>
+                  <li>Tailwind CSS</li>
+                  <li>PDF.js</li>
+                  <li>JSZip</li>
+                </ul>
+              </div>
+            </div>
+            <p class="tool-description">
+              A browser-based tool that gathers source code and document files from multiple sources, packages them into a structured, LLM-ready context block, and splits large codebases intelligently to preserve semantic context.
+            </p>
+            <div class="tool-actions">
+              <a href="https://treebundle.pavneet1804.workers.dev/" target="_blank" rel="noopener noreferrer" class="btn-primary">Launch Live Tool ↗</a>
+              <a href="../treebundle/index.html" class="btn-secondary">Read Story</a>
+              <a href="https://github.com/pavnxet/treebundle" target="_blank" rel="noopener noreferrer" class="btn-tertiary">GitHub Repo</a>
+            </div>
+          </div>
+
+          <!-- Tool 2: ClearLink-PDF -->
+          <div class="tool-card" id="clearlink-pdf">
+            <div class="tool-header">
+              <div class="tool-title-group">
+                <h3 class="tool-name">ClearLink-PDF</h3>
+                <ul class="tool-tech-stack">
+                  <li>Python</li>
+                  <li>PyQt GUI</li>
+                  <li>Telegram Bot API</li>
+                  <li>Flask</li>
+                </ul>
+              </div>
+            </div>
+            <p class="tool-description">
+              A privacy-first desktop utility and serverless Telegram bot that strips out structural bookmarks, tracking links, and embedded system metadata from PDF files to ensure secure document sharing. Runs 100% offline.
+            </p>
+            <div class="tool-actions">
+              <a href="https://github.com/pavnxet/ClearLink-PDF" target="_blank" rel="noopener noreferrer" class="btn-primary">Get Source Code ↗</a>
+              <a href="../clearlink/index.html" class="btn-secondary">Read Story</a>
+              <a href="https://github.com/pavnxet/ClearLink-PDF" target="_blank" rel="noopener noreferrer" class="btn-tertiary">GitHub Repo</a>
+            </div>
+          </div>
+
+          <!-- Tool 3: Archive Scanner -->
+          <div class="tool-card" id="archive-scanner">
+            <div class="tool-header">
+              <div class="tool-title-group">
+                <h3 class="tool-name">FitGirl Archive Scanner</h3>
+                <ul class="tool-tech-stack">
+                  <li>Cloudflare Workers</li>
+                  <li>Cheerio Scraping</li>
+                  <li>Vanilla JS</li>
+                  <li>CSS Variables</li>
+                </ul>
+              </div>
+            </div>
+            <p class="tool-description">
+              A serverless web-based scanner running on Cloudflare Workers that scrapes game archive pages in real time and turns them into a searchable, lightweight database sorted by date and file size.
+            </p>
+            <div class="tool-actions">
+              <a href="https://fitgirl-gamelist.pavneet1804.workers.dev/" target="_blank" rel="noopener noreferrer" class="btn-primary">Launch Live Tool ↗</a>
+              <a href="../fitgirl-extractor/index.html" class="btn-secondary">Read Story</a>
+              <a href="https://github.com/pavnxet/fitgirl-extractor" target="_blank" rel="noopener noreferrer" class="btn-tertiary">GitHub Repo</a>
+            </div>
+          </div>
+
+          <!-- Tool 4: DirectLink Extractor -->
+          <div class="tool-card" id="directlink-extractor">
+            <div class="tool-header">
+              <div class="tool-title-group">
+                <h3 class="tool-name">FitGirl DirectLink Extractor</h3>
+                <ul class="tool-tech-stack">
+                  <li>Cloudflare Workers</li>
+                  <li>Parallel Resolve</li>
+                  <li>HTML Parsers</li>
+                </ul>
+              </div>
+            </div>
+            <p class="tool-description">
+              A lightweight utility built to bypass complex host redirection chains, scrape multi-part archive download pages, resolve up to 30 redirection URLs in parallel, and compile direct download links.
+            </p>
+            <div class="tool-actions">
+              <a href="https://fitgirl-directlink.pavneet1804.workers.dev/" target="_blank" rel="noopener noreferrer" class="btn-primary">Launch Live Tool ↗</a>
+              <a href="../fitgirl-direct-link-extractor/index.html" class="btn-secondary">Read Story</a>
+              <a href="https://github.com/pavnxet/fitgirl-directlink-extractor" target="_blank" rel="noopener noreferrer" class="btn-tertiary">GitHub Repo</a>
+            </div>
+          </div>
+
+          <!-- Tool 5: 3rd Grade Results Search -->
+          <div class="tool-card" id="results-search">
+            <div class="tool-header">
+              <div class="tool-title-group">
+                <h3 class="tool-name">3rd Grade Results Search Tool</h3>
+                <ul class="tool-tech-stack">
+                  <li>HTML5</li>
+                  <li>JavaScript</li>
+                  <li>Data Indexing</li>
+                </ul>
+              </div>
+            </div>
+            <p class="tool-description">
+              A high-performance result query tool that structures RSSB 3rd Grade candidate roll sheets into an instantly searchable, queryable database. Avoids scrolling massive, slow-rendering official PDFs.
+            </p>
+            <div class="tool-actions">
+              <a href="https://pavnxet.github.io/3rd-grade-result/" target="_blank" rel="noopener noreferrer" class="btn-primary">Launch Live Tool ↗</a>
+              <a href="../3rd%20grade%20results/index.html" class="btn-secondary">Read Story</a>
+              <a href="https://github.com/pavnxet/3rd-grade-result" target="_blank" rel="noopener noreferrer" class="btn-tertiary">GitHub Repo</a>
+            </div>
+          </div>
+
+          <!-- Tool 6: YouTube Notes -->
+          <div class="tool-card" id="youtube-notes">
+            <div class="tool-header">
+              <div class="tool-title-group">
+                <h3 class="tool-name">YouTube Transcript & Notes Generator</h3>
+                <ul class="tool-tech-stack">
+                  <li>Cloudflare Workers</li>
+                  <li>YouTube API</li>
+                  <li>AI Summarization</li>
+                  <li>Vanilla JS</li>
+                </ul>
+              </div>
+            </div>
+            <p class="tool-description">
+              A powerful utility that fetches YouTube video transcriptions instantly and converts them into structured, intelligent notes, making video content easy to skim, search, and analyze.
+            </p>
+            <div class="tool-actions">
+              <a href="https://yt-transcript.pavneet1804.workers.dev/" target="_blank" rel="noopener noreferrer" class="btn-primary">Launch Live Tool ↗</a>
+              <span class="btn-tertiary" style="cursor: default; opacity: 0.6;">Source Code: Private</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- AUTHOR CARD -->
+      <div class="author-card">
+        <img class="meta-avatar" src="../../images/logo.jpg" alt="Pavneet Logo">
+        <div class="author-info">
+          <h4>Written by pavn<span class="logo-x">x</span>et</h4>
+          <p>Hi! I'm Pavneet, an open-source software developer focused on creating privacy utilities and functional software tools. You can follow my building journey directly on <a href="https://github.com/pavnxet" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 500;">GitHub</a>.</p>
+        </div>
+      </div>
+
+    </article>
+  </main>
+
+</div>
+
+<script src="../../js/article.js"></script>
+</body>
+</html>
