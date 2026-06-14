@@ -401,7 +401,19 @@ Add a JSON object to `/data/search-index.json` following the schema:
 ```
 *Note: Use `"type": "project"` for project stories or `"type": "blog"` for typical lifestyle/lifestyle blog posts. The type determines the emoji prefix in search results.*
 
-## Step 4: Add Card to Homepage
+## Step 4: Update Tools Directory Page (If Project/Tool)
+If the new post features a digital tool or utility (i.e. `"type": "project"`), you MUST also add it to the centralized tools directory page:
+1. Open `/blogs/tools/index.html`.
+2. Insert a new `.tool-card` block inside the `<div class="tools-list">` container containing:
+   - Tool title and a list of technology tags.
+   - Short functional description of the tool.
+   - Primary button "Launch Live Tool ↗" linking to the live demo.
+   - Secondary button "Read Story" linking to the tool's blog post (`../[post-slug]/index.html`).
+   - Tertiary link to its GitHub repository.
+3. Update the Table of Contents (TOC) sidebar `<ul class="toc-list">` by adding a link to the new section.
+4. Update the sidebar TOC link list inside `/blogs/tools/index.html` to align with Scroll Spy.
+
+## Step 5: Add Card to Homepage
 Insert a card in `/index.html` under the `<div class="posts-grid" id="postsGrid">` container:
 ```html
 <a class="card reveal d[delay_class]" data-cat="[category]" href="blogs/[slug]/index.html">
@@ -430,7 +442,7 @@ Insert a card in `/index.html` under the `<div class="posts-grid" id="postsGrid"
 - Update the delay class (`d5`, `d6`, `d7`, etc.) sequentially.
 - **Do not** manually update the post count in the hero section; this is dynamically handled by `js/main.js`.
 
-## Step 5: Update sitemap
+## Step 6: Update sitemap
 Add a `<url>` block for the new article in `/sitemap.xml`:
 ```xml
 <url>
@@ -441,5 +453,5 @@ Add a `<url>` block for the new article in `/sitemap.xml`:
 </url>
 ```
 
-## Step 6: Testing & Verification
-Test the new post at layout breakpoints (320px, 375px, 768px, 1024px) for no horizontal scrolling. Ensure search queries show the new post and display the correct icon.
+## Step 7: Testing & Verification
+Test the new post at layout breakpoints (320px, 375px, 768px, 1024px) for no horizontal scrolling. Ensure search queries show the new post and display the correct icon. Check that the tools directory page opens and matches perfectly.
