@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tic Tac Toe — Pavneet</title>
+<meta name="description" content="A classic Tic Tac Toe game with AI opponent. Play against the computer in your browser with a clean, creamy glassmorphism design.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pavnxet.github.io/blogs/tictactoe/index.html">
+<meta property="og:title" content="Tic Tac Toe — Pavneet">
+<meta property="og:description" content="A classic Tic Tac Toe game with AI opponent. Play against the computer in your browser.">
+<meta property="og:image" content="https://pavnxet.github.io/images/logo.jpg">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://pavnxet.github.io/blogs/tictactoe/index.html">
+<meta property="twitter:title" content="Tic Tac Toe — Pavneet">
+<meta property="twitter:description" content="A classic Tic Tac Toe game with AI opponent. Play against the computer in your browser.">
+<meta property="twitter:image" content="https://pavnxet.github.io/images/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://pavnxet.github.io/blogs/tictactoe/index.html">
+<link rel="stylesheet" href="../../css/article.css">
+<style>
+  .article-container {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  article {
+    font-family: inherit !important;
+    font-size: inherit !important;
+    color: inherit !important;
+  }
+
+  .game-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 62px);
+    padding: 40px 20px;
+  }
+
+  .game-container {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: var(--radius-lg, 20px);
+    border: 1px solid var(--warm2);
+    box-shadow: var(--shadow-md);
+    padding: 40px;
+    text-align: center;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .game-container h1 {
+    font-family: var(--serif);
+    color: var(--ink);
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    color: var(--ink3);
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+    letter-spacing: 0.03em;
+  }
+
+  .status {
+    color: var(--ink2);
+    font-family: var(--sans);
+    font-size: 1.15rem;
+    margin-bottom: 20px;
+    min-height: 36px;
+    font-weight: 500;
+  }
+
+  .board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+
+  .cell {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: var(--radius-sm, 8px);
+    border: 1.5px solid var(--cream3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(.22,.68,0,1.1);
+  }
+
+  .cell:hover:not(.taken) {
+    background: rgba(255, 255, 255, 0.85);
+    border-color: var(--warm);
+    box-shadow: var(--shadow);
+    transform: scale(1.05);
+  }
+
+  .cell.taken {
+    cursor: default;
+  }
+
+  .cell.x {
+    color: #c47a5a;
+  }
+
+  .cell.o {
+    color: #6a9e8f;
+  }
+
+  .scoreboard {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+
+  .score-item {
+    background: var(--cream2);
+    border-radius: var(--radius-sm, 8px);
+    border: 1px solid var(--cream3);
+    padding: 14px 22px;
+    min-width: 100px;
+  }
+
+  .score-label {
+    color: var(--ink3);
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+
+  .score-value {
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+
+  .btn-reset {
+    background: var(--ink);
+    border: none;
+    border-radius: 10px;
+    color: var(--cream);
+    padding: 12px 32px;
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(.22,.68,0,1.1);
+    letter-spacing: 0.02em;
+  }
+
+  .btn-reset:hover {
+    background: var(--accent);
+    box-shadow: 0 4px 20px rgba(160,120,70,0.15);
+    transform: translateY(-2px);
+  }
+
+  .btn-reset:active {
+    transform: translateY(0);
+  }
+
+  @media (max-width: 500px) {
+    .game-wrapper {
+      padding: 24px 16px;
+      min-height: calc(100vh - 56px);
+    }
+
+    .game-container {
+      padding: 24px 16px;
+    }
+
+    .game-container h1 {
+      font-size: 1.6rem;
+    }
+
+    .subtitle {
+      font-size: 0.8rem;
+      margin-bottom: 16px;
+    }
+
+    .status {
+      font-size: 1rem;
+      margin-bottom: 16px;
+    }
+
+    .board {
+      grid-template-columns: repeat(3, 80px);
+      grid-template-rows: repeat(3, 80px);
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .cell {
+      font-size: 2.2rem;
+    }
+
+    .scoreboard {
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .score-item {
+      padding: 10px 12px;
+      min-width: 70px;
+    }
+
+    .score-label {
+      font-size: 0.65rem;
+    }
+
+    .score-value {
+      font-size: 1.3rem;
+    }
+
+    .btn-reset {
+      padding: 10px 24px;
+      font-size: 0.85rem;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .board {
+      grid-template-columns: repeat(3, 70px);
+      grid-template-rows: repeat(3, 70px);
+      gap: 6px;
+    }
+
+    .cell {
+      font-size: 1.8rem;
+    }
+
+    .score-item {
+      padding: 8px 10px;
+      min-width: 60px;
+    }
+
+    .score-value {
+      font-size: 1.1rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ───────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="../../index.html" class="back-link">
+      <svg viewBox="0 0 24 24" class="back-icon"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to home
+    </a>
+    <div class="logo">
+      <span class="logo-text">pavn<span class="logo-x">x</span>et</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ── ARTICLE ───────────────────────────────────────────── -->
+<div class="article-container">
+  <article>
+    <div class="game-wrapper">
+      <div class="game-container">
+        <h1>Tic Tac Toe</h1>
+        <div class="subtitle">You vs Computer</div>
+        <div class="status" id="status">Your turn (X)</div>
+        <div class="board" id="board">
+          <div class="cell" data-index="0"></div>
+          <div class="cell" data-index="1"></div>
+          <div class="cell" data-index="2"></div>
+          <div class="cell" data-index="3"></div>
+          <div class="cell" data-index="4"></div>
+          <div class="cell" data-index="5"></div>
+          <div class="cell" data-index="6"></div>
+          <div class="cell" data-index="7"></div>
+          <div class="cell" data-index="8"></div>
+        </div>
+        <div class="scoreboard">
+          <div class="score-item">
+            <div class="score-label">You (X)</div>
+            <div class="score-value" id="playerScore">0</div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">Draws</div>
+            <div class="score-value" id="draws">0</div>
+          </div>
+          <div class="score-item">
+            <div class="score-label">AI (O)</div>
+            <div class="score-value" id="aiScore">0</div>
+          </div>
+        </div>
+        <button class="btn-reset" id="resetBtn">New Game</button>
+      </div>
+    </div>
+  </article>
+</div>
+
+<!-- ── FOOTER ────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left">
+      © 2026 <strong>pavn<span class="logo-x">x</span>et</strong> — made with curiosity
+    </div>
+    <div class="footer-links">
+      <a href="https://github.com/pavnxet" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const cells = document.querySelectorAll('.cell');
+  const statusDisplay = document.getElementById('status');
+  const resetBtn = document.getElementById('resetBtn');
+  const playerScoreDisplay = document.getElementById('playerScore');
+  const aiScoreDisplay = document.getElementById('aiScore');
+  const drawsDisplay = document.getElementById('draws');
+
+  let board = ['', '', '', '', '', '', '', '', ''];
+  let currentPlayer = 'X';
+  let gameActive = true;
+  let playerScore = 0;
+  let aiScore = 0;
+  let draws = 0;
+
+  const winningConditions = [
+    [0, 1, 2], [3, 4, 5], [6, 7, 8],
+    [0, 3, 6], [1, 4, 7], [2, 5, 8],
+    [0, 4, 8], [2, 4, 6]
+  ];
+
+  function handleCellClick(e) {
+    const cell = e.target;
+    const index = parseInt(cell.getAttribute('data-index'));
+
+    if (board[index] !== '' || !gameActive || currentPlayer !== 'X') return;
+
+    makeMove(index, 'X');
+
+    if (gameActive) {
+      currentPlayer = 'O';
+      statusDisplay.textContent = 'AI thinking...';
+      setTimeout(aiMove, 500);
+    }
+  }
+
+  function makeMove(index, player) {
+    board[index] = player;
+    cells[index].textContent = player;
+    cells[index].classList.add('taken', player.toLowerCase());
+
+    if (checkWinner(player)) {
+      gameActive = false;
+      if (player === 'X') {
+        playerScore++;
+        playerScoreDisplay.textContent = playerScore;
+        statusDisplay.textContent = 'You win!';
+      } else {
+        aiScore++;
+        aiScoreDisplay.textContent = aiScore;
+        statusDisplay.textContent = 'AI wins!';
+      }
+      return;
+    }
+
+    if (board.every(cell => cell !== '')) {
+      gameActive = false;
+      draws++;
+      drawsDisplay.textContent = draws;
+      statusDisplay.textContent = "It's a draw!";
+      return;
+    }
+  }
+
+  function checkWinner(player) {
+    return winningConditions.some(condition => {
+      return condition.every(index => board[index] === player);
+    });
+  }
+
+  function aiMove() {
+    if (!gameActive) return;
+
+    const bestMove = getBestMove();
+    makeMove(bestMove, 'O');
+
+    if (gameActive) {
+      currentPlayer = 'X';
+      statusDisplay.textContent = 'Your turn (X)';
+    }
+  }
+
+  function getBestMove() {
+    for (let i = 0; i < 9; i++) {
+      if (board[i] === '') {
+        board[i] = 'O';
+        if (checkWinner('O')) {
+          board[i] = '';
+          return i;
+        }
+        board[i] = '';
+      }
+    }
+
+    for (let i = 0; i < 9; i++) {
+      if (board[i] === '') {
+        board[i] = 'X';
+        if (checkWinner('X')) {
+          board[i] = '';
+          return i;
+        }
+        board[i] = '';
+      }
+    }
+
+    if (board[4] === '') return 4;
+
+    const corners = [0, 2, 6, 8];
+    const availableCorners = corners.filter(i => board[i] === '');
+    if (availableCorners.length > 0) {
+      return availableCorners[Math.floor(Math.random() * availableCorners.length)];
+    }
+
+    const sides = [1, 3, 5, 7];
+    const availableSides = sides.filter(i => board[i] === '');
+    if (availableSides.length > 0) {
+      return availableSides[Math.floor(Math.random() * availableSides.length)];
+    }
+
+    return -1;
+  }
+
+  function resetGame() {
+    board = ['', '', '', '', '', '', '', '', ''];
+    currentPlayer = 'X';
+    gameActive = true;
+    statusDisplay.textContent = 'Your turn (X)';
+
+    cells.forEach(cell => {
+      cell.textContent = '';
+      cell.classList.remove('taken', 'x', 'o');
+    });
+  }
+
+  cells.forEach(cell => cell.addEventListener('click', handleCellClick));
+  resetBtn.addEventListener('click', resetGame);
+</script>
+</body>
+</html>

@@ -63,6 +63,9 @@ img { display: block; width: 100%; }
 .d6 { animation-delay: 0.45s; }
 .d7 { animation-delay: 0.53s; }
 .d8 { animation-delay: 0.61s; }
+.d9 { animation-delay: 0.69s; }
+.d10 { animation-delay: 0.77s; }
+.d11 { animation-delay: 0.85s; }
 
 /* ─── Nav ────────────────────────────────────────────────── */
 nav {
@@ -174,6 +177,22 @@ nav {
 .nav-cta:hover {
   background: var(--accent) !important;
   color: var(--white) !important;
+  transform: translateY(-1px);
+}
+
+.nav-game {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 9px 20px;
+  border-radius: 20px;
+  background: var(--accent);
+  color: var(--white) !important;
+  transition: background 0.2s, transform 0.15s !important;
+}
+
+.nav-game:hover {
+  background: var(--ink) !important;
+  color: var(--cream) !important;
   transform: translateY(-1px);
 }
 

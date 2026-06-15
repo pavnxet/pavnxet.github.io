@@ -1,9 +1,12 @@
 // ── Active Table of Contents Highlighter & Hash Handler ────
 document.addEventListener("DOMContentLoaded", () => {
   const links = document.querySelectorAll(".toc-link");
-  const sections = document.querySelectorAll("article section");
+  const tocIds = Array.from(links).map(l => l.getAttribute("href").substring(1));
+  const targets = tocIds
+    .map(id => document.getElementById(id))
+    .filter(Boolean);
 
-  if (links.length === 0 || sections.length === 0) return;
+  if (links.length === 0 || targets.length === 0) return;
 
   const observerOptions = {
     root: null,
@@ -20,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }, observerOptions);
 
-  sections.forEach(section => observer.observe(section));
+  targets.forEach(el => observer.observe(el));
 
   // Handle TOC highlight activation and scrolling
   function highlightTOC(id) {

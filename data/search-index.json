@@ -40,5 +40,12 @@
     "url": "blogs/tools/index.html",
     "description": "A centralized directory providing quick, direct access to the live demos, GitHub repositories, and original stories of all digital tools I have built, including TreeBundle, ClearLink-PDF, and more.",
     "tags": ["tech", "utility", "tools", "directory"]
+  },
+  {
+    "title": "Tic Tac Toe",
+    "type": "project",
+    "url": "blogs/tictactoe/index.html",
+    "description": "A classic Tic Tac Toe game with AI opponent. Play against the computer in your browser with a clean, creamy glassmorphism design.",
+    "tags": ["game", "fun", "ai", "browser"]
   }
 ]
