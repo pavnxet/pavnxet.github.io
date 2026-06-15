@@ -1,0 +1,78 @@
+File inventory for: E:\Codes\My website\blogs\fitgirl-extractor
+Generated: 2026-06-11 09:56:20
+Total files: 5
+
+----------------------------------------
+Name: extracted-results.png
+Relative path: extracted-results.png
+Absolute path: E:\Codes\My website\blogs\fitgirl-extractor\extracted-results.png
+Size bytes: 201603
+Created: 2026-06-11 08:13:27
+Modified: 2026-06-11 08:13:22
+Accessed: 2026-06-11 09:49:07
+Extension: .png
+MIME type: image/png
+Encoding hint: n/a
+SHA-256: 0816fe0432b140dd5862fe5cb6b572e50a4a5b247bc5836620cd169b9675fa2a
+Line count: n/a
+Git status: clean
+
+----------------------------------------
+Name: first-main-window.png
+Relative path: first-main-window.png
+Absolute path: E:\Codes\My website\blogs\fitgirl-extractor\first-main-window.png
+Size bytes: 87438
+Created: 2026-06-11 08:12:46
+Modified: 2026-06-11 08:12:36
+Accessed: 2026-06-11 09:49:08
+Extension: .png
+MIME type: image/png
+Encoding hint: n/a
+SHA-256: 9fa40db995c7fa1083d8180de396a6ce73318f980409b46a815709482f8ce4f5
+Line count: n/a
+Git status: clean
+
+----------------------------------------
+Name: fitgirl blog content .txt
+Relative path: fitgirl blog content .txt
+Absolute path: E:\Codes\My website\blogs\fitgirl-extractor\fitgirl blog content .txt
+Size bytes: 6642
+Created: 2026-06-11 08:27:26
+Modified: 2026-06-11 08:27:56
+Accessed: 2026-06-11 09:48:03
+Extension: .txt
+MIME type: text/plain
+Encoding hint: n/a
+SHA-256: 37004c62b2047f697f07d167a66766dc51bb43e584cd0dcae55882a6473ca173
+Line count: 123
+Git status: clean
+
+----------------------------------------
+Name: fitgirl-ex.svg
+Relative path: fitgirl-ex.svg
+Absolute path: E:\Codes\My website\blogs\fitgirl-extractor\fitgirl-ex.svg
+Size bytes: 1830
+Created: 2026-06-11 09:18:25
+Modified: 2026-06-11 09:19:28
+Accessed: 2026-06-11 09:48:03
+Extension: .svg
+MIME type: image/svg+xml
+Encoding hint: n/a
+SHA-256: 3b1ebb59aa76a446fffe1b32f2d275f436f49b32c1c4dc80a927030c15093e4b
+Line count: n/a
+Git status: clean
+
+----------------------------------------
+Name: index.html
+Relative path: index.html
+Absolute path: E:\Codes\My website\blogs\fitgirl-extractor\index.html
+Size bytes: 13197
+Created: 2026-06-11 08:44:07
+Modified: 2026-06-11 09:29:45
+Accessed: 2026-06-11 09:48:03
+Extension: .html
+MIME type: text/html
+Encoding hint: n/a
+SHA-256: 0917018cee2a3324f5ba574ee116e1325968d2986b265879c17d61f0356cb59d
+Line count: 187
+Git status: clean
