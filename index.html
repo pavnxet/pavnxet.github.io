@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Pavneet — Blog</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/search.css">
 <link rel="canonical" href="https://pavnxet.github.io/">
@@ -25,56 +26,74 @@
 </head>
 <body>
 
-<!-- ── NAV ───────────────────────────────────────────────── -->
-<nav id="top">
-  <div class="nav-inner">
-    <a href="#" class="logo">
+<!-- Dynamic overlays: scroll progress, cursor spotlight, floating blobs, FAB -->
+<div class="scroll-progress" id="scrollProgress"></div>
+<div class="spotlight" id="spotlight"></div>
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+<button class="fab" id="fab" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+</button>
+
+<!-- =====================================================================
+     NAVBAR
+     ===================================================================== -->
+<nav class="navbar" id="top">
+  <div class="navbar-inner">
+    <a href="#" class="brand">
       <img src="images/logo.jpg" alt="Pavneet Logo">
-      <span class="logo-text">pavn<span class="logo-x">x</span>et</span>
+      <span>pavn<span class="logo-x">x</span>et</span>
     </a>
-    <ul class="nav-links">
-      <li><a href="#" class="active">Home</a></li>
-      <li><a href="blogs/tools/index.html">Tools</a></li>
-      <li><a href="#writing">Writing</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="blogs/tictactoe/index.html" class="nav-game">🎮 Play</a></li>
-      <li><a href="mailto:poet-twerp-operate@duck.com" class="nav-cta">Say hello →</a></li>
-    </ul>
-    <button class="nav-toggle" aria-label="Toggle navigation">
-      <span class="hamburger"></span>
-    </button>
+    <div class="nav-links">
+      <a href="#" class="active">Home</a>
+      <a href="blogs/tools/index.html">Tools</a>
+      <a href="#writing">Writing</a>
+      <a href="#about">About</a>
+      <a href="blogs/tictactoe/index.html" class="nav-game">🎮 Play</a>
+    </div>
+    <div class="nav-actions">
+      <a href="mailto:poet-twerp-operate@duck.com" class="btn btn-primary btn-sm nav-cta">Say hello</a>
+      <button class="nav-toggle menu-toggle" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
   </div>
 </nav>
 
-<!-- ── HERO ──────────────────────────────────────────────── -->
-<section class="hero">
-  <div>
-    <div class="hero-label fade-up d1">Personal Blog</div>
-    <h1 class="hero-title fade-up d2">
-      Stories, thoughts &amp; <em>things I love</em>
-    </h1>
-    <p class="hero-sub fade-up d3">
-      A quiet corner of the internet where I write about travel, design, technology, food, and the little moments in between.
-    </p>
+<!-- =====================================================================
+     HERO
+     ===================================================================== -->
+<header class="hero">
+  <div class="hero-left">
+    <span class="hero-eyebrow">Personal Blog</span>
+    <h1>Stories, thoughts &amp;<br><em>things I love</em>.</h1>
+    <p class="hero-sub">A quiet corner of the internet where I write about travel, design, technology, food, and the little moments in between.</p>
   </div>
-  <div class="hero-right fade-in d3">
-    <div class="hero-count" id="heroCount">0</div>
-    <div class="hero-count-label">posts</div>
+  <div class="hero-right">
+    <div class="hero-count-card">
+      <div class="hero-count counter" id="heroCount" data-counter="0">0</div>
+      <div class="hero-count-label">posts</div>
+    </div>
   </div>
-</section>
+</header>
 
-<!-- ── SEARCH BAR ────────────────────────────────────────── -->
-<div class="search-wrap fade-up d3">
+<!-- =====================================================================
+     SEARCH BAR
+     ===================================================================== -->
+<div class="search-wrap">
   <div class="search-container">
-    <span class="search-icon">&#x1F50D;</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
     <input type="text" id="searchInput" class="search-input" placeholder="Search posts..." autocomplete="off">
     <div id="searchResults" class="search-results"></div>
   </div>
 </div>
 
-<!-- ── FILTERS ────────────────────────────────────────────── -->
+<!-- =====================================================================
+     FILTERS
+     ===================================================================== -->
 <div id="writing" class="filters-wrap">
-  <div class="filters fade-up d4">
+  <div class="filters">
     <button class="filter-btn on" onclick="filterPosts('all',this)">All</button>
     <button class="filter-btn" onclick="filterPosts('travel',this)">Travel</button>
     <button class="filter-btn" onclick="filterPosts('food',this)">Food</button>
@@ -87,12 +106,14 @@
 
 <div class="divider"><hr></div>
 
-<!-- ── POSTS GRID ─────────────────────────────────────────── -->
+<!-- =====================================================================
+     POSTS GRID
+     ===================================================================== -->
 <div class="grid-wrap">
   <div class="posts-grid" id="postsGrid">
 
-    <!-- Featured Card: FitGirl DirectLink Extractor -->
-    <a class="card-featured reveal d5" data-cat="tech" href="blogs/fitgirl-direct-link-extractor/index.html">
+    <!-- Card: FitGirl DirectLink Extractor -->
+    <a class="featured-card reveal" data-cat="tech" href="blogs/fitgirl-direct-link-extractor/index.html">
       <div class="card-img-wrap">
         <img src="blogs/fitgirl-direct-link-extractor/fitgirl-direct-link-extractor.svg" alt="FitGirl DirectLink Extractor Cover" loading="lazy">
       </div>
@@ -106,18 +127,18 @@
           FuckingFast Scraper is a serverless utility to bypass host redirect chains, resolve up to 30 URLs in parallel, and batch extract direct links.
         </p>
         <div class="card-footer">
-          <img class="avatar" src="images/logo.jpg" alt="Pavneet Logo">
-          <div>
-            <div class="author-name">pavn<span class="logo-x">x</span>et</div>
-            <div class="card-date">June 13, 2026</div>
+          <div class="author">
+            <div class="avatar">EW</div>
+            <span class="author-name">pavn<span class="logo-x">x</span>et</span>
           </div>
-          <div class="card-arrow">→</div>
+          <span class="card-date">June 13, 2026</span>
+          <span class="card-arrow">→</span>
         </div>
       </div>
     </a>
 
-    <!-- Regular Card: FitGirl Repacks Archive Scanner -->
-    <a class="card reveal d6" data-cat="tech" href="blogs/fitgirl-extractor/index.html">
+    <!-- Card: FitGirl Repacks Archive Scanner -->
+    <a class="card reveal" data-cat="tech" href="blogs/fitgirl-extractor/index.html">
       <div class="card-img-wrap">
         <img src="blogs/fitgirl-extractor/fitgirl-ex.svg" alt="FitGirl Repacks Archive Scanner Cover" loading="lazy">
       </div>
@@ -131,18 +152,18 @@
           FitGirl Repacks Archive Scanner is a web-based tool that scans archive pages and turns them into a searchable database you can explore in real time, running entirely on Cloudflare Workers.
         </p>
         <div class="card-footer">
-          <img class="avatar" src="images/logo.jpg" alt="Pavneet Logo">
-          <div>
-            <div class="author-name">pavn<span class="logo-x">x</span>et</div>
-            <div class="card-date">June 11, 2026</div>
+          <div class="author">
+            <div class="avatar">EW</div>
+            <span class="author-name">pavn<span class="logo-x">x</span>et</span>
           </div>
-          <div class="card-arrow">→</div>
+          <span class="card-date">June 11, 2026</span>
+          <span class="card-arrow">→</span>
         </div>
       </div>
     </a>
 
-    <!-- Regular Card: 3rd Grade Results -->
-    <a class="card reveal d7" data-cat="tech" href="blogs/3rd%20grade%20results/index.html">
+    <!-- Card: 3rd Grade Results -->
+    <a class="card reveal" data-cat="tech" href="blogs/3rd%20grade%20results/index.html">
       <div class="card-img-wrap">
         <img src="blogs/3rd%20grade%20results/3rd_grade.svg" alt="3rd Grade Results Cover" loading="lazy">
       </div>
@@ -156,18 +177,18 @@
           This project turns the RSSB 3rd Grade result PDF into a fast and simple web-based search tool, allowing candidates to search by name and instantly view detailed results.
         </p>
         <div class="card-footer">
-          <img class="avatar" src="images/logo.jpg" alt="Pavneet Logo">
-          <div>
-            <div class="author-name">pavn<span class="logo-x">x</span>et</div>
-            <div class="card-date">June 6, 2026</div>
+          <div class="author">
+            <div class="avatar">EW</div>
+            <span class="author-name">pavn<span class="logo-x">x</span>et</span>
           </div>
-          <div class="card-arrow">→</div>
+          <span class="card-date">June 6, 2026</span>
+          <span class="card-arrow">→</span>
         </div>
       </div>
     </a>
 
-    <!-- Regular Card: TreeBundle -->
-    <a class="card reveal d8" data-cat="tech" href="blogs/treebundle/index.html">
+    <!-- Card: TreeBundle -->
+    <a class="card reveal" data-cat="tech" href="blogs/treebundle/index.html">
       <div class="card-img-wrap">
         <img src="blogs/treebundle/treebundle.svg" alt="TreeBundle Cover" loading="lazy">
       </div>
@@ -181,18 +202,18 @@
           TreeBundle is a browser-based tool that gathers source code and documents from multiple sources, organizes them into a structured project bundle, and prepares them for AI analysis, running entirely in the browser.
         </p>
         <div class="card-footer">
-          <img class="avatar" src="images/logo.jpg" alt="Pavneet Logo">
-          <div>
-            <div class="author-name">pavn<span class="logo-x">x</span>et</div>
-            <div class="card-date">June 6, 2026</div>
+          <div class="author">
+            <div class="avatar">EW</div>
+            <span class="author-name">pavn<span class="logo-x">x</span>et</span>
           </div>
-          <div class="card-arrow">→</div>
+          <span class="card-date">June 6, 2026</span>
+          <span class="card-arrow">→</span>
         </div>
       </div>
     </a>
 
-    <!-- Regular Card: ClearLink-PDF -->
-    <a class="card reveal d9" data-cat="tech" href="blogs/clearlink/index.html">
+    <!-- Card: ClearLink-PDF -->
+    <a class="card reveal" data-cat="tech" href="blogs/clearlink/index.html">
       <div class="card-img-wrap">
         <img src="blogs/clearlink/clearlink.svg" alt="ClearLink-PDF Cover" loading="lazy">
       </div>
@@ -206,18 +227,18 @@
           Every time we share a PDF document, we share more data than we realize. I built ClearLink-PDF to strip away trackable hyperlinks, structural bookmarks, and sensitive system metadata entirely from documents, running 100% offline.
         </p>
         <div class="card-footer">
-          <img class="avatar" src="images/logo.jpg" alt="Pavneet Logo">
-          <div>
-            <div class="author-name">pavn<span class="logo-x">x</span>et</div>
-            <div class="card-date">June 6, 2026</div>
+          <div class="author">
+            <div class="avatar">EW</div>
+            <span class="author-name">pavn<span class="logo-x">x</span>et</span>
           </div>
-          <div class="card-arrow">→</div>
+          <span class="card-date">June 6, 2026</span>
+          <span class="card-arrow">→</span>
         </div>
       </div>
     </a>
 
-    <!-- Regular Card: Tools Directory -->
-    <a class="card reveal d10" data-cat="tech" href="blogs/tools/index.html">
+    <!-- Card: Tools Directory -->
+    <a class="card reveal" data-cat="tech" href="blogs/tools/index.html">
       <div class="card-img-wrap">
         <img src="blogs/tools/tools.svg" alt="Tools Directory Cover" loading="lazy">
       </div>
@@ -231,12 +252,12 @@
           A centralized directory providing quick, direct access to the live demos, GitHub repositories, and original stories of all digital tools I have built.
         </p>
         <div class="card-footer">
-          <img class="avatar" src="images/logo.jpg" alt="Pavneet Logo">
-          <div>
-            <div class="author-name">pavn<span class="logo-x">x</span>et</div>
-            <div class="card-date">June 14, 2026</div>
+          <div class="author">
+            <div class="avatar">EW</div>
+            <span class="author-name">pavn<span class="logo-x">x</span>et</span>
           </div>
-          <div class="card-arrow">→</div>
+          <span class="card-date">June 14, 2026</span>
+          <span class="card-arrow">→</span>
         </div>
       </div>
     </a>
@@ -244,14 +265,16 @@
   </div>
 </div>
 
-<!-- ── ABOUT ME ───────────────────────────────────────────── -->
+<!-- =====================================================================
+     ABOUT ME (Profile Card layout style)
+     ===================================================================== -->
 <section id="about" class="about-section reveal">
   <div class="about-inner">
     <div class="about-image-wrap">
       <img src="images/logo.jpg" alt="Pavneet Logo" class="about-logo-img">
     </div>
     <div class="about-content">
-      <div class="about-label">About Me</div>
+      <span class="about-label">About Me</span>
       <h2 class="about-title">Hi, I'm pavn<span class="logo-x">x</span>et</h2>
       <ul class="about-bullets">
         <li><span class="bullet-icon">🛠️</span> I build software, digital tools, and whatever creative ideas I want to see exist.</li>
@@ -263,10 +286,12 @@
   </div>
 </section>
 
-<!-- ── NEWSLETTER ──────────────────────────────────────────── -->
+<!-- =====================================================================
+     NEWSLETTER
+     ===================================================================== -->
 <section class="newsletter reveal">
   <div class="newsletter-inner">
-    <div class="nl-label">Newsletter</div>
+    <span class="nl-label">Newsletter</span>
     <h2 class="nl-title">Get new posts in your inbox</h2>
     <p class="nl-sub">No spam, no noise — just new stories when they're ready. Roughly twice a month.</p>
     <div class="nl-form">
@@ -276,7 +301,9 @@
   </div>
 </section>
 
-<!-- ── FOOTER ──────────────────────────────────────────────── -->
+<!-- =====================================================================
+     FOOTER
+     ===================================================================== -->
 <footer>
   <div class="footer-inner">
     <div class="footer-left">
