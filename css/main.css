@@ -813,7 +813,7 @@ footer {
 }
 
 /* Keep content above blobs */
-.navbar, .hero, .grid-wrap, .about-section, .newsletter, footer, .spotlight, .scroll-progress, .fab {
+.navbar, .hero, .grid-wrap, .about-section, .newsletter, footer {
   position: relative;
 }
 .navbar { z-index: 50; }

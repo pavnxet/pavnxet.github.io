@@ -599,7 +599,7 @@ article ul li::before {
 }
 
 /* Layout z-index overrides for blobs */
-nav, .article-header, .hero-image-wrap, .page-layout, .spotlight, .scroll-progress, .fab {
+nav, .article-header, .hero-image-wrap, .page-layout {
   position: relative;
 }
 nav { z-index: 50; }
