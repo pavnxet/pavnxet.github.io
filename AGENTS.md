@@ -1,7 +1,7 @@
 # AGENTS.md — Quick Reference for AI Sessions
 
-> **Default branch: `main4.0`** — always use this unless told otherwise.
-> Deploy: `git push origin main4.0` (GitHub Pages, no build step).
+> **Default branch: `main4.02`** — always use this unless told otherwise.
+> Deploy: `git push origin main4.02` (GitHub Pages, no build step).
 
 ## Branch Naming Convention
 
@@ -120,8 +120,8 @@ Test at: **320px, 375px, 768px, 1024px**
 
 | Branch | Purpose |
 |--------|---------|
-| `main4.0` | **Current active branch** (deploy target) |
-| `main4.02` | Anna's Archive Download blog post |
+| `main4.0` | Previous active branch |
+| `main4.02` | **Current active branch** — Anna's Archive Download blog post |
 | `main3.0` | Previous version |
 | `main2.0` | Default remote HEAD |
 | `creamy-blog-theme` | Theme development |
