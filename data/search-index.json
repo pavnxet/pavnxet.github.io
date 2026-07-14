@@ -54,5 +54,12 @@
     "url": "blogs/instafit.io/index.html",
     "description": "A client-side utility that normalizes any image to standard aspect ratios — square, portrait, landscape, stories — with background padding, running entirely in the browser.",
     "tags": ["tech", "image-processing", "utility", "canvas", "browser"]
+  },
+  {
+    "title": "I Got Tired of Broken Book Download Links, So I Fixed Them Myself",
+    "type": "project",
+    "url": "blogs/annalib/index.html",
+    "description": "How I built Anna's Archive Download — a single-file frontend + MCP server backend that bypasses region blocks and resolves fresh LibGen download links instantly.",
+    "tags": ["tech", "scraping", "serverless", "javascript", "open-source"]
   }
 ]

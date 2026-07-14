@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Got Tired of Broken Book Download Links, So I Fixed Them Myself — Pavneet</title>
+<meta name="description" content="How I built Anna's Archive Download — a single-file frontend + MCP server backend that bypasses region blocks and resolves fresh LibGen download links instantly.">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pavnxet.github.io/blogs/annalib/index.html">
+<meta property="og:title" content="I Got Tired of Broken Book Download Links, So I Fixed Them Myself — Pavneet">
+<meta property="og:description" content="How I built Anna's Archive Download — a single-file frontend + MCP server backend that bypasses region blocks and resolves fresh LibGen download links instantly.">
+<meta property="og:image" content="https://pavnxet.github.io/blogs/annalib/cover.svg">
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://pavnxet.github.io/blogs/annalib/index.html">
+<meta property="twitter:title" content="I Got Tired of Broken Book Download Links, So I Fixed Them Myself — Pavneet">
+<meta property="twitter:description" content="How I built Anna's Archive Download — a single-file frontend + MCP server backend that bypasses region blocks and resolves fresh LibGen download links instantly.">
+<meta property="twitter:image" content="https://pavnxet.github.io/blogs/annalib/cover.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="canonical" href="https://pavnxet.github.io/blogs/annalib/">
+</head>
+<body>
+
+<!-- ── NAV ───────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="../../index.html" class="back-link">
+      <svg viewBox="0 0 24 24" class="back-icon"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to home
+    </a>
+    <div class="logo">
+      <span class="logo-text">pavn<span class="logo-x">x</span>et</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ── ARTICLE HERO ──────────────────────────────────────── -->
+<header class="article-header">
+  <span class="tag">Tech</span>
+  <h1 class="article-title">I Got Tired of Broken Book Download Links, So I Fixed Them Myself</h1>
+  <div class="article-meta">
+    <img class="meta-avatar" src="../../images/logo.jpg" alt="Pavneet Logo">
+    <span class="meta-author">pavn<span class="logo-x">x</span>et</span>
+    <span class="meta-dot"></span>
+    <span>July 14, 2026</span>
+    <span class="meta-dot"></span>
+    <span>4 min read</span>
+  </div>
+</header>
+
+<div class="hero-image-wrap">
+  <div class="hero-banner">
+    <img src="cover.svg" alt="Anna's Archive Download Cover">
+  </div>
+</div>
+
+<!-- ── PAGE LAYOUT ────────────────────────────────────────── -->
+<div class="page-layout">
+  
+  <!-- Left Side: TOC Sidebar -->
+  <aside class="toc-sidebar">
+    <div class="toc-card">
+      <h3 class="toc-heading">Table of Contents</h3>
+      <ul class="toc-list">
+        <li><a href="#the-struggle" class="toc-link active">The Old Struggle</a></li>
+        <li><a href="#the-new-way" class="toc-link">The New Way</a></li>
+        <li><a href="#under-the-hood" class="toc-link">Under the Hood</a></li>
+        <li><a href="#what-broke" class="toc-link">What Broke</a></li>
+        <li><a href="#give-it-a-spin" class="toc-link">Give It a Spin</a></li>
+        <li><a href="#disclaimer" class="toc-link">Disclaimer</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Right Side: Article Body -->
+  <main class="article-container">
+    <article>
+      
+      <!-- SECTION 1 -->
+      <section id="the-struggle">
+        <h2>The Old Struggle</h2>
+        <p>Searching for research papers or textbooks online usually means wrestling with slow mirrors and dead links. <a href="https://annas-archive.org" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 500; border-bottom: 1px dotted var(--accent);">Anna's Archive</a> is amazing, but digging through the multi-step redirect pages just to grab a quick PDF is tedious.</p>
+        <p>Many regions block the primary domains, forcing you to manually hunt down working mirrors. Public APIs are often rate-limited, broken, or require complex keys just to fetch simple metadata. The whole process feels like solving a puzzle just to read a book.</p>
+      </section>
+
+      <!-- SECTION 2 -->
+      <section id="the-new-way">
+        <h2>The New Way</h2>
+        <p>I built <a href="https://codeberg.org/pavnxet/anna-archive-dl" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 500; border-bottom: 1px dotted var(--accent);">Anna's Archive Download</a> to make grabbing public domain books and papers completely friction-free. You can paste a raw archive URL or search by title, author, ISBN, or DOI directly from a single web page.</p>
+
+        <div class="showcase-card">
+          <img src="Search_results.png" alt="Anna's Archive Download search results with colorful format badges" class="showcase-image">
+          <div class="showcase-caption">Search results showing format badges (PDF, EPUB) alongside direct download links.</div>
+        </div>
+
+        <p>The interface bypasses regional blocks by utilizing working mirrors under the hood automatically. You get instant, direct download links from LibGen and SciDB without any of the usual clicking around.</p>
+      </section>
+
+      <!-- SECTION 3 -->
+      <section id="under-the-hood">
+        <h2>Under the Hood</h2>
+        
+        <h3>Single-File Frontend</h3>
+        <p>The entire user interface lives in a single <code>index.html</code> file that runs entirely in your browser. No build step, no framework, no dependencies — just open the file and start searching.</p>
+
+        <h3>MCP Server Backend</h3>
+        <p>It uses a Model Context Protocol (MCP) server — a lightweight standard that lets AI assistants or web apps easily fetch external data — deployed serverlessly. This keeps the backend costs near zero while staying available globally.</p>
+
+        <h3>HTML Scraping Fallback</h3>
+        <p>Instead of relying on a broken public JSON API, the server fetches the page HTML and scrapes the exact download keys dynamically. This makes it resilient to API changes and upstream breakages.</p>
+
+        <div class="showcase-card">
+          <img src="Dashboard.png" alt="Anna's Archive Download dashboard interface" class="showcase-image">
+          <div class="showcase-caption">The clean, minimalist dashboard — paste a URL and get direct download links instantly.</div>
+        </div>
+
+        <h3>Real-Time Link Resolution</h3>
+        <p>The backend instantly resolves LibGen's temporary download sessions, which expire within minutes, so you always get a fresh link at the exact moment you click "Download".</p>
+
+        <h3>Technology Stack Overview</h3>
+        <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Layer</th>
+              <th>Technology</th>
+              <th>Purpose</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Frontend</strong></td>
+              <td>Single HTML file, vanilla JS</td>
+              <td>Runs entirely in the browser with zero build steps.</td>
+            </tr>
+            <tr>
+              <td><strong>Backend</strong></td>
+              <td>MCP Server, serverless functions</td>
+              <td>Scrapes pages and resolves fresh download links on demand.</td>
+            </tr>
+            <tr>
+              <td><strong>Data Sources</strong></td>
+              <td>LibGen, SciDB, Anna's Archive mirrors</td>
+              <td>Provides metadata and direct download links.</td>
+            </tr>
+            <tr>
+              <td><strong>Deployment</strong></td>
+              <td>Vercel</td>
+              <td>Hosts the frontend and serverless API functions.</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </section>
+
+      <!-- SECTION 4 -->
+      <section id="what-broke">
+        <h2>What Broke</h2>
+        <p>Building against a live, third-party site means things will break. Here's what hit me and how I fixed it.</p>
+
+        <h3>The Selector Shift</h3>
+        <p>Anna's Archive updated their site layout, changing their metadata container class from <code>mt-2</code> to <code>mt-4</code>, which broke my initial parser entirely. I had to update the CSS selectors and add fallback matching to handle future layout changes gracefully.</p>
+
+        <h3>Region Blocking Headaches</h3>
+        <p>The <code>.org</code> mirror was completely blocked for some of my early testers, so I had to hardcode a fallback to the <code>.gl</code> mirror to keep it functional. Region resilience became a first-class concern in the scraper logic.</p>
+
+        <h3>Expired Download Sessions</h3>
+        <p>LibGen links expire incredibly fast, which meant cached links failed. I solved this by resolving the link only at the exact second the user clicks "Download" — no caching, no stale sessions.</p>
+
+        <blockquote>
+          "The trickiest part wasn't building the scraper — it was keeping it alive against a site that changes constantly."
+        </blockquote>
+      </section>
+
+      <!-- SECTION 5 -->
+      <section id="give-it-a-spin">
+        <h2>Give It a Spin</h2>
+        <p>The project is fully open source and ready to use. Get started with the links below:</p>
+        <ul>
+          <li><strong>Live Demo:</strong> <a href="https://annalib.vercel.app/" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 500; border-bottom: 1px dotted var(--accent);">Open the Live Web Tool</a></li>
+          <li><strong>Source Code:</strong> <a href="https://codeberg.org/pavnxet/anna-archive-dl" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 500; border-bottom: 1px dotted var(--accent);">View the Codeberg Repository</a></li>
+        </ul>
+
+        <h3>Quick Start</h3>
+        <p>You can open the <code>index.html</code> file locally in any web browser to start searching immediately. No server setup required for the frontend.</p>
+
+        <h3>Self-Hosting</h3>
+        <p>Grab the code, fork the project, add new scraping mirrors, or suggest features on Codeberg. The MCP server can be deployed to any serverless platform.</p>
+      </section>
+
+      <!-- SECTION 6 -->
+      <section id="disclaimer">
+        <h2>A Quick Disclaimer</h2>
+        <blockquote>
+          <strong>Just an index:</strong> This tool does not host, store, or distribute any digital files or copyrighted material. It acts purely as a search gateway and indexing tool to help find public links. You are entirely responsible for the files you choose to search for and download, and for making sure your downloads comply with your local laws.
+        </blockquote>
+      </section>
+
+      <!-- AUTHOR CARD -->
+      <div class="author-card">
+        <img class="meta-avatar" src="../../images/logo.jpg" alt="Pavneet Logo">
+        <div class="author-info">
+          <h4>Written by pavn<span class="logo-x">x</span>et</h4>
+          <p>Hi! I'm Pavneet, an independent developer who builds lightweight web tools and custom scrapers. You can follow my latest open-source experiments on <a href="https://codeberg.org/pavnxet" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 500;">Codeberg</a>.</p>
+        </div>
+      </div>
+
+    </article>
+  </main>
+
+</div>
+
+<script src="../../js/article.js"></script>
+</body>
+</html>
