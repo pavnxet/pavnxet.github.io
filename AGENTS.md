@@ -5,7 +5,7 @@
 
 ## Branch Naming Convention
 
-- **`4.xx`** — New blog posts or content additions (e.g. `main4.1` for Anna's Archive post)
+- **`4.xx`** — New blog posts or content additions (e.g. `main4.02` for Anna's Archive post)
 - **`5.xx`** — Visual or logic changes to the main website interface (e.g. homepage redesign, CSS overhaul, JS behavior changes)
 
 ---
@@ -121,7 +121,7 @@ Test at: **320px, 375px, 768px, 1024px**
 | Branch | Purpose |
 |--------|---------|
 | `main4.0` | **Current active branch** (deploy target) |
-| `main4.1` | Anna's Archive Download blog post |
+| `main4.02` | Anna's Archive Download blog post |
 | `main3.0` | Previous version |
 | `main2.0` | Default remote HEAD |
 | `creamy-blog-theme` | Theme development |
