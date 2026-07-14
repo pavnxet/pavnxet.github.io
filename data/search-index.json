@@ -47,5 +47,12 @@
     "url": "blogs/tictactoe/index.html",
     "description": "A classic Tic Tac Toe game with AI opponent. Play against the computer in your browser with a clean, creamy glassmorphism design.",
     "tags": ["game", "fun", "ai", "browser"]
+  },
+  {
+    "title": "InstaFit.io — Client-Side Image Aspect Ratio Normalizer",
+    "type": "project",
+    "url": "blogs/instafit.io/index.html",
+    "description": "A client-side utility that normalizes any image to standard aspect ratios — square, portrait, landscape, stories — with background padding, running entirely in the browser.",
+    "tags": ["tech", "image-processing", "utility", "canvas", "browser"]
   }
 ]

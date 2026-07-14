@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InstaFit.io — Pavneet</title>
+<meta name="description" content="How I built a client-side image aspect ratio normalizer that pads, crops, and exports images to any standard format without uploading a single pixel.">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pavnxet.github.io/blogs/instafit.io/index.html">
+<meta property="og:title" content="InstaFit.io — Pavneet">
+<meta property="og:description" content="A client-side image aspect ratio normalizer that pads, crops, and exports images to any standard format without uploading a single pixel.">
+<meta property="og:image" content="https://pavnxet.github.io/blogs/instafit.io/cover.svg">
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://pavnxet.github.io/blogs/instafit.io/index.html">
+<meta property="twitter:title" content="InstaFit.io — Pavneet">
+<meta property="twitter:description" content="A client-side image aspect ratio normalizer that pads, crops, and exports images to any standard format without uploading a single pixel.">
+<meta property="twitter:image" content="https://pavnxet.github.io/blogs/instafit.io/cover.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="canonical" href="https://pavnxet.github.io/blogs/instafit.io/">
+</head>
+<body>
+
+<!-- ── NAV ───────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="../../index.html" class="back-link">
+      <svg viewBox="0 0 24 24" class="back-icon"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to home
+    </a>
+    <div class="logo">
+      <span class="logo-text">pavn<span class="logo-x">x</span>et</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ── ARTICLE HERO ──────────────────────────────────────── -->
+<header class="article-header">
+  <span class="tag">Tech</span>
+  <h1 class="article-title">How I Built a Client-Side Image Aspect Ratio Normalizer</h1>
+  <div class="article-meta">
+    <img class="meta-avatar" src="../../images/logo.jpg" alt="Pavneet Logo">
+    <span class="meta-author">pavn<span class="logo-x">x</span>et</span>
+    <span class="meta-dot"></span>
+    <span>July 14, 2026</span>
+    <span class="meta-dot"></span>
+    <span>3 min read</span>
+  </div>
+</header>
+
+<div class="hero-image-wrap">
+  <div class="hero-banner">
+    <img src="cover.svg" alt="InstaFit.io Cover">
+  </div>
+</div>
+
+<!-- ── PAGE LAYOUT ────────────────────────────────────────── -->
+<div class="page-layout">
+  
+  <!-- Left Side: TOC Sidebar -->
+  <aside class="toc-sidebar">
+    <div class="toc-card">
+      <h3 class="toc-heading">Table of Contents</h3>
+      <ul class="toc-list">
+        <li><a href="#why-i-built-this" class="toc-link active">Why I Built This</a></li>
+        <li><a href="#what-it-does" class="toc-link">What It Does</a></li>
+        <li><a href="#how-it-works" class="toc-link">How It Works</a></li>
+        <li><a href="#features" class="toc-link">Features</a></li>
+        <li><a href="#tech-stack" class="toc-link">Tech Stack</a></li>
+        <li><a href="#try-it" class="toc-link">Try It Yourself</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Right Side: Article Body -->
+  <main class="article-container">
+    <article>
+      
+      <!-- SECTION 1 -->
+      <section id="why-i-built-this">
+        <h2>Why I Built This</h2>
+        <p>Every social platform has its own aspect ratio obsession. Instagram wants 1:1 squares or 4:5 portraits. YouTube thumbnails demand 16:9. LinkedIn banners need a completely different ratio. If you manage multiple accounts or batch-post content, you spend half your time manually cropping and resizing images in editors that upload your files to remote servers.</p>
+        <p>I wanted a tool that normalizes any image to any standard aspect ratio in the browser, zero uploads, zero accounts, zero watermarks. Something I could drop 50 photos into and get properly framed exports in seconds. Since nothing lightweight existed that did exactly this, I built it myself.</p>
+      </section>
+
+      <!-- SECTION 2 -->
+      <section id="what-it-does">
+        <h2>What It Does</h2>
+        <p>InstaFit.io is an ultra-minimalist, high-contrast client-side utility engine designed to normalize image aspect ratios and frame alignments for modern digital layouts. You import images via file picker or drag and drop, pick a target aspect ratio profile, choose a background fill color, and the tool automatically pads or centers your image to fit the target frame. Every image gets its own preview and export button, plus a batch export option to download everything at once.</p>
+        <p>The tool is completely dependency-free. A single index.html file — no frameworks, no build tools, no server runtime. Open it in any browser and it works.</p>
+
+        <div class="showcase-card">
+          <img src="processed_images.png" alt="InstaFit.io with processed images" class="showcase-image">
+          <div class="showcase-caption">Images normalized to 1:1 square format with white background padding. Each image can be previewed or exported individually.</div>
+        </div>
+      </section>
+
+      <!-- SECTION 3 -->
+      <section id="how-it-works">
+        <h2>How It Works</h2>
+        <p>The engine runs entirely in the browser using the Canvas API. When you drop images in, each one is drawn onto an offscreen canvas sized to the target aspect ratio. The image is centered within the canvas, and the remaining space is filled with your chosen background color — either solid white or a dynamically blurred version of the image itself. The result is exported as a new image file without any server round-trip.</p>
+        <p>The export pipeline renders at a reference dimension of at least 1440px on the longest side, ensuring high-resolution output. Files are automatically named with zero-padded timestamps (IMG_YYYYMMDD_HHMMSS_normalized.png) so there are no naming collisions in batch exports.</p>
+        <p>No data leaves your machine. The entire pipeline — import, process, export — happens in browser memory.</p>
+      </section>
+
+      <!-- SECTION 4 -->
+      <section id="features">
+        <h2>Features</h2>
+        <ul>
+          <li><strong>Multiple aspect ratio profiles</strong> — 1:1 Square, 4:5 Vertical, 16:9 Widescreen, 9:16 Vertical Story, 4:3 Legacy Standard.</li>
+          <li><strong>Background modes</strong> — Solid White padding or Dynamic Blur (stretched, blurred version of the source image).</li>
+          <li><strong>Drag and drop import</strong> — Drop multiple images at once into the pipeline.</li>
+          <li><strong>Per-image preview and export</strong> — Review each result before downloading.</li>
+          <li><strong>Batch export</strong> — Download all processed images as individual files in one click.</li>
+          <li><strong>Zero uploads</strong> — Everything runs locally in your browser. No server, no accounts, no dependencies.</li>
+          <li><strong>Timestamp-based naming</strong> — Auto-generated filenames (IMG_YYYYMMDD_HHMMSS_normalized.png) prevent collisions.</li>
+          <li><strong>Terminal-inspired UI</strong> — Dark, monospaced, high-contrast interface focused on speed.</li>
+        </ul>
+
+        <div class="showcase-card">
+          <img src="dashboard.png" alt="InstaFit.io empty dashboard" class="showcase-image">
+          <div class="showcase-caption">The empty state — import images, pick your target profile, choose a background, and start processing.</div>
+        </div>
+      </section>
+
+      <!-- SECTION 5 -->
+      <section id="tech-stack">
+        <h2>Tech Stack</h2>
+        <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Layer</th>
+              <th>Technology</th>
+              <th>Purpose</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Frontend</strong></td>
+              <td>HTML5, CSS3, Vanilla JavaScript, Canvas API</td>
+              <td>Powers the UI and handles all image processing client-side.</td>
+            </tr>
+            <tr>
+              <td><strong>Image Engine</strong></td>
+              <td>Canvas API</td>
+              <td>Draws, pads, and exports images at target aspect ratios without server calls. Reference output dimension of 1440px+.</td>
+            </tr>
+            <tr>
+              <td><strong>Deployment</strong></td>
+              <td>Single HTML file</td>
+              <td>No build step, no backend, no dependencies. Just open index.html in a browser.</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </section>
+
+      <!-- SECTION 6 -->
+      <section id="try-it">
+        <h2>Try It Yourself</h2>
+        <p>The project is open source and available for everyone to use, modify, or host independently.</p>
+        <ul>
+          <li><strong>Launch InstaFit.io:</strong> <a href="https://pavnxet.github.io/instafit.io/" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 500; border-bottom: 1px dotted var(--accent);">Open the Live Tool</a></li>
+          <li><strong>Source Code:</strong> <a href="https://github.com/pavnxet/instafit.io" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 500; border-bottom: 1px dotted var(--accent);">View the GitHub Repository</a></li>
+        </ul>
+      </section>
+
+      <!-- AUTHOR CARD -->
+      <div class="author-card">
+        <img class="meta-avatar" src="../../images/logo.jpg" alt="Pavneet Logo">
+        <div class="author-info">
+          <h4>Written by pavn<span class="logo-x">x</span>et</h4>
+          <p>Hi! I'm Pavneet, an open-source software developer focused on creating privacy utilities and functional software tools. You can follow my building journey directly on <a href="https://github.com/pavnxet" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 500;">GitHub</a>.</p>
+        </div>
+      </div>
+
+    </article>
+  </main>
+
+</div>
+
+<script src="../../js/article.js"></script>
+</body>
+</html>
