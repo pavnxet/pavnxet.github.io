@@ -1,7 +1,7 @@
 # AGENTS.md — Quick Reference for AI Sessions
 
-> **Default branch: `main4.02`** — always use this unless told otherwise.
-> Deploy: `git push origin main4.02` (GitHub Pages, no build step).
+> **Default branch: `main4.03`** — always use this unless told otherwise.
+> Deploy: `git push origin main4.03` (GitHub Pages, no build step).
 
 ## Branch Naming Convention
 
@@ -21,11 +21,31 @@
 
 ---
 
+## Versioning (`x.yy`)
+
+Format: `x.yy` where `x` = site version, `yy` = blog counter within that x.
+
+- **x bumps** on major site changes (redesign, new section, major refactor). Reset `yy` to `00`.
+- **yy bumps** on each new blog post.
+- Source of truth: `version.js` at root.
+- Footer displays `v4.03` via `<script src="version.js">`.
+- Commit convention: `feat: vX.YY - description`. Tag: `vX.YY`.
+
+```
+4.02 = site v4, 2nd blog
+4.03 = site v4, 3rd blog (current)
+5.00 = site v5 launch, no blogs yet
+```
+
+---
+
 ## Key Files
 
 | File | Purpose |
 |------|---------|
 | `index.html` | Homepage with card grid |
+| `version.js` | Single source of truth for `x.yy` versioning |
+| `CHANGELOG.md` | Version history log |
 | `data/search-index.json` | Client-side search data (JSON array) |
 | `blogs/[slug]/index.html` | Blog post pages |
 | `blogs/tools/index.html` | Tools directory page |
@@ -52,7 +72,7 @@ When adding a new blog post:
    ```
 3. **Add homepage card** to `index.html` in `<div id="postsGrid">`:
    ```html
-   <a class="card reveal d[N]" data-cat="[category]" href="blogs/[slug]/index.html">
+   <a class="card reveal" data-cat="[category]" href="blogs/[slug]/index.html">
      <!-- card content -->
    </a>
    ```
@@ -60,18 +80,23 @@ When adding a new blog post:
    - Post count is dynamic (via `js/main.js`); never hardcode it.
 4. **If it's a tool/project** (`type: "project"`): also add a `.tool-card` to `blogs/tools/index.html`
 5. **Update sitemap**: add `<url>` block to `sitemap.xml`
-6. **SEO**: every page needs `<title>`, `<meta description>`, OG tags, Twitter card, canonical URL
+6. **Update version**: bump `version.js` (`yy++` for new blog, `x++ yy=00` for major site change)
+7. **Update changelog**: add entry to `CHANGELOG.md`
+8. **SEO**: every page needs `<title>`, `<meta description>`, OG tags, Twitter card, canonical URL
+9. **Commit with tag**: `git commit -m "feat: vX.YY - ..."` then `git tag -a vX.YY -m "vX.YY: ..." `
 
 ---
 
 ## Blog Post Template Rules
 
-- Back link: `<a href="../../index.html">← Back to Home</a>`
+- Back link: `<a href="../../index.html">← Back to Home</a>` (SVG arrow icon, not text arrow)
 - TOC with scroll spy (use `js/article.js`)
 - Desktop: `grid-template-columns: 240px 1fr; gap: 60px;`
 - Mobile (<900px): stacked layout, TOC becomes horizontal sticky nav
 - All images in the post's own folder
 - Canonical URL: `https://pavnxet.github.io/blogs/[slug]/`
+- Tag in article header: `<span class="tag">Category</span>` (no color class, article.css handles it)
+- Homepage card tags: `<span class="tag [category]">Category</span>` (e.g. `.tag.tech`, `.tag.design`)
 
 ---
 
@@ -121,7 +146,8 @@ Test at: **320px, 375px, 768px, 1024px**
 | Branch | Purpose |
 |--------|---------|
 | `main4.0` | Previous active branch |
-| `main4.02` | **Current active branch** — Anna's Archive Download blog post |
+| `main4.02` | Previous blog branch (Anna's Archive post) |
+| `main4.03` | **Current active branch** — Pastel Drop blog post |
 | `main3.0` | Previous version |
 | `main2.0` | Default remote HEAD |
 | `creamy-blog-theme` | Theme development |
