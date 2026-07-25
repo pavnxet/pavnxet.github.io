@@ -112,6 +112,33 @@
 <div class="grid-wrap">
   <div class="posts-grid" id="postsGrid">
 
+    <!-- Card: Pastel Drop -->
+    <a class="card reveal" data-cat="design" href="blogs/pastel-drop/index.html">
+      <div class="card-img-wrap">
+        <img src="blogs/pastel-drop/dashboard-preview.png" alt="Pastel Drop Cover" loading="lazy">
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <span class="tag design">Design</span>
+          <span class="read-time">5 min read</span>
+        </div>
+        <h2 class="card-title">Pastel Drop: I Shipped 16 Wallpapers Inside One HTML File</h2>
+        <p class="card-desc">
+          16 soft, OLED-friendly wallpapers for your phone. No installer, no build step — just one HTML file with everything base64'd. Free forever.
+        </p>
+        <div class="card-footer">
+          <div class="author">
+            <img class="avatar" src="images/logo.jpg" alt="Pavneet Logo">
+            <div class="author-info-block">
+              <span class="author-name">pavn<span class="logo-x">x</span>et</span>
+              <span class="card-date">July 25, 2026</span>
+            </div>
+          </div>
+          <span class="card-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
     <!-- Card: Anna's Archive Download -->
     <a class="card reveal" data-cat="tech" href="blogs/annalib/index.html">
       <div class="card-img-wrap">
@@ -373,7 +400,7 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-left">
-      © 2026 <strong>pavn<span class="logo-x">x</span>et</strong> — made with curiosity
+      © 2026 <strong>pavn<span class="logo-x">x</span>et</strong> — made with curiosity · <span id="site-version"></span>
     </div>
     <div class="footer-links">
       <a href="https://github.com/pavnxet" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -381,7 +408,12 @@
   </div>
 </footer>
 
+<script src="version.js"></script>
 <script src="js/main.js"></script>
 <script src="js/search.js"></script>
+<script>
+  const vEl = document.getElementById('site-version');
+  if (vEl && typeof SITE_VERSION !== 'undefined') vEl.textContent = 'v' + SITE_VERSION;
+</script>
 </body>
 </html>

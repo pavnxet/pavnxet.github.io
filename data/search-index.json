@@ -1,5 +1,12 @@
 [
   {
+    "title": "Pastel Drop: I Shipped 16 Wallpapers Inside One HTML File",
+    "type": "project",
+    "url": "blogs/pastel-drop/index.html",
+    "description": "16 soft, OLED-friendly wallpapers for your phone. No installer, no build step — just one HTML file with everything base64'd. Free forever.",
+    "tags": ["design", "wallpapers", "open-source", "react", "single-file"]
+  },
+  {
     "title": "FitGirl DirectLink Extractor: Stopping the 40-Part Download Nightmare",
     "type": "project",
     "url": "blogs/fitgirl-direct-link-extractor/index.html",
