@@ -78,7 +78,7 @@ When adding a new blog post:
    ```
    - Delay classes auto-assign at runtime via `js/main.js` — just add `reveal` class.
    - Post count is dynamic (via `js/main.js`); never hardcode it.
-4. **If it's a tool/project** (`type: "project"`): also add a `.tool-card` to `blogs/tools/index.html`
+4. **If it's a tool/project** (`type: "project"`): also add a `.tool-card` to `blogs/tools/index.html` **AND** add a TOC entry in the `<ul class="toc-list">` sidebar (link `href` must match the tool card's `id` attribute)
 5. **Update sitemap**: add `<url>` block to `sitemap.xml`
 6. **Update version**: bump `version.js` (`yy++` for new blog, `x++ yy=00` for major site change)
 7. **Update changelog**: add entry to `CHANGELOG.md`
