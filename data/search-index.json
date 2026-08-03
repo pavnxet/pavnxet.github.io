@@ -68,5 +68,12 @@
     "url": "blogs/annalib/index.html",
     "description": "How I built Anna's Archive Download — a single-file frontend + MCP server backend that bypasses region blocks and resolves fresh LibGen download links instantly.",
     "tags": ["tech", "scraping", "serverless", "javascript", "open-source"]
+  },
+  {
+    "title": "MP3.pm Automated Downloader Hub — Serverless Edge Scraper & Bulk Downloader",
+    "type": "project",
+    "url": "blogs/mp3dl/index.html",
+    "description": "A high-performance serverless utility on Cloudflare Workers for search scraping, metadata cleaning, 2-layer song deduplication, and 1-click batch downloading.",
+    "tags": ["tech", "cloudflare-workers", "automation", "web-scraping", "javascript", "open-source"]
   }
 ]

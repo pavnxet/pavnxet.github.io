@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MP3.pm Automated Downloader Hub — Serverless Edge Scraper & Bulk Downloader — Pavneet</title>
+<meta name="description" content="A high-performance serverless utility deployed on Cloudflare Workers for search scraping, metadata cleaning, 2-layer song deduplication, and 1-click batch downloading from mp3.pm.">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pavnxet.github.io/blogs/mp3dl/index.html">
+<meta property="og:title" content="MP3.pm Automated Downloader Hub — Serverless Edge Scraper & Bulk Downloader — Pavneet">
+<meta property="og:description" content="A high-performance serverless utility deployed on Cloudflare Workers for search scraping, metadata cleaning, 2-layer song deduplication, and 1-click batch downloading from mp3.pm.">
+<meta property="og:image" content="https://pavnxet.github.io/blogs/mp3dl/cover_page_image.png">
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://pavnxet.github.io/blogs/mp3dl/index.html">
+<meta property="twitter:title" content="MP3.pm Automated Downloader Hub — Serverless Edge Scraper & Bulk Downloader — Pavneet">
+<meta property="twitter:description" content="A high-performance serverless utility deployed on Cloudflare Workers for search scraping, metadata cleaning, 2-layer song deduplication, and 1-click batch downloading from mp3.pm.">
+<meta property="twitter:image" content="https://pavnxet.github.io/blogs/mp3dl/cover_page_image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="canonical" href="https://pavnxet.github.io/blogs/mp3dl/">
+</head>
+<body>
+
+<!-- ── NAV ───────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="../../index.html" class="back-link">
+      <svg viewBox="0 0 24 24" class="back-icon"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to home
+    </a>
+    <div class="logo">
+      <span class="logo-text">pavn<span class="logo-x">x</span>et</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ── ARTICLE HERO ──────────────────────────────────────── -->
+<header class="article-header">
+  <span class="tag">Tech</span>
+  <h1 class="article-title">MP3.pm Automated Downloader Hub — Serverless Edge Scraper &amp; Bulk Downloader</h1>
+  <div class="article-meta">
+    <img class="meta-avatar" src="../../images/logo.jpg" alt="Pavneet Logo">
+    <span class="meta-author">pavn<span class="logo-x">x</span>et</span>
+    <span class="meta-dot"></span>
+    <span>August 3, 2026</span>
+    <span class="meta-dot"></span>
+    <span>5 min read</span>
+  </div>
+</header>
+
+<div class="hero-image-wrap">
+  <div class="hero-banner">
+    <img src="cover_page_image.png" alt="MP3.pm Automated Downloader Hub Cover">
+  </div>
+</div>
+
+<!-- ── PAGE LAYOUT ────────────────────────────────────────── -->
+<div class="page-layout">
+  
+  <!-- Left Side: TOC Sidebar -->
+  <aside class="toc-sidebar">
+    <div class="toc-card">
+      <h3 class="toc-heading">Table of Contents</h3>
+      <ul class="toc-list">
+        <li><a href="#overview" class="toc-link active">Overview &amp; Features</a></li>
+        <li><a href="#architecture" class="toc-link">System Architecture</a></li>
+        <li><a href="#getting-started" class="toc-link">Getting Started</a></li>
+        <li><a href="#api-endpoints" class="toc-link">API Endpoints</a></li>
+        <li><a href="#deduplication" class="toc-link">Smart Deduplication</a></li>
+        <li><a href="#batch-downloading" class="toc-link">Batch Downloading</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Right Side: Article Body -->
+  <main class="article-container">
+    <article>
+      
+      <!-- SECTION 1 -->
+      <section id="overview">
+        <h2>Overview &amp; Features</h2>
+        <p>A high-performance, serverless edge utility deployed on <strong>Cloudflare Workers</strong> designed to automate search scraping, metadata cleaning, song deduplication, and bulk downloading from <code>mp3.pm</code>.</p>
+        <p>It provides a sleek, modern glassmorphism web dashboard with native support for multi-page AJAX scraping, dynamic source links, and 1-click batch download automation via native scripts (<code>.bat</code>) or URL manifests (<code>.txt</code>).</p>
+
+        <div class="showcase-card">
+          <img src="dashboard.png" alt="MP3.pm Downloader Hub Dashboard Interface" class="showcase-image">
+          <div class="showcase-caption">The clean glassmorphism web dashboard embedded directly within the Cloudflare Worker binary.</div>
+        </div>
+
+        <h3>Key Features</h3>
+        <ul>
+          <li><strong>🚀 Serverless Edge Architecture:</strong> Built on Cloudflare Workers for ultra-fast performance, low latency, and global edge routing.</li>
+          <li><strong>🎨 Glassmorphism UI Dashboard:</strong> Clean, responsive, dark-mode single-page application embedded directly within the Worker.</li>
+          <li><strong>🔍 Multi-Page Search Scraper:</strong> Seamlessly scrapes up to 25 pages of search results per query, processing dynamic subdomain routing (<code>s-[slug].mp3.pm</code>) and AJAX pagination.</li>
+          <li><strong>🧹 Metadata Sanitization:</strong> Automatically parses HTML entities (<code>&amp;amp;</code>, <code>&amp;#039;</code>, etc.) and strips illegal filesystem characters (<code>/ \ ? % * : | " &lt; &gt;</code>) to guarantee clean track titles and artist names.</li>
+          <li><strong>🛡️ Smart Deduplication Engine:</strong> Filters out duplicate tracks in real-time across direct audio URLs and artist/title metadata signatures.</li>
+          <li><strong>📥 Choke-Free Bulk Downloading:</strong> Avoids browser tab crashes and memory chokepoints by exporting native <code>.bat</code> curl download scripts or <code>.txt</code> link manifests.</li>
+          <li><strong>🔗 Direct Source Navigation:</strong> Quick-access navigation buttons to visit <code>mp3.pm</code>, view original query pages, or open raw source URLs.</li>
+          <li><strong>🛡️ Proxy &amp; CORS Handler:</strong> Proxies audio streams to attach proper <code>Content-Disposition</code> headers, enforcing custom <code>.mp3</code> filenames.</li>
+        </ul>
+      </section>
+
+      <!-- SECTION 2 -->
+      <section id="architecture">
+        <h2>System Architecture</h2>
+        <p>The system leverages Cloudflare Workers at the edge to serve both the single-page application dashboard and the API scraping/proxy pipeline.</p>
+
+        <pre><code>┌─────────────────────────────────────────────────────────┐
+│                      User Browser                       │
+└────────────────────────────┬────────────────────────────┘
+                             │
+                             │ HTTP Requests
+                             ▼
+┌─────────────────────────────────────────────────────────┐
+│                 Cloudflare Worker Proxy                 │
+└──────────────┬───────────────────────────┬──────────────┘
+               │                           │
+               ▼                           ▼
+┌──────────────────────────────┐ ┌──────────────────────────────┐
+│     Multi-Page Scraper       │ │     Audio Proxy Handler      │
+│ - Subdomain Slug Routing     │ │ - Bypasses Hotlink Locks     │
+│ - AJAX HTML Stream Fetching  │ │ - Forces Custom Filenames    │
+│ - 2-Layer Deduplication      │ │ - Streaming Audio Response   │
+└──────────────┬───────────────┘ └──────────────┬───────────────┘
+               │                               │
+               ▼                               ▼
+┌──────────────────────────────┐ ┌──────────────────────────────┐
+│          mp3.pm CDN          │ │        Raw MP3 Stream        │
+└──────────────────────────────┘ └──────────────────────────────┘</code></pre>
+      </section>
+
+      <!-- SECTION 3 -->
+      <section id="getting-started">
+        <h2>Getting Started</h2>
+        
+        <h3>Prerequisites</h3>
+        <ul>
+          <li><a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 500;">Node.js</a> (v18 or higher)</li>
+          <li><a href="https://www.npmjs.com/" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 500;">npm</a></li>
+          <li><a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 500;">Cloudflare Wrangler CLI</a></li>
+        </ul>
+
+        <h3>Installation &amp; Deployment</h3>
+        <p>1. <strong>Clone the repository:</strong></p>
+        <pre><code>git clone https://github.com/pavnxet/mp3dl.git
+cd mp3dl</code></pre>
+
+        <p>2. <strong>Install dependencies:</strong></p>
+        <pre><code>npm install</code></pre>
+
+        <p>3. <strong>Configure <code>wrangler.json</code> (or <code>wrangler.toml</code>):</strong></p>
+        <pre><code>{
+  "name": "mp3pm-downloader-hub",
+  "main": "worker.js",
+  "compatibility_date": "2026-08-01"
+}</code></pre>
+
+        <p>4. <strong>Local Development Test:</strong></p>
+        <pre><code>npx wrangler dev</code></pre>
+        <p>Open <code>http://localhost:8787</code> in your browser.</p>
+
+        <p>5. <strong>Deploy to Cloudflare Workers:</strong></p>
+        <pre><code>npx wrangler deploy</code></pre>
+      </section>
+
+      <!-- SECTION 4 -->
+      <section id="api-endpoints">
+        <h2>API Endpoints</h2>
+
+        <h3>1. Serve Dashboard</h3>
+        <ul>
+          <li><strong>Endpoint:</strong> <code>GET /</code></li>
+          <li><strong>Description:</strong> Renders the embedded Glassmorphism SPA dashboard interface.</li>
+        </ul>
+
+        <h3>2. Multi-Page Search Scraper</h3>
+        <ul>
+          <li><strong>Endpoint:</strong> <code>GET /api/search</code></li>
+          <li><strong>Query Parameters:</strong>
+            <ul>
+              <li><code>q</code> <em>(required)</em>: Search term (e.g., <code>ghulam ali</code>)</li>
+              <li><code>pages</code> <em>(optional)</em>: Number of pages to scrape (default: <code>5</code>, max: <code>25</code>)</li>
+            </ul>
+          </li>
+        </ul>
+
+        <p><strong>Response Example:</strong></p>
+        <pre><code>{
+  "query": "ghulam ali",
+  "count": 2,
+  "tracks": [
+    {
+      "url": "https://mp3.pm/download/12345678/track.mp3",
+      "artist": "Ghulam Ali",
+      "title": "Hungama Hai Kyun Barpa",
+      "filename": "Ghulam Ali - Hungama Hai Kyun Barpa.mp3"
+    },
+    {
+      "url": "https://mp3.pm/download/87654321/track2.mp3",
+      "artist": "Ghulam Ali",
+      "title": "Chupke Chupke Raat Din",
+      "filename": "Ghulam Ali - Chupke Chupke Raat Din.mp3"
+    }
+  ]
+}</code></pre>
+
+        <div class="showcase-card">
+          <img src="search_results.png" alt="MP3.pm Search Results Display" class="showcase-image">
+          <div class="showcase-caption">Multi-page search results cleanly rendered with deduplicated metadata and batch export controls.</div>
+        </div>
+
+        <h3>3. Audio Proxy &amp; Filename Enforcer</h3>
+        <ul>
+          <li><strong>Endpoint:</strong> <code>GET /api/download</code></li>
+          <li><strong>Query Parameters:</strong>
+            <ul>
+              <li><code>url</code> <em>(required)</em>: Direct audio stream URL.</li>
+              <li><code>name</code> <em>(optional)</em>: Desired output filename (e.g., <code>Artist - Title.mp3</code>).</li>
+            </ul>
+          </li>
+          <li><strong>Headers Injected:</strong>
+            <ul>
+              <li><code>Content-Type: audio/mpeg</code></li>
+              <li><code>Content-Disposition: attachment; filename="Artist - Title.mp3"</code></li>
+              <li><code>Access-Control-Allow-Origin: *</code></li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <!-- SECTION 5 -->
+      <section id="deduplication">
+        <h2>Smart Deduplication Engine</h2>
+        <p>To eliminate duplicate recordings, identical remasters, and repeated tracks across multiple scraped pages, the Worker runs a <strong>Two-Layer Deduplication Check</strong>:</p>
+
+        <ol>
+          <li><strong>URL Check:</strong> Matches raw download endpoint links to prevent indexing the exact same server resource twice.</li>
+          <li><strong>Metadata Signature Check:</strong>
+            <ul>
+              <li>Removes punctuation, special characters, and converts metadata to lowercase.</li>
+              <li>Strips secondary tags like <code>(Remastered 2020)</code>, <code>(Live)</code>, or <code>(Bonus Track)</code>.</li>
+              <li>Constructs a unique signature string: <code>${artist}_${title}</code>.</li>
+              <li>Filters out any subsequent track matching an existing signature key.</li>
+            </ul>
+          </li>
+        </ol>
+      </section>
+
+      <!-- SECTION 6 -->
+      <section id="batch-downloading">
+        <h2>Batch Downloading Guide</h2>
+        <p>Downloading 50+ songs simultaneously in a web browser often triggers pop-up blocks or freezes tab memory. This project solves this using external batch management:</p>
+
+        <h3>Method 1: Using Windows Batch Script (<code>.bat</code>)</h3>
+        <ol>
+          <li>Perform your search in the dashboard.</li>
+          <li>Click <strong>"Download Script (.bat)"</strong>.</li>
+          <li>Move the downloaded <code>download_all_songs.bat</code> file to the directory where you want your music saved.</li>
+          <li>Double-click the <code>.bat</code> file. A terminal window will open and download all <code>.mp3</code> files sequentially with proper metadata filenames using native Windows <code>curl</code>.</li>
+        </ol>
+
+        <h3>Method 2: Using External Download Managers (IDM / JDownloader)</h3>
+        <ol>
+          <li>Perform your search in the dashboard.</li>
+          <li>Click <strong>"Export Links (.txt)"</strong>.</li>
+          <li>Open your download manager (e.g., <strong>Internet Download Manager</strong>).</li>
+          <li>Select <strong>Tasks -&gt; Import -&gt; From text file</strong> and choose <code>download_links.txt</code>.</li>
+          <li>Start batch download at full bandwidth speed.</li>
+        </ol>
+
+        <blockquote>
+          <strong>Open Source &amp; Code:</strong> View full source code on <a href="https://github.com/pavnxet/mp3dl" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 500;">GitHub Repository</a>.
+        </blockquote>
+      </section>
+
+      <!-- AUTHOR CARD -->
+      <div class="author-card">
+        <img class="meta-avatar" src="../../images/logo.jpg" alt="Pavneet Logo">
+        <div class="author-info">
+          <h4>Written by pavn<span class="logo-x">x</span>et</h4>
+          <p>Hi! I'm Pavneet, an independent developer building serverless scrapers, edge utilities, and privacy tools. Check out my latest work on <a href="https://github.com/pavnxet" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 500;">GitHub</a>.</p>
+        </div>
+      </div>
+
+    </article>
+  </main>
+
+</div>
+
+<script src="../../js/article.js"></script>
+</body>
+</html>
