@@ -4,6 +4,9 @@ A high-performance, serverless edge utility deployed on **Cloudflare Workers** d
 
 It provides a sleek, modern glassmorphism web dashboard with native support for multi-page AJAX scraping, dynamic source links, and 1-click batch download automation via native scripts (`.bat`) or URL manifests (`.txt`).
 
+* 🌐 **Live Demo:** [https://mp3dl.pavneet1804.workers.dev/](https://mp3dl.pavneet1804.workers.dev/)
+* 📦 **GitHub Repository:** [https://github.com/pavnxet/mp3dl](https://github.com/pavnxet/mp3dl)
+
 ---
 
 ## ✨ Features
