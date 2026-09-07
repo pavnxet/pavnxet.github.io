@@ -1,5 +1,8 @@
 # Changelog
 
+## v4.05 — 2026-09-07
+- feat: add Linager passwordless link manager blog post and tools directory entry
+
 ## v4.04 — 2026-08-03
 - feat: add MP3.pm Automated Downloader Hub blog post and tools directory entry
 

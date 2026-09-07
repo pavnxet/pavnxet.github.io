@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linager — The Simple, Passwordless Link Manager That Works Everywhere — Pavneet</title>
+<meta name="description" content="Linager lets you save links online, organize with tags, pin favorites, and access them from your phone, laptop, or desktop with instant Passkey login — no passwords to remember.">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pavnxet.github.io/blogs/linager/index.html">
+<meta property="og:title" content="Linager — The Simple, Passwordless Link Manager That Works Everywhere — Pavneet">
+<meta property="og:description" content="Save links online, organize with tags, pin favorites, and access them from any device using biometric Passkey login.">
+<meta property="og:image" content="https://pavnxet.github.io/blogs/linager/cover.svg">
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://pavnxet.github.io/blogs/linager/index.html">
+<meta property="twitter:title" content="Linager — The Simple, Passwordless Link Manager That Works Everywhere — Pavneet">
+<meta property="twitter:description" content="Save links online, organize with tags, pin favorites, and access them from any device using biometric Passkey login.">
+<meta property="twitter:image" content="https://pavnxet.github.io/blogs/linager/cover.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="canonical" href="https://pavnxet.github.io/blogs/linager/">
+</head>
+<body>
+
+<!-- ── NAV ───────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="../../index.html" class="back-link">
+      <svg viewBox="0 0 24 24" class="back-icon"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to home
+    </a>
+    <div class="logo">
+      <span class="logo-text">pavn<span class="logo-x">x</span>et</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ── ARTICLE HERO ──────────────────────────────────────── -->
+<header class="article-header">
+  <span class="tag">Tech</span>
+  <h1 class="article-title">Linager — The Simple, Passwordless Link Manager That Works Across All Your Devices</h1>
+  <div class="article-meta">
+    <img class="meta-avatar" src="../../images/logo.jpg" alt="Pavneet Logo">
+    <span class="meta-author">pavn<span class="logo-x">x</span>et</span>
+    <span class="meta-dot"></span>
+    <span>September 7, 2026</span>
+    <span class="meta-dot"></span>
+    <span>4 min read</span>
+  </div>
+</header>
+
+<div class="hero-image-wrap">
+  <div class="hero-banner">
+    <img src="cover.svg" alt="Linager Link Manager Header Illustration">
+  </div>
+</div>
+
+<!-- ── PAGE LAYOUT ────────────────────────────────────────── -->
+<div class="page-layout">
+  
+  <!-- Left Side: TOC Sidebar -->
+  <aside class="toc-sidebar">
+    <div class="toc-card">
+      <h3 class="toc-heading">Table of Contents</h3>
+      <ul class="toc-list">
+        <li><a href="#what-is-linager" class="toc-link active">What is Linager?</a></li>
+        <li><a href="#why-i-built-it" class="toc-link">Why I Built It</a></li>
+        <li><a href="#passkey-magic" class="toc-link">The Magic of Passkeys</a></li>
+        <li><a href="#what-you-can-do" class="toc-link">What You Can Do</a></li>
+        <li><a href="#inside-the-hood" class="toc-link">Under the Hood</a></li>
+        <li><a href="#try-it-out" class="toc-link">Try It Out</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Right Side: Article Body -->
+  <main class="article-container">
+    <article>
+      
+      <!-- SECTION 1 -->
+      <section id="what-is-linager">
+        <h2>What is Linager?</h2>
+        <p><strong>Linager</strong> (short for <em>Link Manager</em>) is a fast, clean, and distraction-free online bookmark hub designed to solve one simple daily problem: <strong>saving links you find on one device, and opening them instantly on any other device</strong>.</p>
+        <p>There are no advertisements, no bloated sidebars, no tracking cookies, and best of all: <strong>no passwords to remember or forget</strong>. You sign in using modern <strong>Passkeys</strong> (your fingerprint, face recognition, or password managers like Proton Pass, Apple Keychain, or Windows Hello).</p>
+
+        <div class="showcase-card">
+          <img src="dashboard.png" alt="Linager Link Manager Dashboard Interface" class="showcase-image">
+          <div class="showcase-caption">The minimal dark-mode dashboard displaying saved links, tags, and quick-action buttons.</div>
+        </div>
+      </section>
+
+      <!-- SECTION 2 -->
+      <section id="why-i-built-it">
+        <h2>Why I Built It</h2>
+        <p>How many times have you emailed yourself a link, sent a WhatsApp message to your own number, or saved a URL in a messy browser bookmark folder that only exists on your work computer?</p>
+        <p>Most existing bookmark managers fall into two categories:</p>
+        <ul>
+          <li><strong>Too bloated:</strong> Heavy apps that ask for your email address, send confirmation codes, force paid subscriptions, and take five seconds just to load.</li>
+          <li><strong>Too fragmented:</strong> Browser-specific sync solutions (like Chrome or Safari bookmarks) that don't easily cross over if you use an iPhone alongside a Windows desktop or an Android phone with a Mac.</li>
+        </ul>
+        <p>I wanted a web page that opens in <strong>under 30 milliseconds</strong>, lets me paste a link in one click, and lets me access it anywhere without ever having to type a password.</p>
+      </section>
+
+      <!-- SECTION 3 -->
+      <section id="passkey-magic">
+        <h2>The Magic of Passkeys (Zero Passwords)</h2>
+        <p>Instead of the old-school username-and-password model, Linager uses <strong>WebAuthn Passkeys</strong>. When you register with just a username:</p>
+        <ol>
+          <li>Your device (or password extension like <strong>Proton Pass</strong>) generates a unique digital key pair.</li>
+          <li>The secure secret key stays locked safely inside your device or password manager.</li>
+          <li>Linager only stores the public verification key.</li>
+        </ol>
+
+        <div class="showcase-card">
+          <img src="login-passkey.png" alt="Linager Passkey Login Screen" class="showcase-image">
+          <div class="showcase-caption">One-touch sign-in screen: enter a username and tap your fingerprint, Face ID, or Proton Pass.</div>
+        </div>
+
+        <p>Because there is no password stored on any server, it is impossible for your account to be stolen in a data breach or guessed by brute force. It's security that actually makes life easier.</p>
+      </section>
+
+      <!-- SECTION 4 -->
+      <section id="what-you-can-do">
+        <h2>What You Can Do with Linager</h2>
+        <ul>
+          <li><strong>📌 Pin Daily Favorites:</strong> Keep your top references or ongoing study materials permanently docked at the top.</li>
+          <li><strong>🏷️ Tag Everything:</strong> Organize with hashtags like <code>#study</code>, <code>#dev</code>, or <code>#videos</code>. Tap any tag badge to immediately filter your collection.</li>
+          <li><strong>⚡ Instant Keyboard Search:</strong> Press the <kbd>/</kbd> key anywhere on your keyboard to instantly jump to the search bar and filter your links in real time.</li>
+          <li><strong>📈 Click Tracking &amp; Short Links:</strong> Every saved link gets a short redirection link (<code>/r/:id</code>) that automatically counts how many times you or your team have visited it.</li>
+          <li><strong>📋 One-Click Copy:</strong> Grab direct links cleanly to your clipboard without opening the URL.</li>
+          <li><strong>💾 Offline JSON Backup:</strong> Hit <em>Export</em> at any time to download an instant, complete JSON file of all your saved bookmarks.</li>
+        </ul>
+      </section>
+
+      <!-- SECTION 5 -->
+      <section id="inside-the-hood">
+        <h2>Under the Hood (For the Curious)</h2>
+        <p>For those who love clean, minimalist tech architecture, Linager is built following the <em>/ponytail</em> design philosophy — maximum performance with zero wasted code:</p>
+        <ul>
+          <li><strong>Cloudflare Workers:</strong> Deployed as a lightweight serverless isolate running across worldwide edge datacenters.</li>
+          <li><strong>Turso DB (libSQL):</strong> Distributed SQLite running at edge speeds over HTTP.</li>
+          <li><strong>Zero Frontend Frameworks:</strong> No React, no Vue, and no massive JavaScript bundles to download. The entire responsive user interface is written in pure vanilla HTML, CSS, and modern JavaScript.</li>
+          <li><strong>Stateless Edge Authentication:</strong> Challenges are signed using HMAC-SHA256 and carried via secure HTTP-only cookies, eliminating memory loss between ephemeral edge worker nodes.</li>
+        </ul>
+      </section>
+
+      <!-- SECTION 6 -->
+      <section id="try-it-out">
+        <h2>Try It Out &amp; Source Code</h2>
+        <p>Linager is completely free, open-source, and live on the internet right now. You can try it yourself or host your own copy in less than 5 minutes:</p>
+        
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px;">
+          <a href="https://linager.pavneet1804.workers.dev/" target="_blank" rel="noopener noreferrer" style="background: var(--ink); color: #fff; padding: 10px 22px; border-radius: 24px; text-decoration: none; font-weight: 500; font-family: var(--sans);">Launch Linager ↗</a>
+          <a href="https://github.com/pavnxet/linager" target="_blank" rel="noopener noreferrer" style="background: var(--cream2); color: var(--ink); border: 1px solid var(--cream3); padding: 10px 22px; border-radius: 24px; text-decoration: none; font-weight: 500; font-family: var(--sans);">GitHub Repository ↗</a>
+        </div>
+      </section>
+
+    </article>
+  </main>
+</div>
+
+<!-- ── FOOTER ────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo-text">pavn<span class="logo-x">x</span>et</span>
+      <p>Crafting quiet, useful tools for the modern web.</p>
+    </div>
+    <div class="footer-copy">
+      <span>© 2026 Pavneet</span>
+      <span id="siteVersion"></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../version.js"></script>
+<script src="../../js/article.js"></script>
+</body>
+</html>

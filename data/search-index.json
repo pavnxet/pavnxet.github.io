@@ -1,5 +1,12 @@
 [
   {
+    "title": "Linager: The Simple, Passwordless Link Manager That Works Everywhere",
+    "type": "project",
+    "url": "blogs/linager/index.html",
+    "description": "Linager lets you save links online, organize with tags, pin favorites, and access them from any device with biometric Passkey authentication — zero passwords.",
+    "tags": ["tech", "passkeys", "cloudflare-workers", "turso", "sqlite", "productivity"]
+  },
+  {
     "title": "Pastel Drop: I Shipped 16 Wallpapers Inside One HTML File",
     "type": "project",
     "url": "blogs/pastel-drop/index.html",

@@ -1,7 +1,7 @@
 # AGENTS.md — Quick Reference for AI Sessions
 
-> **Default branch: `main4.04`** — always use this unless told otherwise.
-> Deploy: `git push origin main4.04` (GitHub Pages, no build step).
+> **Default branch: `main4.05`** — always use this unless told otherwise.
+> Deploy: `git push origin main4.05` (GitHub Pages, no build step).
 
 ## Branch Naming Convention
 
@@ -28,12 +28,12 @@ Format: `x.yy` where `x` = site version, `yy` = blog counter within that x.
 - **x bumps** on major site changes (redesign, new section, major refactor). Reset `yy` to `00`.
 - **yy bumps** on each new blog post.
 - Source of truth: `version.js` at root.
-- Footer displays `v4.04` via `<script src="version.js">`.
+- Footer displays `v4.05` via `<script src="version.js">`.
 - Commit convention: `feat: vX.YY - description`. Tag: `vX.YY`.
 
 ```
-4.03 = site v4, 3rd blog
-4.04 = site v4, 4th blog (current)
+4.04 = site v4, 4th blog
+4.05 = site v4, 5th blog (current: Linager)
 5.00 = site v5 launch, no blogs yet
 ```
 
@@ -148,7 +148,8 @@ Test at: **320px, 375px, 768px, 1024px**
 | `main4.0` | Previous active branch |
 | `main4.02` | Previous blog branch (Anna's Archive post) |
 | `main4.03` | Previous blog branch (Pastel Drop post) |
-| `main4.04` | **Current active branch** — MP3.pm Downloader blog post |
+| `main4.04` | Previous blog branch (MP3.pm Downloader post) |
+| `main4.05` | **Current active branch** — Linager Passwordless Link Manager |
 | `main3.0` | Previous version |
 | `main2.0` | Default remote HEAD |
 | `creamy-blog-theme` | Theme development |
