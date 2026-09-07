@@ -1,0 +1,71 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&amp;display=swap');
+      .sans { font-family: 'Sora', system-ui, sans-serif; }
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    </style>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Browser Window Wrapper -->
+  <g filter="url(#cardShadow)" transform="translate(40, 20)">
+    <!-- Window Frame -->
+    <rect width="720" height="440" rx="12" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+
+    <!-- Window Topbar -->
+    <path d="M0 12 C0 5.37, 5.37 0, 12 0 L708 0 C714.63 0, 720 5.37, 720 12 L720 40 L0 40 Z" fill="#161b22"/>
+    <circle cx="24" cy="20" r="5" fill="#f85149" opacity="0.8"/>
+    <circle cx="40" cy="20" r="5" fill="#e3b341" opacity="0.8"/>
+    <circle cx="56" cy="20" r="5" fill="#3fb950" opacity="0.8"/>
+
+    <!-- Address Bar -->
+    <rect x="180" y="8" width="360" height="24" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+    <text x="360" y="24" class="sans" font-size="11" fill="#8b949e" text-anchor="middle">🔒 https://linager.pavneet1804.workers.dev</text>
+
+    <!-- Centered Auth Box -->
+    <g transform="translate(195, 80)">
+      <rect width="330" height="280" rx="12" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+
+      <!-- Key Icon -->
+      <circle cx="165" cy="50" r="24" fill="#21262d"/>
+      <text x="165" y="58" class="sans" font-size="24" text-anchor="middle">🔑</text>
+
+      <text x="165" y="100" class="sans" font-size="20" font-weight="700" fill="#ffffff" text-anchor="middle">Linager</text>
+      <text x="165" y="120" class="sans" font-size="12" fill="#8b949e" text-anchor="middle">Passwordless edge link manager with Passkey</text>
+
+      <!-- Form Input -->
+      <text x="35" y="152" class="sans" font-size="11" font-weight="500" fill="#8b949e">Username</text>
+      <rect x="35" y="160" width="260" height="38" rx="6" fill="#0d1117" stroke="#58a6ff" stroke-width="1.5"/>
+      <text x="48" y="184" class="sans" font-size="13" fill="#ffffff">pavneet</text>
+
+      <!-- Buttons -->
+      <g transform="translate(35, 212)">
+        <rect width="125" height="36" rx="6" fill="#238636"/>
+        <text x="62.5" y="22" class="sans" font-size="12.5" font-weight="600" fill="#ffffff" text-anchor="middle">Sign In</text>
+
+        <rect x="135" width="125" height="36" rx="6" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+        <text x="197.5" y="22" class="sans" font-size="12.5" font-weight="600" fill="#c9d1d9" text-anchor="middle">Register</text>
+      </g>
+    </g>
+
+    <!-- Biometric Passkey Prompt Simulation Overlay -->
+    <g transform="translate(420, 160)" filter="url(#cardShadow)">
+      <rect width="250" height="130" rx="10" fill="#21262d" stroke="#484f58" stroke-width="1"/>
+      <circle cx="30" cy="30" r="12" fill="#b07d4a"/>
+      <text x="30" y="35" class="sans" font-size="12" text-anchor="middle" fill="#fff">🛡️</text>
+      <text x="50" y="27" class="sans" font-size="12" font-weight="600" fill="#ffffff">Save Passkey</text>
+      <text x="50" y="42" class="sans" font-size="10" fill="#8b949e">Proton Pass / Touch ID</text>
+
+      <line x1="16" y1="58" x2="234" y2="58" stroke="#30363d" stroke-width="1"/>
+      
+      <text x="24" y="80" class="sans" font-size="11" fill="#c9d1d9">Account: <tspan font-weight="600" fill="#58a6ff">pavneet</tspan></text>
+      <text x="24" y="96" class="sans" font-size="9.5" fill="#8b949e">linager.pavneet1804.workers.dev</text>
+
+      <rect x="165" y="75" width="70" height="26" rx="5" fill="#238636"/>
+      <text x="200" y="92" class="sans" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">Save</text>
+    </g>
+  </g>
+</svg>

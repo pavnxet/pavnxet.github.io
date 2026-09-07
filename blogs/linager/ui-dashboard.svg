@@ -1,0 +1,103 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&amp;display=swap');
+      .sans { font-family: 'Sora', system-ui, sans-serif; }
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    </style>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Browser Window Wrapper -->
+  <g filter="url(#shadow)" transform="translate(40, 20)">
+    <!-- Window Frame -->
+    <rect width="720" height="440" rx="12" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+
+    <!-- Window Topbar -->
+    <path d="M0 12 C0 5.37, 5.37 0, 12 0 L708 0 C714.63 0, 720 5.37, 720 12 L720 40 L0 40 Z" fill="#161b22"/>
+    <circle cx="24" cy="20" r="5" fill="#f85149" opacity="0.8"/>
+    <circle cx="40" cy="20" r="5" fill="#e3b341" opacity="0.8"/>
+    <circle cx="56" cy="20" r="5" fill="#3fb950" opacity="0.8"/>
+
+    <!-- Address Bar -->
+    <rect x="180" y="8" width="360" height="24" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+    <text x="360" y="24" class="sans" font-size="11" fill="#8b949e" text-anchor="middle">🔒 https://linager.pavneet1804.workers.dev</text>
+
+    <!-- App Header -->
+    <g transform="translate(32, 60)">
+      <text x="0" y="20" class="sans" font-size="17" font-weight="700" fill="#ffffff">🔗 Linager</text>
+      
+      <!-- Right User Bar -->
+      <g transform="translate(490, 0)">
+        <text x="0" y="18" class="mono" font-size="12" fill="#8b949e">@pavneet</text>
+        <rect x="75" y="0" width="56" height="26" rx="6" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+        <text x="103" y="17" class="sans" font-size="11" font-weight="500" fill="#c9d1d9" text-anchor="middle">Export</text>
+        <rect x="138" y="0" width="56" height="26" rx="6" fill="#21262d" stroke="#30363d" stroke-width="1"/>
+        <text x="166" y="17" class="sans" font-size="11" font-weight="500" fill="#c9d1d9" text-anchor="middle">Logout</text>
+      </g>
+    </g>
+
+    <!-- Add Link Card Form -->
+    <g transform="translate(32, 105)">
+      <rect width="656" height="56" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+      <!-- Inputs -->
+      <rect x="12" y="10" width="280" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+      <text x="24" y="32" class="mono" font-size="11" fill="#8b949e">https://youtube.com/watch?v=5Mb6...</text>
+
+      <rect x="302" y="10" width="140" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+      <text x="314" y="32" class="sans" font-size="12" fill="#c9d1d9">Study Class 1</text>
+
+      <rect x="450" y="10" width="100" height="36" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+      <text x="462" y="32" class="sans" font-size="12" fill="#8b949e">study, video</text>
+
+      <rect x="558" y="10" width="86" height="36" rx="6" fill="#238636"/>
+      <text x="601" y="32" class="sans" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">+ Add Link</text>
+    </g>
+
+    <!-- Filter Bar -->
+    <g transform="translate(32, 175)">
+      <rect width="400" height="34" rx="6" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+      <text x="16" y="21" class="sans" font-size="12" fill="#8b949e">🔍 Search saved links...</text>
+      <rect x="375" y="7" width="16" height="20" rx="3" fill="#21262d"/>
+      <text x="383" y="21" class="mono" font-size="10" fill="#8b949e" text-anchor="middle">/</text>
+
+      <g transform="translate(480, 0)">
+        <rect width="176" height="34" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+        <rect x="3" y="3" width="48" height="28" rx="4" fill="#21262d"/>
+        <text x="27" y="21" class="sans" font-size="11" font-weight="500" fill="#ffffff" text-anchor="middle">All</text>
+        <text x="86" y="21" class="sans" font-size="11" font-weight="500" fill="#8b949e" text-anchor="middle">Pinned</text>
+        <text x="146" y="21" class="sans" font-size="11" font-weight="500" fill="#8b949e" text-anchor="middle">Archive</text>
+      </g>
+    </g>
+
+    <!-- Links List -->
+    <g transform="translate(32, 222)">
+      <!-- Item 1 (Pinned) -->
+      <g transform="translate(0, 0)">
+        <rect width="656" height="74" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+        <rect width="3" height="74" fill="#e3b341"/>
+        <text x="16" y="26" class="sans" font-size="13.5" font-weight="600" fill="#58a6ff">Rajasthan Adhyayan Class 1 — YouTube</text>
+        <text x="285" y="25" class="sans" font-size="11">📌</text>
+        <text x="16" y="45" class="mono" font-size="11" fill="#8b949e">https://www.youtube.com/watch?v=5Mb6hvzYHQU</text>
+        
+        <!-- Tag & Stats -->
+        <rect x="16" y="52" width="60" height="16" rx="8" fill="#21262d"/>
+        <text x="46" y="63" class="sans" font-size="9" fill="#79c0ff" text-anchor="middle">#study</text>
+        <text x="560" y="63" class="mono" font-size="10" fill="#8b949e">14 clicks • Today</text>
+      </g>
+
+      <!-- Item 2 -->
+      <g transform="translate(0, 84)">
+        <rect width="656" height="74" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+        <text x="16" y="26" class="sans" font-size="13.5" font-weight="600" fill="#ffffff">GitHub: pavnxet/linager repository</text>
+        <text x="16" y="45" class="mono" font-size="11" fill="#8b949e">https://github.com/pavnxet/linager</text>
+        
+        <rect x="16" y="52" width="50" height="16" rx="8" fill="#21262d"/>
+        <text x="41" y="63" class="sans" font-size="9" fill="#79c0ff" text-anchor="middle">#code</text>
+        <text x="560" y="63" class="mono" font-size="10" fill="#8b949e">8 clicks • Yesterday</text>
+      </g>
+    </g>
+  </g>
+</svg>
