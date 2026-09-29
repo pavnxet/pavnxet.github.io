@@ -1,7 +1,7 @@
 # AGENTS.md — Quick Reference for AI Sessions
 
-> **Default branch: `main4.05`** — always use this unless told otherwise.
-> Deploy: `git push origin main4.05` (GitHub Pages, no build step).
+> **Default branch: `main5.00`** — always use this unless told otherwise.
+> Deploy: `git push origin main5.00` (GitHub Pages, no build step).
 
 ## Branch Naming Convention
 
@@ -149,7 +149,8 @@ Test at: **320px, 375px, 768px, 1024px**
 | `main4.02` | Previous blog branch (Anna's Archive post) |
 | `main4.03` | Previous blog branch (Pastel Drop post) |
 | `main4.04` | Previous blog branch (MP3.pm Downloader post) |
-| `main4.05` | **Current active branch** — Linager Passwordless Link Manager |
+| `main4.05` | Previous blog branch (Linager Passwordless Link Manager) |
+| `main5.00` | **Current active branch** — v5.00 cleanup/hardening, v5.01 Quiz JSON Merger, v5.02 YouTube Notes |
 | `main3.0` | Previous version |
 | `main2.0` | Default remote HEAD |
 | `creamy-blog-theme` | Theme development |
