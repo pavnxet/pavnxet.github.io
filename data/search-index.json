@@ -1,5 +1,12 @@
 [
   {
+    "title": "I Got Tired of Rewatching Videos for One Answer, So I Built This",
+    "type": "project",
+    "url": "blogs/youtube-notes/index.html",
+    "description": "Paste any YouTube link and get a clean transcript .txt instantly — plus one-click AI prompts that turn it into structured notes or an MCQ quiz.",
+    "tags": ["tech", "youtube", "transcript", "notes", "ai", "productivity"]
+  },
+  {
     "title": "I Got Tired of Merging Quiz Files by Hand, So I Fixed It",
     "type": "project",
     "url": "blogs/json-merger/index.html",

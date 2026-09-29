@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../../images/logo.jpg" type="image/jpeg">
+<meta name="theme-color" content="#faf6f0">
+<title>I Got Tired of Rewatching Videos for One Answer, So I Built This — Pavneet</title>
+<meta name="description" content="Paste any YouTube link and get a clean transcript .txt instantly — plus one-click AI prompts that turn it into structured notes or an MCQ quiz.">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pavnxet.github.io/blogs/youtube-notes/index.html">
+<meta property="og:title" content="I Got Tired of Rewatching Videos for One Answer, So I Built This — Pavneet">
+<meta property="og:description" content="Paste any YouTube link and get a clean transcript .txt instantly — plus one-click AI prompts that turn it into structured notes or an MCQ quiz.">
+<meta property="og:image" content="https://pavnxet.github.io/blogs/youtube-notes/og-cover.png">
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://pavnxet.github.io/blogs/youtube-notes/index.html">
+<meta property="twitter:title" content="I Got Tired of Rewatching Videos for One Answer, So I Built This — Pavneet">
+<meta property="twitter:description" content="Paste any YouTube link and get a clean transcript .txt instantly — plus one-click AI prompts that turn it into structured notes or an MCQ quiz.">
+<meta property="twitter:image" content="https://pavnxet.github.io/blogs/youtube-notes/og-cover.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&amp;family=Lora:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="canonical" href="https://pavnxet.github.io/blogs/youtube-notes/">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "I Got Tired of Rewatching Videos for One Answer, So I Built This — Pavneet", "description": "Paste any YouTube link and get a clean transcript .txt instantly — plus one-click AI prompts that turn it into structured notes or an MCQ quiz.", "image": "https://pavnxet.github.io/blogs/youtube-notes/og-cover.png", "url": "https://pavnxet.github.io/blogs/youtube-notes/", "datePublished": "2026-09-29", "author": {"@type": "Person", "name": "pavnxet", "url": "https://github.com/pavnxet"}}
+</script>
+</head>
+<body>
+
+<!-- ── NAV ───────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="../../index.html" class="back-link">
+      <svg viewBox="0 0 24 24" class="back-icon"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to home
+    </a>
+    <div class="logo">
+      <span class="logo-text">pavn<span class="logo-x">x</span>et</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ── ARTICLE HERO ──────────────────────────────────────── -->
+<header class="article-header">
+  <span class="tag">Tech</span>
+  <h1 class="article-title">I Got Tired of Rewatching Videos for One Answer, So I Built This</h1>
+  <div class="article-meta">
+    <img class="meta-avatar" src="../../images/logo.jpg" alt="Pavneet Logo">
+    <span class="meta-author">pavn<span class="logo-x">x</span>et</span>
+    <span class="meta-dot"></span>
+    <span>September 29, 2026</span>
+    <span class="meta-dot"></span>
+    <span>3 min read</span>
+  </div>
+</header>
+
+<div class="hero-image-wrap">
+  <div class="hero-banner">
+    <img src="cover.svg" alt="YouTube Notes Generator Cover Illustration">
+  </div>
+</div>
+
+<!-- ── PAGE LAYOUT ────────────────────────────────────────── -->
+<div class="page-layout">
+
+  <!-- Left Side: TOC Sidebar -->
+  <aside class="toc-sidebar">
+    <div class="toc-card">
+      <h3 class="toc-heading">Table of Contents</h3>
+      <ul class="toc-list">
+        <li><a href="#the-problem" class="toc-link active">The Rewatch Tax</a></li>
+        <li><a href="#how-it-works" class="toc-link">Paste Link, Get Transcript</a></li>
+        <li><a href="#notes-and-mcq" class="toc-link">Transcript to Notes &amp; MCQs</a></li>
+        <li><a href="#try-it-out" class="toc-link">Try It Out</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Right Side: Article Body -->
+  <main class="article-container">
+    <article>
+
+      <!-- SECTION 1 -->
+      <section id="the-problem">
+        <h2>The Rewatch Tax</h2>
+        <p>You know the feeling: a 40-minute tutorial <em>definitely</em> contained the one command you need, and now you're <strong>scrubbing through the timeline like a detective</strong>, watching at 2x speed, hoping to catch it.</p>
+        <p>Video is a terrible format for retrieval. Text you can search, skim, and quote — video you can only rewatch. Every exam season, every late-night debugging session, I paid this <strong>rewatch tax</strong> over and over. So I built a toll booth skip: a tool that converts any YouTube video into clean, searchable text in seconds.</p>
+      </section>
+
+      <!-- SECTION 2 -->
+      <section id="how-it-works">
+        <h2>Paste Link, Get Transcript</h2>
+        <p>The flow is deliberately boring — boring is reliable:</p>
+        <ol>
+          <li><strong>Paste</strong> any YouTube link into the box and hit process.</li>
+          <li><strong>Download</strong> a clean, premium-formatted transcript as a <code>.txt</code> file — no timestamps cluttering every line, no auto-generated gibberish.</li>
+          <li><strong>Search it</strong> like any document: <kbd>Ctrl</kbd> + <kbd>F</kbd> the exact answer instead of rewatching 40 minutes.</li>
+        </ol>
+        <p>It runs as a lightweight edge utility, so there's nothing to install and no account to create. Link in, text out.</p>
+      </section>
+
+      <!-- SECTION 3 -->
+      <section id="notes-and-mcq">
+        <h2>From Transcript to Notes &amp; MCQs</h2>
+        <p>A raw transcript is useful; <strong>structured notes are transformative</strong>. That's why the tool ships with one-click AI prompts built in:</p>
+        <ul>
+          <li><strong>Copy Notes Prompt:</strong> grabs a carefully written prompt that turns the transcript into organized study notes — headings, key points, summaries — when pasted into any AI assistant alongside the text.</li>
+          <li><strong>Copy MCQ Prompt:</strong> grabs a second prompt that converts the same transcript into a <strong>multiple-choice quiz</strong>, so you can test yourself on exactly what the video taught.</li>
+        </ul>
+        <blockquote>The clever part isn't fetching text — it's packaging the next step. Extraction plus the right prompt beats extraction alone.</blockquote>
+        <p>Watch a lecture once, walk away with searchable text, revision notes, and a self-test. That's the whole pipeline.</p>
+      </section>
+
+      <!-- SECTION 4 -->
+      <section id="try-it-out">
+        <h2>Try It Out</h2>
+        <p>It's free, live, and takes about ten seconds per video. Next time a tutorial holds your answer hostage, skip the scrubbing:</p>
+
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px;">
+          <a href="https://yt-transcript.pavneet1804.workers.dev/" target="_blank" rel="noopener noreferrer" style="background: var(--ink); color: #fff; padding: 10px 22px; border-radius: 24px; text-decoration: none; font-weight: 500; font-family: var(--sans);">Launch Live Tool ↗</a>
+        </div>
+      </section>
+
+    </article>
+  </main>
+</div>
+
+<!-- ── FOOTER ────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo-text">pavn<span class="logo-x">x</span>et</span>
+      <p>Crafting quiet, useful tools for the modern web.</p>
+    </div>
+    <div class="footer-copy">
+      <span>© 2026 Pavneet</span>
+      <span id="siteVersion"></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../version.js"></script>
+<script src="../../js/article.js"></script>
+<script>
+  var vEl = document.getElementById('siteVersion');
+  if (vEl && typeof SITE_VERSION !== 'undefined') vEl.textContent = 'v' + SITE_VERSION;
+</script>
+</body>
+</html>
