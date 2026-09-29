@@ -76,3 +76,7 @@ hooks/
 
 # Agent tool configs (local only)
 .claude/
+
+# Local analysis artifacts (never deploy)
+graphify-out/
+.mimocode/
