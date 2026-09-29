@@ -15,23 +15,30 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(error => console.error('Error loading search index:', error));
 
+  // Debounced input: avoids filtering on every keystroke
+  let debounceTimer = null;
   searchInput.addEventListener('input', (e) => {
-    const query = e.target.value.toLowerCase().trim();
-    selectedIndex = -1;
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => {
+      const query = e.target.value.toLowerCase().trim();
+      selectedIndex = -1;
 
-    if (!query) {
-      searchResults.classList.remove('active');
-      return;
-    }
+      if (!query) {
+        searchResults.classList.remove('active');
+        searchInput.setAttribute('aria-expanded', 'false');
+        return;
+      }
 
-    const results = searchData.filter(post => {
-      const matchTitle = post.title.toLowerCase().includes(query);
-      const matchDesc = post.description.toLowerCase().includes(query);
-      const matchTags = post.tags && post.tags.some(tag => tag.toLowerCase().includes(query));
-      return matchTitle || matchDesc || matchTags;
-    });
+      const results = searchData.filter(post => {
+        const matchTitle = post.title.toLowerCase().includes(query);
+        const matchDesc = post.description.toLowerCase().includes(query);
+        const matchTags = post.tags && post.tags.some(tag => tag.toLowerCase().includes(query));
+        return matchTitle || matchDesc || matchTags;
+      }).slice(0, 8); // Cap dropdown to keep it scannable
 
-    renderResults(results);
+      renderResults(results);
+      searchInput.setAttribute('aria-expanded', 'true');
+    }, 150);
   });
 
   searchInput.addEventListener('keydown', (e) => {
@@ -59,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('click', (e) => {
     if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
       searchResults.classList.remove('active');
+      searchInput.setAttribute('aria-expanded', 'false');
     }
   });
 

@@ -1,0 +1,46 @@
+[IMAGE: A clean web browser showing multiple quiz files being combined into a single master file alongside a Telegram logo]
+
+# I got tired of merging quiz files by hand, so I fixed it
+
+* ### The endless copy-paste problem
+
+
+* Creating quizzes often means ending up with ten different files scattered everywhere. 🌟
+* Every time I wanted to make a master quiz, I had to open each file, copy the text, and carefully paste it into one big file without breaking the formatting. 📝
+* Doing this manually is incredibly tedious and prone to mistakes. 🛑
+
+
+* ### How the new tool works
+
+
+* I built a simple tool called [quiz-json-merger](https://github.com/pavnxet/quiz-json-merger) that does all the heavy lifting automatically. 🛠️
+* You just drag and drop all your separate quiz files directly into your web browser, and it spits out a single combined file instantly. ⚡
+* Because I spend a lot of time on my phone, I also hooked it up to a Telegram chat bot. 🤖
+* Now you can just forward your quiz files to the bot, type a quick command, and it sends the merged file right back to you. 📲
+
+
+
+[GIF: Dragging three JSON files into a clean web interface and instantly downloading a single merged file]
+
+* ### The part that kept breaking
+
+
+* Getting the Telegram bot to remember files was a massive headache at first. 🤯
+* Telegram treats every single message as a completely isolated event, so the bot would immediately forget the first file the moment you sent the second one. ⏳
+* I had to set up a temporary digital storage locker using Cloudflare's database system to hold onto the files until the user explicitly says they are done. 🗄️
+
+
+* ### Give it a spin
+
+
+* The tool is completely free and ready to use right now. 🚀
+* You can try the web version instantly over on the [Live Demo](https://jsonmerge.pavneet1804.workers.dev/). 🌐
+* If you want to see how the code handles the file merging under the hood, feel free to check out the [GitHub Repo](https://github.com/pavnxet/quiz-json-merger). 💻
+
+
+
+---
+
+**About the Author:** [Pavneet Singh](https://github.com/pavnxet) is a developer who loves building practical, lightweight web tools that solve everyday annoyances. When he isn't writing JavaScript, he's experimenting with serverless tech and automation.
+
+#javascript #cloudflareworkers #telegrambot #webdev #open source

@@ -3,10 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" href="images/logo.jpg" type="image/jpeg">
+<meta name="theme-color" content="#faf6f0">
 <title>Pavneet — Blog</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/search.css">
 <link rel="canonical" href="https://pavnxet.github.io/">
@@ -23,6 +25,9 @@
 <meta property="twitter:title" content="Pavneet — Blog">
 <meta property="twitter:description" content="Pavneet's personal blog and portfolio featuring privacy utilities and open-source software tools.">
 <meta property="twitter:image" content="https://pavnxet.github.io/images/logo.jpg">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "WebSite", "name": "Pavneet ? Blog", "description": "Pavneet’s personal blog and portfolio featuring privacy utilities and open-source software tools.", "url": "https://pavnxet.github.io/", "author": {"@type": "Person", "name": "pavnxet", "url": "https://github.com/pavnxet"}}
+</script>
 </head>
 <body>
 
@@ -84,8 +89,8 @@
 <div class="search-wrap">
   <div class="search-container">
     <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    <input type="text" id="searchInput" class="search-input" placeholder="Search posts..." autocomplete="off">
-    <div id="searchResults" class="search-results"></div>
+    <input type="text" id="searchInput" class="search-input" placeholder="Search posts..." autocomplete="off" role="combobox" aria-expanded="false" aria-controls="searchResults" aria-label="Search posts">
+    <div id="searchResults" class="search-results" role="listbox" aria-live="polite"></div>
   </div>
 </div>
 
@@ -94,13 +99,13 @@
      ===================================================================== -->
 <div id="writing" class="filters-wrap">
   <div class="filters">
-    <button class="filter-btn on" onclick="filterPosts('all',this)">All</button>
-    <button class="filter-btn" onclick="filterPosts('travel',this)">Travel</button>
-    <button class="filter-btn" onclick="filterPosts('food',this)">Food</button>
-    <button class="filter-btn" onclick="filterPosts('tech',this)">Tech</button>
-    <button class="filter-btn" onclick="filterPosts('life',this)">Life</button>
-    <button class="filter-btn" onclick="filterPosts('design',this)">Design</button>
-    <button class="filter-btn" onclick="filterPosts('art',this)">Art</button>
+    <button class="filter-btn on" data-filter="all" aria-pressed="true">All</button>
+    <button class="filter-btn" data-filter="travel" aria-pressed="false">Travel</button>
+    <button class="filter-btn" data-filter="food" aria-pressed="false">Food</button>
+    <button class="filter-btn" data-filter="tech" aria-pressed="false">Tech</button>
+    <button class="filter-btn" data-filter="life" aria-pressed="false">Life</button>
+    <button class="filter-btn" data-filter="design" aria-pressed="false">Design</button>
+    <button class="filter-btn" data-filter="art" aria-pressed="false">Art</button>
   </div>
 </div>
 
@@ -113,7 +118,7 @@
   <div class="posts-grid" id="postsGrid">
 
     <!-- Card: Linager -->
-    <a class="card reveal" data-cat="tech" href="blogs/linager/index.html">
+    <a class="featured-card reveal" data-cat="tech" href="blogs/linager/index.html">
       <div class="card-img-wrap">
         <img src="blogs/linager/cover.svg" alt="Linager Link Manager Cover" loading="lazy">
       </div>
@@ -248,7 +253,7 @@
     </a>
 
     <!-- Card: FitGirl DirectLink Extractor -->
-    <a class="featured-card reveal" data-cat="tech" href="blogs/fitgirl-direct-link-extractor/index.html">
+    <a class="card reveal" data-cat="tech" href="blogs/fitgirl-direct-link-extractor/index.html">
       <div class="card-img-wrap">
         <img src="blogs/fitgirl-direct-link-extractor/fitgirl-direct-link-extractor.svg" alt="FitGirl DirectLink Extractor Cover" loading="lazy">
       </div>
@@ -302,9 +307,9 @@
     </a>
 
     <!-- Card: 3rd Grade Results -->
-    <a class="card reveal" data-cat="tech" href="blogs/3rd%20grade%20results/index.html">
+    <a class="card reveal" data-cat="tech" href="blogs/3rd-grade-results/index.html">
       <div class="card-img-wrap">
-        <img src="blogs/3rd%20grade%20results/3rd_grade.svg" alt="3rd Grade Results Cover" loading="lazy">
+        <img src="blogs/3rd-grade-results/3rd_grade.svg" alt="3rd Grade Results Cover" loading="lazy">
       </div>
       <div class="card-body">
         <div class="card-top">
@@ -409,6 +414,33 @@
       </div>
     </a>
 
+    <!-- Card: Tic Tac Toe -->
+    <a class="card reveal" data-cat="tech" href="blogs/tictactoe/index.html">
+      <div class="card-img-wrap">
+        <img src="blogs/tictactoe/cover.svg" alt="Tic Tac Toe Cover" loading="lazy">
+      </div>
+      <div class="card-body">
+        <div class="card-top">
+          <span class="tag tech">Tech</span>
+          <span class="read-time">Interactive game</span>
+        </div>
+        <h2 class="card-title">Tic Tac Toe — Play Against a Rule-Based AI in Your Browser</h2>
+        <p class="card-desc">
+          A classic Tic Tac Toe game with an AI opponent that wins, blocks, and takes corners. Clean, creamy glassmorphism design — no install, just play.
+        </p>
+        <div class="card-footer">
+          <div class="author">
+            <img class="avatar" src="images/logo.jpg" alt="Pavneet Logo">
+            <div class="author-info-block">
+              <span class="author-name">pavn<span class="logo-x">x</span>et</span>
+              <span class="card-date">June 15, 2026</span>
+            </div>
+          </div>
+          <span class="card-arrow">→</span>
+        </div>
+      </div>
+    </a>
+
   </div>
 </div>
 
@@ -441,10 +473,15 @@
     <span class="nl-label">Newsletter</span>
     <h2 class="nl-title">Get new posts in your inbox</h2>
     <p class="nl-sub">No spam, no noise — just new stories when they're ready. Roughly twice a month.</p>
-    <div class="nl-form">
-      <input class="nl-input" type="email" placeholder="your@email.com">
-      <button class="nl-btn">Subscribe</button>
-    </div>
+    <form class="nl-form" data-endpoint="">
+      <!-- TODO: paste your Formspree form ID to activate signup:
+           data-endpoint="https://formspree.io/f/xxxxxx" -->
+      <label class="sr-only" for="nl-email">Email address</label>
+      <input class="nl-input" id="nl-email" name="email" type="email" placeholder="your@email.com" autocomplete="email">
+      <input class="nl-honeypot" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="nl-btn" type="submit">Subscribe</button>
+      <span class="nl-status" role="status" aria-live="polite"></span>
+    </form>
   </div>
 </section>
 

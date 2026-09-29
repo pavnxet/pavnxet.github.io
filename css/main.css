@@ -234,7 +234,7 @@ img { max-width: 100%; display: block; }
   margin-bottom: 18px;
 }
 .hero h1 em {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-serif);
   font-style: italic;
   color: var(--accent);
   font-weight: 500;
@@ -697,6 +697,26 @@ img { max-width: 100%; display: block; }
   white-space: nowrap;
 }
 .nl-btn:hover { background: var(--ink); transform: translateY(-2px); }
+.nl-btn:disabled { opacity: 0.7; cursor: default; transform: none; }
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  clip: rect(0 0 0 0); clip-path: inset(50%);
+  overflow: hidden; white-space: nowrap;
+}
+.nl-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px; height: 1px;
+  opacity: 0;
+}
+.nl-status {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--ink3);
+  min-height: 20px;
+}
 
 /* =====================================================================
    FOOTER

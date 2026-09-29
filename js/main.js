@@ -1,34 +1,7 @@
-// ── Card Sorting & Layout Automation ──────────────────────
+// ── Featured layout is authored in index.html (first card = .featured-card).
+// Cards are kept in newest-first order by hand. Do NOT re-sort at runtime
+// (avoids layout shift / FOUC and keeps the authored layout authoritative).
 document.addEventListener('DOMContentLoaded', () => {
-  const postsGrid = document.getElementById('postsGrid');
-  if (postsGrid) {
-    const cards = Array.from(postsGrid.querySelectorAll('.card, .featured-card'));
-    
-    // Sort cards by date descending
-    cards.sort((a, b) => {
-      const dateAEl = a.querySelector('.card-date');
-      const dateBEl = b.querySelector('.card-date');
-      const dateA = dateAEl ? new Date(dateAEl.textContent.trim()) : new Date(0);
-      const dateB = dateBEl ? new Date(dateBEl.textContent.trim()) : new Date(0);
-      return dateB - dateA;
-    });
-    
-    // Re-append cards to grid in sorted order with updated classes
-    cards.forEach((card, index) => {
-      // Reset classes
-      card.classList.remove('card', 'featured-card', 'reveal');
-      
-      // Assign appropriate layout type based on index (newest first is horizontal)
-      if (index === 0) {
-        card.className = 'featured-card reveal';
-      } else {
-        card.className = 'card reveal';
-      }
-      
-      postsGrid.appendChild(card);
-    });
-  }
-
   // ── Dynamic Post Count & Animated Counter ─────────────────
   const heroCount = document.getElementById('heroCount');
   if (heroCount) {
@@ -134,8 +107,12 @@ function animateCounter(el) {
 // ── Filter with Race Condition Mitigation ────────────────
 let filterTimeouts = [];
 function filterPosts(cat, btn) {
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('on'));
+  document.querySelectorAll('.filter-btn').forEach(b => {
+    b.classList.remove('on');
+    b.setAttribute('aria-pressed', 'false');
+  });
   btn.classList.add('on');
+  btn.setAttribute('aria-pressed', 'true');
 
   // Cancel all pending card transition timeouts
   filterTimeouts.forEach(t => clearTimeout(t));
@@ -161,25 +138,59 @@ function filterPosts(cat, btn) {
   });
 }
 
-// ── Newsletter button with Regex Validation ──────────────
+// ── Newsletter signup (Formspree backend, configured via data-endpoint) ──
 document.addEventListener('DOMContentLoaded', () => {
+  const nlForm = document.querySelector('.nl-form');
   const nlBtn = document.querySelector('.nl-btn');
   const nlInput = document.querySelector('.nl-input');
-  if (nlBtn && nlInput) {
-    nlBtn.addEventListener('click', function() {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (emailRegex.test(nlInput.value.trim())) {
-        this.textContent = 'You\'re in ✓';
-        this.style.background = '#4e7e5c'; // Success green from design tokens
-        nlInput.value = '';
-        nlInput.disabled = true;
-        this.disabled = true;
-      } else {
-        nlInput.style.borderColor = '#b04a2e'; // Error red from design tokens
-        setTimeout(() => nlInput.style.borderColor = '', 1200);
-      }
-    });
+  const nlStatus = document.querySelector('.nl-status');
+  if (!nlForm || !nlBtn || !nlInput) return;
+
+  const endpoint = (nlForm.dataset.endpoint || '').trim();
+  if (!endpoint) {
+    // Honest placeholder until the owner pastes a Formspree form ID.
+    nlBtn.textContent = 'Coming soon';
+    nlBtn.disabled = true;
+    nlInput.disabled = true;
+    nlInput.placeholder = 'Newsletter coming soon';
+    return;
   }
+
+  nlForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = nlInput.value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      nlInput.style.borderColor = '#b04a2e'; // Error red from design tokens
+      if (nlStatus) nlStatus.textContent = 'Please enter a valid email.';
+      setTimeout(() => nlInput.style.borderColor = '', 1200);
+      return;
+    }
+    nlBtn.disabled = true;
+    nlBtn.textContent = 'Subscribing…';
+    try {
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ email, _gotcha: nlForm.querySelector('.nl-honeypot')?.value || '' })
+      });
+      if (!res.ok) throw new Error('signup failed');
+      nlBtn.textContent = 'You\'re in ✓';
+      nlBtn.style.background = '#4e7e5c'; // Success green from design tokens
+      if (nlStatus) nlStatus.textContent = 'Thanks — check your inbox to confirm.';
+      nlInput.value = '';
+      nlInput.disabled = true;
+    } catch {
+      nlBtn.disabled = false;
+      nlBtn.textContent = 'Subscribe';
+      if (nlStatus) nlStatus.textContent = 'Something went wrong — try again later.';
+    }
+  });
+
+  // ── Filter buttons (bound here; no inline onclick) ──────
+  document.querySelectorAll('.filter-btn[data-filter]').forEach(btn => {
+    btn.addEventListener('click', () => filterPosts(btn.dataset.filter, btn));
+  });
 
   // ── Nav Active States & Scroll Observer (Throttled) ──────
   const navLinks = document.querySelectorAll('.nav-links a:not(.nav-cta)');

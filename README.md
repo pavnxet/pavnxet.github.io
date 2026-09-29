@@ -1,50 +1,67 @@
-# Creamy Dashboard Portfolio & Blog 🌾
+# pavnxet.github.io — Personal Blog & Tools Directory 🌾
 
-A highly aesthetic, premium single-page dashboard portfolio and blog designed for hosting on **GitHub Pages**. Features a light creamy theme, typography inspired by Microsoft Copilot, responsive page layouts, dynamic project filtering, search controls, and a slide-out blog reader.
+A minimal, premium single-page blog and tools directory hosted on **GitHub Pages**. Pure static HTML/CSS/JS — no frameworks, no build step, no backend.
 
----
-
-## 🎨 Visual Features
-
-- **Creamy Design System**: Built with CSS custom variables using warm sand, alabaster cream, and muted cocoa hues.
-- **Dynamic Content Loading**: Projects and blog posts are loaded dynamically from a simple data layer (`data.js`) without heavy frameworks.
-- **Card Showcase**: Rounded layouts displaying tag badges, interactive progress, live links, and image overlays.
-- **All-Rounder Blog Feed**: Search bar filtering and category selectors, leading to a slide-up, distraction-free reader screen.
-- **Device Responsiveness**: Automatically morphs into a mobile-native bottom tabbed dashboard for smaller screens.
+Live at **https://pavnxet.github.io** (deployed from branch `main5.00`).
 
 ---
 
-## 🛠️ Tech Stack
+## 🎨 Design
 
-- **Core**: HTML5, Vanilla JavaScript
-- **Styling**: Vanilla CSS3 (CSS Grid, Nesting, Flexbox, custom tinted box shadows)
-- **Typography**: Google Font *Outfit* (fallback to *Segoe UI*)
-- **Icons**: Hand-picked Feather-style SVG components
-
----
-
-## 🚀 Easy Deployment to GitHub Pages
-
-To host this website on your GitHub Pages domain (`https://pavnxet.github.io`):
-
-1. **Configure Repository Settings**:
-   - Go to your repository **[pavnxet.github.io](https://github.com/pavnxet/pavnxet.github.io)** on GitHub.
-   - Click on the **Settings** tab.
-   - Select **Pages** from the left-hand navigation menu under *Code and automation*.
-
-2. **Select Build and Deployment**:
-   - Under **Build and deployment -> Source**, select **Deploy from a branch**.
-   - Under **Branch**, click the dropdown and choose the default branch: `main4.0`.
-   - Select `/ (root)` folder, then click **Save**.
-
-Within a few minutes, GitHub Actions will compile your build and launch it live!
+- **Creamy theme**: warm sand / alabaster / cocoa palette, Sora (sans) + Lora (serif) typography. Full token reference in `creamy_theme_guide.txt`.
+- **Card grid** homepage with category filters, client-side search, scroll-reveal animations.
+- **Article pages** with sidebar TOC + scroll spy (`js/article.js`), sticky mobile TOC under 900px.
 
 ---
 
-## ✏️ Customizing Your Content
+## 🗂️ Project structure
 
-All data is structured cleanly inside **`data.js`**:
+```
+index.html               Homepage (static card grid in #postsGrid)
+version.js               Single source of truth for x.yy versioning
+CHANGELOG.md             Version history
+css/main.css             Homepage styles          css/article.css  Blog/tool pages
+css/search.css           Search dropdown styles
+js/main.js               Homepage logic (counter, reveal, filters, newsletter)
+js/search.js             Client-side search over data/search-index.json
+js/article.js            Article TOC scroll spy + overlays
+data/search-index.json   Search data (title, type, url, description, tags)
+blogs/[slug]/index.html  One folder per post, images live alongside
+blogs/tools/index.html   Tools directory (live demos + repos + stories)
+sitemap.xml / robots.txt SEO
+```
 
-- To update active projects, append or edit items inside the `projectsData` array.
-- To write new blog posts (supporting formatted HTML paragraphs, blockquotes, and code snippets), edit elements in the `blogData` array.
-- Profile settings, avatars, and bio details can be updated directly inside `index.html`.
+---
+
+## 🛠️ Tech stack
+
+- **Core**: HTML5, vanilla JavaScript, vanilla CSS3 (Grid, Flexbox, custom properties)
+- **Typography**: Google Fonts `Sora` + `Lora`
+- **Hosting**: GitHub Pages (deploy from branch). **Live utilities** run on Cloudflare Workers / Vercel (see tools directory).
+
+---
+
+## 🚀 Deployment
+
+1. Repo **Settings → Pages → Build and deployment → Deploy from a branch**.
+2. Branch: `main5.00`, folder `/ (root)`, **Save**.
+3. Keep the repo default branch on `main5.00` so Pages and HEAD stay in sync.
+
+---
+
+## ✏️ Publishing a new post
+
+Follow the checklist in `AGENTS.md`:
+
+1. Create `blogs/[kebab-case-slug]/index.html` (lowercase, no spaces — Pages URLs are case-sensitive).
+2. Add entry to `data/search-index.json`.
+3. Add card to `#postsGrid` in `index.html` (class `card reveal`, `data-cat` = category).
+4. If it's a tool: add `.tool-card` + TOC entry to `blogs/tools/index.html`.
+5. Add `<url>` to `sitemap.xml`. Bump `version.js`, update `CHANGELOG.md`.
+6. Commit `feat: vX.YY - ...` and tag `vX.YY`.
+
+---
+
+## 🔍 Search
+
+Client-side only: `js/search.js` loads `data/search-index.json` and matches title, description, and tags. Every new post **must** be added to the JSON or it won't appear in search.
