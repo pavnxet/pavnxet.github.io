@@ -72,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // === FAB back-to-top ===
   const fab = document.getElementById('fab');
   if (fab) {
+    fab.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     window.addEventListener('scroll', () => {
       if (window.scrollY > 600) fab.classList.add('visible');
       else fab.classList.remove('visible');
