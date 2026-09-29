@@ -1,5 +1,12 @@
 [
   {
+    "title": "Searching the RSSB LDC Result PDF Took Forever, So I Fixed It",
+    "type": "project",
+    "url": "blogs/ldc-result/index.html",
+    "description": "A single-file portal holding all 241,690 RSSB LDC 2026 qualified candidates — search by name, parents' names, or roll number, and filter by region, category, and gender.",
+    "tags": ["tech", "education", "rssb", "ldc", "search", "javascript"]
+  },
+  {
     "title": "I Got Tired of Rewatching Videos for One Answer, So I Built This",
     "type": "project",
     "url": "blogs/youtube-notes/index.html",

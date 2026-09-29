@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../../images/logo.jpg" type="image/jpeg">
+<meta name="theme-color" content="#faf6f0">
+<title>Searching the RSSB LDC Result PDF Took Forever, So I Fixed It — Pavneet</title>
+<meta name="description" content="A single-file portal holding all 241,690 RSSB LDC 2026 qualified candidates — search by name, parents' names, or roll number, and filter by region, category, and gender. No PDF scrolling.">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pavnxet.github.io/blogs/ldc-result/index.html">
+<meta property="og:title" content="Searching the RSSB LDC Result PDF Took Forever, So I Fixed It — Pavneet">
+<meta property="og:description" content="A single-file portal holding all 241,690 RSSB LDC 2026 qualified candidates — search by name, parents' names, or roll number. No PDF scrolling.">
+<meta property="og:image" content="https://pavnxet.github.io/blogs/ldc-result/og-cover.png">
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://pavnxet.github.io/blogs/ldc-result/index.html">
+<meta property="twitter:title" content="Searching the RSSB LDC Result PDF Took Forever, So I Fixed It — Pavneet">
+<meta property="twitter:description" content="A single-file portal holding all 241,690 RSSB LDC 2026 qualified candidates — search by name, parents' names, or roll number. No PDF scrolling.">
+<meta property="twitter:image" content="https://pavnxet.github.io/blogs/ldc-result/og-cover.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&amp;family=Lora:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="canonical" href="https://pavnxet.github.io/blogs/ldc-result/">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Searching the RSSB LDC Result PDF Took Forever, So I Fixed It — Pavneet", "description": "A single-file portal holding all 241,690 RSSB LDC 2026 qualified candidates — search by name, parents' names, or roll number, and filter by region, category, and gender.", "image": "https://pavnxet.github.io/blogs/ldc-result/og-cover.png", "url": "https://pavnxet.github.io/blogs/ldc-result/", "datePublished": "2026-09-29", "author": {"@type": "Person", "name": "pavnxet", "url": "https://github.com/pavnxet"}}
+</script>
+</head>
+<body>
+
+<!-- ── NAV ───────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="../../index.html" class="back-link">
+      <svg viewBox="0 0 24 24" class="back-icon"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to home
+    </a>
+    <div class="logo">
+      <span class="logo-text">pavn<span class="logo-x">x</span>et</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ── ARTICLE HERO ──────────────────────────────────────── -->
+<header class="article-header">
+  <span class="tag">Tech</span>
+  <h1 class="article-title">Searching the RSSB LDC Result PDF Took Forever, So I Fixed It</h1>
+  <div class="article-meta">
+    <img class="meta-avatar" src="../../images/logo.jpg" alt="Pavneet Logo">
+    <span class="meta-author">pavn<span class="logo-x">x</span>et</span>
+    <span class="meta-dot"></span>
+    <span>September 29, 2026</span>
+    <span class="meta-dot"></span>
+    <span>4 min read</span>
+  </div>
+</header>
+
+<div class="hero-image-wrap">
+  <div class="hero-banner">
+    <img src="cover.svg" alt="LDC Result Search Portal Cover Illustration">
+  </div>
+</div>
+
+<!-- ── PAGE LAYOUT ────────────────────────────────────────── -->
+<div class="page-layout">
+
+  <!-- Left Side: TOC Sidebar -->
+  <aside class="toc-sidebar">
+    <div class="toc-card">
+      <h3 class="toc-heading">Table of Contents</h3>
+      <ul class="toc-list">
+        <li><a href="#the-problem" class="toc-link active">The PDF Nobody Can Search</a></li>
+        <li><a href="#the-data" class="toc-link">241,690 Candidates, One File</a></li>
+        <li><a href="#how-it-works" class="toc-link">Search Like a Human Thinks</a></li>
+        <li><a href="#try-it-out" class="toc-link">Try It Out</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Right Side: Article Body -->
+  <main class="article-container">
+    <article>
+
+      <!-- SECTION 1 -->
+      <section id="the-problem">
+        <h2>The PDF Nobody Can Search</h2>
+        <p>When the Rajasthan Staff Selection Board declared the <strong>Clerk Grade-2 / Junior Assistant 2026</strong> written result, the provisional pass list arrived the way these things always arrive: as a <strong>giant PDF dump</strong> — thousands of pages of roll numbers and names, assembled for printing, not for finding.</p>
+        <p>If your name is anywhere in there, good luck. Phone PDF readers choke on files this size, <kbd>Ctrl</kbd> + <kbd>F</kbd> crawls page by page, and every anxious candidate in Rajasthan ends up scrolling the same endless columns. I built the 3rd Grade result searcher for exactly this pain — and the LDC list, at nearly a quarter-million names, deserved the same treatment.</p>
+      </section>
+
+      <!-- SECTION 2 -->
+      <section id="the-data">
+        <h2>241,690 Candidates, One File</h2>
+        <p>The source is the official <code>LDC_Full_Result.pdf</code>, structured into two annexures. I converted the whole thing into structured data:</p>
+        <ul>
+          <li><strong>Annexure-1 (Non-Scheduled Area):</strong> 226,234 candidates.</li>
+          <li><strong>Annexure-2 (Scheduled Area / TSP):</strong> 15,456 candidates.</li>
+          <li><strong>Per candidate:</strong> roll number, candidate name, father name, mother name, gender, category, and sub-category.</li>
+        </ul>
+        <p>Here's the fun engineering detail: as raw JSON that's roughly <strong>46MB</strong> — far too heavy to ship to a phone browser. Gzip-compressed, it collapses to about <strong>7.6MB</strong>, embedded directly in a single HTML file. The portal decompresses it client-side with a progress splash screen, so by the time the search box appears, all 241,690 records are already sitting in memory. No server, no database, no API to keep alive — the whole portal is <strong>one file on Vercel that works offline after first load</strong>.</p>
+      </section>
+
+      <!-- SECTION 3 -->
+      <section id="how-it-works">
+        <h2>Search Like a Human Thinks</h2>
+        <p>Nobody remembers their exact roll number under stress — but everyone remembers names. So the search works the way anxious humans actually query:</p>
+        <ul>
+          <li><strong>Name, father name, or mother name:</strong> type any of them (Hindi-first interface) and matches appear instantly — mother's name included, which most portals skip and which resolves countless same-name collisions.</li>
+          <li><strong>Roll number:</strong> exact lookup when you have the admit card handy.</li>
+          <li><strong>Region, category &amp; gender filters:</strong> narrow by Non-Scheduled vs TSP area, reservation category, and gender instead of drowning in thousands of same-name rows.</li>
+          <li><strong>Live record badge &amp; Telegram channel:</strong> the header shows the dataset size at a glance, and updates ride along on the linked Telegram channel.</li>
+        </ul>
+        <blockquote>A result portal is judged on one metric: seconds from panic to answer. Everything in this design serves that number.</blockquote>
+      </section>
+
+      <!-- SECTION 4 -->
+      <section id="try-it-out">
+        <h2>Try It Out</h2>
+        <p>Free, no login, works on the cheapest phone in the room. If you or anyone you know is on that LDC list, this is the fastest way to confirm it:</p>
+
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px;">
+          <a href="https://ldc-result-pavn-dump.vercel.app/" target="_blank" rel="noopener noreferrer" style="background: var(--ink); color: #fff; padding: 10px 22px; border-radius: 24px; text-decoration: none; font-weight: 500; font-family: var(--sans);">Launch Live Portal ↗</a>
+        </div>
+      </section>
+
+    </article>
+  </main>
+</div>
+
+<!-- ── FOOTER ────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo-text">pavn<span class="logo-x">x</span>et</span>
+      <p>Crafting quiet, useful tools for the modern web.</p>
+    </div>
+    <div class="footer-copy">
+      <span>© 2026 Pavneet</span>
+      <span id="siteVersion"></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../version.js"></script>
+<script src="../../js/article.js"></script>
+<script>
+  var vEl = document.getElementById('siteVersion');
+  if (vEl && typeof SITE_VERSION !== 'undefined') vEl.textContent = 'v' + SITE_VERSION;
+</script>
+</body>
+</html>

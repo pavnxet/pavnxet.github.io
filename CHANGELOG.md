@@ -1,5 +1,8 @@
 # Changelog
 
+## v5.03 — 2026-09-29
+- feat: add RSSB LDC Result Search Portal blog post, homepage card, tools directory entry, search index and sitemap
+
 ## v5.02 — 2026-09-29
 - feat: add YouTube Transcript & Notes Generator blog post, homepage card, tools story link, search index and sitemap
 
