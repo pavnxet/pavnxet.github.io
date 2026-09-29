@@ -1,5 +1,8 @@
 # Changelog
 
+## v5.01 — 2026-09-29
+- feat: add Quiz JSON Merger blog post, homepage card, tools directory entry, search index and sitemap
+
 ## v5.00 — 2026-09-29
 - chore: remove dead root files (app.js, data.js, style.css, prototypes, stale mockups) and rename 3rd-grade folder to lowercase slug
 - fix: static featured-card (drop runtime re-sort/FOUC), debounced capped search, real Formspree newsletter wiring, bound filter buttons with aria states

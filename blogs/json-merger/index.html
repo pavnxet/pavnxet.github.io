@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="../../images/logo.jpg" type="image/jpeg">
+<meta name="theme-color" content="#faf6f0">
+<title>I Got Tired of Merging Quiz Files by Hand, So I Fixed It — Pavneet</title>
+<meta name="description" content="Quiz JSON Merger turns scattered quiz files into one clean master file — drag and drop in the browser, or forward files to a Telegram bot that sends the merged file right back.">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pavnxet.github.io/blogs/json-merger/index.html">
+<meta property="og:title" content="I Got Tired of Merging Quiz Files by Hand, So I Fixed It — Pavneet">
+<meta property="og:description" content="Quiz JSON Merger turns scattered quiz files into one clean master file — drag and drop in the browser, or forward files to a Telegram bot.">
+<meta property="og:image" content="https://pavnxet.github.io/blogs/json-merger/og-cover.png">
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://pavnxet.github.io/blogs/json-merger/index.html">
+<meta property="twitter:title" content="I Got Tired of Merging Quiz Files by Hand, So I Fixed It — Pavneet">
+<meta property="twitter:description" content="Quiz JSON Merger turns scattered quiz files into one clean master file — drag and drop in the browser, or forward files to a Telegram bot.">
+<meta property="twitter:image" content="https://pavnxet.github.io/blogs/json-merger/og-cover.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&amp;family=Lora:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="canonical" href="https://pavnxet.github.io/blogs/json-merger/">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "I Got Tired of Merging Quiz Files by Hand, So I Fixed It — Pavneet", "description": "Quiz JSON Merger turns scattered quiz files into one clean master file — drag and drop in the browser, or forward files to a Telegram bot that sends the merged file right back.", "image": "https://pavnxet.github.io/blogs/json-merger/og-cover.png", "url": "https://pavnxet.github.io/blogs/json-merger/", "datePublished": "2026-09-29", "author": {"@type": "Person", "name": "pavnxet", "url": "https://github.com/pavnxet"}}
+</script>
+</head>
+<body>
+
+<!-- ── NAV ───────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="../../index.html" class="back-link">
+      <svg viewBox="0 0 24 24" class="back-icon"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to home
+    </a>
+    <div class="logo">
+      <span class="logo-text">pavn<span class="logo-x">x</span>et</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ── ARTICLE HERO ──────────────────────────────────────── -->
+<header class="article-header">
+  <span class="tag">Tech</span>
+  <h1 class="article-title">I Got Tired of Merging Quiz Files by Hand, So I Fixed It</h1>
+  <div class="article-meta">
+    <img class="meta-avatar" src="../../images/logo.jpg" alt="Pavneet Logo">
+    <span class="meta-author">pavn<span class="logo-x">x</span>et</span>
+    <span class="meta-dot"></span>
+    <span>September 29, 2026</span>
+    <span class="meta-dot"></span>
+    <span>3 min read</span>
+  </div>
+</header>
+
+<div class="hero-image-wrap">
+  <div class="hero-banner">
+    <img src="cover.svg" alt="Quiz JSON Merger Cover Illustration">
+  </div>
+</div>
+
+<!-- ── PAGE LAYOUT ────────────────────────────────────────── -->
+<div class="page-layout">
+
+  <!-- Left Side: TOC Sidebar -->
+  <aside class="toc-sidebar">
+    <div class="toc-card">
+      <h3 class="toc-heading">Table of Contents</h3>
+      <ul class="toc-list">
+        <li><a href="#the-problem" class="toc-link active">The Copy-Paste Problem</a></li>
+        <li><a href="#how-it-works" class="toc-link">How the Tool Works</a></li>
+        <li><a href="#telegram-headache" class="toc-link">The Part That Kept Breaking</a></li>
+        <li><a href="#try-it-out" class="toc-link">Give It a Spin</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Right Side: Article Body -->
+  <main class="article-container">
+    <article>
+
+      <!-- SECTION 1 -->
+      <section id="the-problem">
+        <h2>The Endless Copy-Paste Problem</h2>
+        <p>Making quizzes usually means ending up with <strong>ten different files scattered everywhere</strong> — one per chapter, one per topic, one that a friend sent you at midnight.</p>
+        <p>Every time I wanted a single master quiz, the ritual was the same: open each file, copy the text, paste it into one big file, and pray I didn't break the formatting somewhere in the middle. Doing this by hand is <strong>incredibly tedious and embarrassingly error-prone</strong> — one missed bracket and the whole file refuses to load.</p>
+        <p>Computers are supposed to do boring repetitive merging. So I made one do it.</p>
+      </section>
+
+      <!-- SECTION 2 -->
+      <section id="how-it-works">
+        <h2>How the Tool Works</h2>
+        <p>I built a small utility called <strong>Quiz JSON Merger</strong> that does all the heavy lifting automatically. It meets you wherever you already are — desktop or phone:</p>
+        <ul>
+          <li><strong>Drag &amp; drop in the browser:</strong> Drop all your separate quiz files into the web page and it spits out a single combined file instantly. Nothing uploads anywhere permanent; the merge happens and you download the result.</li>
+          <li><strong>Telegram bot for phone life:</strong> Because I do a lot from my phone, I wired the same merger to a chat bot. Forward your quiz files to it, send one quick command, and it sends the merged file right back to you.</li>
+        </ul>
+        <p>Same engine, two doors. Use the browser at your desk, the bot on the bus.</p>
+      </section>
+
+      <!-- SECTION 3 -->
+      <section id="telegram-headache">
+        <h2>The Part That Kept Breaking</h2>
+        <p>Getting the Telegram bot to <em>remember</em> files was a genuine headache. Telegram treats <strong>every message as a completely isolated event</strong> — the bot would cheerfully forget your first file the moment you sent the second one.</p>
+        <p>The fix was a temporary holding area: when you send files, the bot parks them in a <strong>short-lived Cloudflare-backed store</strong> tied to your chat, and only merges everything when you explicitly say you're done. Send three files across three messages, say merge, get one master file back. Nothing lingers longer than it needs to.</p>
+        <blockquote>Stateless platforms force you to design state explicitly — and explicit state is almost always cleaner state.</blockquote>
+      </section>
+
+      <!-- SECTION 4 -->
+      <section id="try-it-out">
+        <h2>Give It a Spin &amp; Source Code</h2>
+        <p>The tool is completely free and live right now. Merge your scattered quiz files in seconds, or dig through the code to see how the merging works under the hood:</p>
+
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px;">
+          <a href="https://jsonmerge.pavneet1804.workers.dev/" target="_blank" rel="noopener noreferrer" style="background: var(--ink); color: #fff; padding: 10px 22px; border-radius: 24px; text-decoration: none; font-weight: 500; font-family: var(--sans);">Launch Live Demo ↗</a>
+          <a href="https://github.com/pavnxet/quiz-json-merger" target="_blank" rel="noopener noreferrer" style="background: var(--cream2); color: var(--ink); border: 1px solid var(--cream3); padding: 10px 22px; border-radius: 24px; text-decoration: none; font-weight: 500; font-family: var(--sans);">GitHub Repository ↗</a>
+        </div>
+      </section>
+
+    </article>
+  </main>
+</div>
+
+<!-- ── FOOTER ────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo-text">pavn<span class="logo-x">x</span>et</span>
+      <p>Crafting quiet, useful tools for the modern web.</p>
+    </div>
+    <div class="footer-copy">
+      <span>© 2026 Pavneet</span>
+      <span id="siteVersion"></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../version.js"></script>
+<script src="../../js/article.js"></script>
+<script>
+  var vEl = document.getElementById('siteVersion');
+  if (vEl && typeof SITE_VERSION !== 'undefined') vEl.textContent = 'v' + SITE_VERSION;
+</script>
+</body>
+</html>

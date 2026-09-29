@@ -1,5 +1,12 @@
 [
   {
+    "title": "I Got Tired of Merging Quiz Files by Hand, So I Fixed It",
+    "type": "project",
+    "url": "blogs/json-merger/index.html",
+    "description": "Quiz JSON Merger turns scattered quiz files into one clean master file — drag and drop in the browser, or forward files to a Telegram bot that sends the merged file back.",
+    "tags": ["tech", "json", "quiz", "telegram-bot", "cloudflare-workers", "productivity"]
+  },
+  {
     "title": "Linager: The Simple, Passwordless Link Manager That Works Everywhere",
     "type": "project",
     "url": "blogs/linager/index.html",
