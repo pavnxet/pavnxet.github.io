@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>tg-digest — A Read-Only Telegram Channel Digester You Drive From a Bot — Pavneet</title>
+<meta name="description" content="tg-digest is a read-only Telegram user bot that collects the channels you choose into one digest JSON, plus an owner-only control bot to add channels, run, schedule and search from chat.">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pavnxet.github.io/blogs/tg-digest-userbot/index.html">
+<meta property="og:title" content="tg-digest — A Read-Only Telegram Channel Digester You Drive From a Bot — Pavneet">
+<meta property="og:description" content="Collect the channels you choose into one digest JSON — driven entirely from a private Telegram control bot.">
+<meta property="og:image" content="https://pavnxet.github.io/blogs/tg-digest-userbot/cover.svg">
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://pavnxet.github.io/blogs/tg-digest-userbot/index.html">
+<meta property="twitter:title" content="tg-digest — A Read-Only Telegram Channel Digester You Drive From a Bot — Pavneet">
+<meta property="twitter:description" content="Collect the channels you choose into one digest JSON — driven entirely from a private Telegram control bot.">
+<meta property="twitter:image" content="https://pavnxet.github.io/blogs/tg-digest-userbot/cover.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="canonical" href="https://pavnxet.github.io/blogs/tg-digest-userbot/">
+</head>
+<body>
+
+<!-- ── NAV ───────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="../../index.html" class="back-link">
+      <svg viewBox="0 0 24 24" class="back-icon"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to home
+    </a>
+    <div class="logo">
+      <span class="logo-text">pavn<span class="logo-x">x</span>et</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ── ARTICLE HERO ──────────────────────────────────────── -->
+<header class="article-header">
+  <span class="tag">Tech</span>
+  <h1 class="article-title">tg-digest — A Read-Only Telegram Channel Digester You Drive From a Bot</h1>
+  <div class="article-meta">
+    <img class="meta-avatar" src="../../images/logo.jpg" alt="Pavneet Logo">
+    <span class="meta-author">pavn<span class="logo-x">x</span>et</span>
+    <span class="meta-dot"></span>
+    <span>October 19, 2026</span>
+    <span class="meta-dot"></span>
+    <span>4 min read</span>
+  </div>
+</header>
+
+<div class="hero-image-wrap">
+  <div class="hero-banner">
+    <img src="cover.svg" alt="tg-digest Cover">
+  </div>
+</div>
+
+<!-- ── PAGE LAYOUT ────────────────────────────────────────── -->
+<div class="page-layout">
+
+  <!-- Left Side: TOC Sidebar -->
+  <aside class="toc-sidebar">
+    <div class="toc-card">
+      <h3 class="toc-heading">Table of Contents</h3>
+      <ul class="toc-list">
+        <li><a href="#what-it-is" class="toc-link active">What it is</a></li>
+        <li><a href="#why-userbot" class="toc-link">Why a user bot</a></li>
+        <li><a href="#control-bot" class="toc-link">The control bot</a></li>
+        <li><a href="#how" class="toc-link">How a run works</a></li>
+        <li><a href="#security" class="toc-link">Security</a></li>
+        <li><a href="#try" class="toc-link">Try it</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Right Side: Article Body -->
+  <main class="article-container">
+    <article>
+
+      <!-- SECTION 1 -->
+      <section id="what-it-is">
+        <h2>What it is</h2>
+        <p><strong>tg-digest</strong> is a read-only Telegram <em>user bot</em> that reads the text of the channels <strong>you</strong> choose, for a time window <strong>you</strong> choose, and writes it to one structured JSON file — with an embedded summary prompt — that you can paste into any AI.</p>
+        <p>It never sends anything, never reacts, never marks messages as read, and never uploads or stores anything outside your machine. A separate owner-only control bot lets you drive it from a private chat.</p>
+
+        <div class="showcase-card">
+          <img src="preview-guide.jpg" alt="tg-digest command guide" class="showcase-image">
+          <div class="showcase-caption">The command guide: channels, runs, schedules, prompts, files and health.</div>
+        </div>
+      </section>
+
+      <!-- SECTION 2 -->
+      <section id="why-userbot">
+        <h2>Why a user bot</h2>
+        <p>The Bot API can only see channels a <em>bot</em> has been added to, and it cannot read history. To read your own subscriptions, the digest has to run as <strong>you</strong> — which is what Telethon's MTProto user client does. Because it is your real account, the code is deliberately conservative about joining and rate limits.</p>
+      </section>
+
+      <!-- SECTION 3 -->
+      <section id="control-bot">
+        <h2>The control bot</h2>
+        <p>The scraper and the control bot are two parts of one tool. The bot is the remote control: you send it a command, it runs the scraper as a separate process and reports back in the chat.</p>
+        <table>
+          <thead>
+            <tr><th>Command</th><th>What it does</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>/login</code></td><td>QR login — scan from a second device, no code through the chat</td></tr>
+            <tr><td><code>/status</code></td><td>Logged in? Shows your first name and only the last 2 digits of your phone</td></tr>
+            <tr><td><code>/channels</code></td><td>Lists your channels, with paused and invalid marks</td></tr>
+            <tr><td><code>/run</code></td><td>Runs a digest for the selected window</td></tr>
+            <tr><td><code>/schedule</code></td><td>Schedules recurring digests</td></tr>
+            <tr><td><code>/logout</code></td><td>Confirms, then logs out on Telegram's side and deletes the local session</td></tr>
+          </tbody>
+        </table>
+
+        <div class="showcase-card">
+          <img src="preview-commands.jpg" alt="tg-digest command reference" class="showcase-image">
+          <div class="showcase-caption">Every command is owner-only and works in a private chat. Anyone else gets no reply at all.</div>
+        </div>
+      </section>
+
+      <!-- SECTION 4 -->
+      <section id="how">
+        <h2>How a run works</h2>
+        <ol>
+          <li>You pick channels and a window from the bot chat.</li>
+          <li>The scraper reads only those channels, for that window, and never writes to Telegram.</li>
+          <li>Messages are formatted into a single digest JSON with a summary prompt embedded.</li>
+          <li>You paste that file into ChatGPT, Claude or Gemini for a summary.</li>
+        </ol>
+        <p>Outputs are searchable from the bot, and there is a full command guide published as a static site.</p>
+      </section>
+
+      <!-- SECTION 5 -->
+      <section id="security">
+        <h2>Security</h2>
+        <p>Login is normally done by QR from the bot chat, so your OTP and 2FA never have to be typed in a terminal. Where they do, the terminal path is the safest option and is documented as such.</p>
+        <ul>
+          <li><strong>Owner-only:</strong> only your numeric user id is served; every other message is silently ignored.</li>
+          <li><strong>Secrets stay local:</strong> <code>.env</code>, <code>*.session</code>, <code>output/</code> and <code>.cache/</code> are all gitignored.</li>
+          <li><strong>Honest about limits:</strong> the bot chat is not end-to-end encrypted, and the docs say so plainly.</li>
+        </ul>
+      </section>
+
+      <!-- SECTION 6 -->
+      <section id="try">
+        <h2>Try it</h2>
+        <p>It is a personal, local tool with 530 passing tests and a published command guide. Clone it, add your API credentials, and start the control bot.</p>
+
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px;">
+          <a href="https://pavnxet.github.io/tg-digest-userbot/" target="_blank" rel="noopener noreferrer" style="background: var(--ink); color: #fff; padding: 10px 22px; border-radius: 24px; text-decoration: none; font-weight: 500; font-family: var(--sans);">Read the command guide ↗</a>
+          <a href="https://github.com/pavnxet/tg-digest-userbot" target="_blank" rel="noopener noreferrer" style="background: var(--cream2); color: var(--ink); border: 1px solid var(--cream3); padding: 10px 22px; border-radius: 24px; text-decoration: none; font-weight: 500; font-family: var(--sans);">GitHub Repository ↗</a>
+        </div>
+      </section>
+
+    </article>
+  </main>
+</div>
+
+<!-- ── FOOTER ────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo-text">pavn<span class="logo-x">x</span>et</span>
+      <p>Crafting quiet, useful tools for the modern web.</p>
+    </div>
+    <div class="footer-copy">
+      <span>© 2026 Pavneet</span>
+      <span id="siteVersion"></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../version.js"></script>
+<script src="../../js/article.js"></script>
+</body>
+</html>

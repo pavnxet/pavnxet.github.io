@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;1,500&amp;family=Sora:wght@300;400;500;600;700&amp;display=swap');
+      .t { font-family: 'Lora', Georgia, serif; font-weight: 500; fill: #1e1a15; }
+      .ti { font-family: 'Lora', Georgia, serif; font-style: italic; fill: #b07d4a; }
+      .s { font-family: 'Sora', system-ui, sans-serif; }
+      .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+    </style>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#a07846" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="500" fill="#f4ede2"/>
+  <path d="M470 0 L800 0 L800 500 L330 500 Z" fill="#ecdfd0" opacity="0.6"/>
+
+  <g opacity="0.8">
+    <line x1="60" y1="50" x2="740" y2="50" stroke="#e8d5b7" stroke-width="1" stroke-dasharray="4 8"/>
+    <line x1="60" y1="320" x2="740" y2="320" stroke="#e8d5b7" stroke-width="1" stroke-dasharray="4 8"/>
+    <line x1="100" y1="30" x2="100" y2="470" stroke="#e8d5b7" stroke-width="1" stroke-dasharray="4 8"/>
+    <line x1="700" y1="30" x2="700" y2="470" stroke="#e8d5b7" stroke-width="1" stroke-dasharray="4 8"/>
+    <circle cx="100" cy="50" r="3" fill="none" stroke="#c9a87c" stroke-width="1"/>
+    <circle cx="700" cy="50" r="3" fill="none" stroke="#c9a87c" stroke-width="1"/>
+    <circle cx="100" cy="320" r="3" fill="none" stroke="#c9a87c" stroke-width="1"/>
+    <circle cx="700" cy="320" r="3" fill="none" stroke="#c9a87c" stroke-width="1"/>
+  </g>
+
+  <g transform="translate(0,-8)">
+    <rect x="170" y="66" width="460" height="214" rx="16" fill="#fffdf9" filter="url(#sh)"/>
+
+    <circle cx="196" cy="90" r="4" fill="#e8d5b7"/>
+    <circle cx="208" cy="90" r="4" fill="#e8d5b7"/>
+    <circle cx="220" cy="90" r="4" fill="#e8d5b7"/>
+    <rect x="246" y="82" width="360" height="16" rx="8" fill="#faf6f0"/>
+    <text x="426" y="94" class="mono" font-size="9" fill="#8c7e6e" text-anchor="middle">POST localhost:3006/v1/chat/completions</text>
+
+    <!-- user bubble -->
+    <g transform="translate(196,116)">
+      <rect width="250" height="30" rx="10" fill="#faf6f0" stroke="#ecdfd0" stroke-width="1"/>
+      <text x="14" y="20" class="s" font-size="11" fill="#4a4038">Explain quantum computing simply…</text>
+    </g>
+
+    <!-- assistant streaming bubble -->
+    <g transform="translate(196,156)">
+      <rect width="408" height="72" rx="10" fill="#f4ede2" stroke="#e8d5b7" stroke-width="1"/>
+      <text x="14" y="26" class="s" font-size="11" font-weight="600" fill="#1e1a15">GPT-6 Luna</text>
+      <text x="14" y="46" class="s" font-size="10" fill="#4a4038">A quantum bit can be 0 and 1 at once, so</text>
+      <text x="14" y="62" class="s" font-size="10" fill="#4a4038">many paths are explored in parallel…</text>
+      <rect x="392" y="52" width="6" height="12" fill="#b07d4a"/>
+    </g>
+
+    <!-- model chips -->
+    <g transform="translate(196,240)">
+      <rect x="0" y="0" width="118" height="24" rx="12" fill="#fffdf9" stroke="#e8d5b7"/>
+      <text x="59" y="16" class="s" font-size="9.5" font-weight="600" fill="#b07d4a" text-anchor="middle">GPT-6 Luna</text>
+      <rect x="128" y="0" width="140" height="24" rx="12" fill="#fffdf9" stroke="#e8d5b7"/>
+      <text x="198" y="16" class="s" font-size="9.5" font-weight="500" fill="#4a4038" text-anchor="middle">Claude Haiku 4.5</text>
+      <rect x="278" y="0" width="128" height="24" rx="12" fill="#fffdf9" stroke="#e8d5b7"/>
+      <text x="342" y="16" class="s" font-size="9.5" font-weight="500" fill="#4a4038" text-anchor="middle">Mistral Small 4</text>
+    </g>
+  </g>
+
+  <g>
+    <text x="400" y="362" class="t" font-size="28" text-anchor="middle">DuckAI API — <tspan class="ti">OpenAI-compatible proxy</tspan></text>
+    <text x="400" y="396" class="s" font-size="13.5" font-weight="300" fill="#4a4038" text-anchor="middle">Free GPT-6 Luna, Claude Haiku &amp; Mistral behind one standard API, with live streaming.</text>
+    <circle cx="400" cy="433" r="2" fill="#b07d4a"/>
+    <line x1="352" y1="433" x2="385" y2="433" stroke="#e8d5b7" stroke-width="1"/>
+    <line x1="415" y1="433" x2="448" y2="433" stroke="#e8d5b7" stroke-width="1"/>
+  </g>
+</svg>

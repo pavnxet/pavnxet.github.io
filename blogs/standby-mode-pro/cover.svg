@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;1,500&amp;family=Sora:wght@300;400;500;600;700&amp;display=swap');
+      .t { font-family: 'Lora', Georgia, serif; font-weight: 500; fill: #1e1a15; }
+      .ti { font-family: 'Lora', Georgia, serif; font-style: italic; fill: #b07d4a; }
+      .s { font-family: 'Sora', system-ui, sans-serif; }
+      .d { font-family: 'Sora', system-ui, sans-serif; font-weight: 700; fill: #f2f0ea; }
+    </style>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#3a2f20" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="500" fill="#f4ede2"/>
+  <path d="M470 0 L800 0 L800 500 L330 500 Z" fill="#ecdfd0" opacity="0.6"/>
+
+  <g opacity="0.8">
+    <line x1="60" y1="50" x2="740" y2="50" stroke="#e8d5b7" stroke-width="1" stroke-dasharray="4 8"/>
+    <line x1="60" y1="320" x2="740" y2="320" stroke="#e8d5b7" stroke-width="1" stroke-dasharray="4 8"/>
+    <line x1="100" y1="30" x2="100" y2="470" stroke="#e8d5b7" stroke-width="1" stroke-dasharray="4 8"/>
+    <line x1="700" y1="30" x2="700" y2="470" stroke="#e8d5b7" stroke-width="1" stroke-dasharray="4 8"/>
+    <circle cx="100" cy="50" r="3" fill="none" stroke="#c9a87c" stroke-width="1"/>
+    <circle cx="700" cy="50" r="3" fill="none" stroke="#c9a87c" stroke-width="1"/>
+    <circle cx="100" cy="320" r="3" fill="none" stroke="#c9a87c" stroke-width="1"/>
+    <circle cx="700" cy="320" r="3" fill="none" stroke="#c9a87c" stroke-width="1"/>
+  </g>
+
+  <!-- dark display panel -->
+  <g transform="translate(0,-6)">
+    <rect x="170" y="66" width="460" height="212" rx="18" fill="#15151b" filter="url(#sh)"/>
+    <g fill="#3a3a44">
+      <circle cx="210" cy="96" r="1.6"/><circle cx="320" cy="120" r="1.2"/><circle cx="470" cy="90" r="1.5"/>
+      <circle cx="580" cy="130" r="1.2"/><circle cx="260" cy="250" r="1.4"/><circle cx="540" cy="240" r="1.3"/>
+      <circle cx="400" cy="262" r="1.2"/>
+    </g>
+
+    <!-- space pills -->
+    <g transform="translate(300,84)">
+      <rect width="60" height="20" rx="10" fill="#26262e"/>
+      <text x="30" y="14" class="s" font-size="8.5" fill="#e8e6df" text-anchor="middle">Home</text>
+      <rect x="66" y="0" width="60" height="20" rx="10" fill="#0f0f14"/>
+      <text x="96" y="14" class="s" font-size="8.5" fill="#8a8798" text-anchor="middle">Work</text>
+      <rect x="132" y="0" width="60" height="20" rx="10" fill="#0f0f14"/>
+      <text x="162" y="14" class="s" font-size="8.5" fill="#8a8798" text-anchor="middle">Focus</text>
+    </g>
+
+    <!-- flip cards 0 6 : 1 2 -->
+    <g transform="translate(268,126)">
+      <g>
+        <rect width="52" height="70" rx="9" fill="#22222b"/>
+        <line x1="0" y1="35" x2="52" y2="35" stroke="#15151b" stroke-width="2"/>
+        <text x="26" y="52" class="d" font-size="40" text-anchor="middle">0</text>
+      </g>
+      <g transform="translate(60,0)">
+        <rect width="52" height="70" rx="9" fill="#22222b"/>
+        <line x1="0" y1="35" x2="52" y2="35" stroke="#15151b" stroke-width="2"/>
+        <text x="26" y="52" class="d" font-size="40" text-anchor="middle">6</text>
+      </g>
+      <g transform="translate(122,0)">
+        <circle cx="6" cy="26" r="5" fill="#4a4a58"/>
+        <circle cx="6" cy="46" r="5" fill="#4a4a58"/>
+      </g>
+      <g transform="translate(140,0)">
+        <rect width="52" height="70" rx="9" fill="#22222b"/>
+        <line x1="0" y1="35" x2="52" y2="35" stroke="#15151b" stroke-width="2"/>
+        <text x="26" y="52" class="d" font-size="40" text-anchor="middle">1</text>
+      </g>
+      <g transform="translate(200,0)">
+        <rect width="52" height="70" rx="9" fill="#22222b"/>
+        <line x1="0" y1="35" x2="52" y2="35" stroke="#15151b" stroke-width="2"/>
+        <text x="26" y="52" class="d" font-size="40" text-anchor="middle">2</text>
+      </g>
+    </g>
+    <text x="400" y="222" class="s" font-size="10" fill="#8a8798" text-anchor="middle">Wednesday, Oct 21 · 100% PWR</text>
+  </g>
+
+  <g>
+    <text x="400" y="362" class="t" font-size="28" text-anchor="middle">StandBy Mode Pro — <tspan class="ti">smart desk display</tspan></text>
+    <text x="400" y="396" class="s" font-size="13.5" font-weight="300" fill="#4a4038" text-anchor="middle">11 clock styles, 9 widgets and OLED-safe layouts for a phone-turned-desk-dashboard.</text>
+    <circle cx="400" cy="433" r="2" fill="#b07d4a"/>
+    <line x1="352" y1="433" x2="385" y2="433" stroke="#e8d5b7" stroke-width="1"/>
+    <line x1="415" y1="433" x2="448" y2="433" stroke="#e8d5b7" stroke-width="1"/>
+  </g>
+</svg>

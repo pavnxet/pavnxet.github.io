@@ -1,5 +1,10 @@
 # Changelog
 
+## v4.11 — 2026-10-21
+- feat: add 7 new project blog posts (duckai-api, ai-security-knowledge-base, tg-digest-userbot, yt-video-queue, yt-silence-cutter, standby-mode-pro, yt-slidesnap)
+- feat: add homepage cards, search-index entries and sitemap URLs for each
+- feat: add tools-directory entries with live/GitHub links
+
 ## v4.05 — 2026-09-07
 - feat: add Linager passwordless link manager blog post and tools directory entry
 

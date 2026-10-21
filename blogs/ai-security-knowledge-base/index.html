@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Security Knowledge Base — 2,052 OWASP Check Cards for AI Coding Agents — Pavneet</title>
+<meta name="description" content="secure-kb merges 67 tracked sources into 2,052 atomic security check cards an AI coding agent can search. Detect your stack, get the exact checks that matter, and emit a verifiable attestation.">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pavnxet.github.io/blogs/ai-security-knowledge-base/index.html">
+<meta property="og:title" content="AI Security Knowledge Base — 2,052 OWASP Check Cards for AI Coding Agents — Pavneet">
+<meta property="og:description" content="A retrieval layer for AI agents: 2,052 atomic security checks distilled from 67 tracked sources, with provenance to file and commit.">
+<meta property="og:image" content="https://pavnxet.github.io/blogs/ai-security-knowledge-base/cover.svg">
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://pavnxet.github.io/blogs/ai-security-knowledge-base/index.html">
+<meta property="twitter:title" content="AI Security Knowledge Base — 2,052 OWASP Check Cards for AI Coding Agents — Pavneet">
+<meta property="twitter:description" content="A retrieval layer for AI agents: 2,052 atomic security checks distilled from 67 tracked sources, with provenance to file and commit.">
+<meta property="twitter:image" content="https://pavnxet.github.io/blogs/ai-security-knowledge-base/cover.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="canonical" href="https://pavnxet.github.io/blogs/ai-security-knowledge-base/">
+</head>
+<body>
+
+<!-- ── NAV ───────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="../../index.html" class="back-link">
+      <svg viewBox="0 0 24 24" class="back-icon"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to home
+    </a>
+    <div class="logo">
+      <span class="logo-text">pavn<span class="logo-x">x</span>et</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ── ARTICLE HERO ──────────────────────────────────────── -->
+<header class="article-header">
+  <span class="tag">Tech</span>
+  <h1 class="article-title">AI Security Knowledge Base — 2,052 OWASP Check Cards for AI Coding Agents</h1>
+  <div class="article-meta">
+    <img class="meta-avatar" src="../../images/logo.jpg" alt="Pavneet Logo">
+    <span class="meta-author">pavn<span class="logo-x">x</span>et</span>
+    <span class="meta-dot"></span>
+    <span>October 20, 2026</span>
+    <span class="meta-dot"></span>
+    <span>5 min read</span>
+  </div>
+</header>
+
+<div class="hero-image-wrap">
+  <div class="hero-banner">
+    <img src="cover.svg" alt="AI Security Knowledge Base Cover">
+  </div>
+</div>
+
+<!-- ── PAGE LAYOUT ────────────────────────────────────────── -->
+<div class="page-layout">
+
+  <!-- Left Side: TOC Sidebar -->
+  <aside class="toc-sidebar">
+    <div class="toc-card">
+      <h3 class="toc-heading">Table of Contents</h3>
+      <ul class="toc-list">
+        <li><a href="#what-it-is" class="toc-link active">What it is</a></li>
+        <li><a href="#the-problem" class="toc-link">The problem it solves</a></li>
+        <li><a href="#coverage" class="toc-link">What's inside</a></li>
+        <li><a href="#workflow" class="toc-link">The five-step workflow</a></li>
+        <li><a href="#attestation" class="toc-link">Verifiable attestation</a></li>
+        <li><a href="#try" class="toc-link">Use it</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Right Side: Article Body -->
+  <main class="article-container">
+    <article>
+
+      <!-- SECTION 1 -->
+      <section id="what-it-is">
+        <h2>What it is</h2>
+        <p><strong>secure-kb</strong> (the AI Security Knowledge Base) is a retrieval layer built for AI coding agents. It merges <strong>67 tracked sources</strong> into <strong>2,052 atomic security check cards</strong>, normalises them, and exposes them through a fast gate, a platform router, and a zero-dependency SQLite FTS5 index.</p>
+        <p>It is <em>not</em> a scanner, and it does not replace a professional audit. What it does is tell an agent <strong>what to verify</strong> for a given codebase — then let it report pass / fail / n-a with evidence. Every card traces back to a real file, anchor and commit.</p>
+
+        <div class="showcase-card">
+          <img src="preview-landing.jpg" alt="AI Security Knowledge Base website" class="showcase-image">
+          <div class="showcase-caption">Give an agent a codebase — get the 15–25 checks that actually matter, in seconds.</div>
+        </div>
+      </section>
+
+      <!-- SECTION 2 -->
+      <section id="the-problem">
+        <h2>The problem it solves</h2>
+        <p>Ask a coding agent to "review this repo for security bugs" and you usually get generic advice: escape your inputs, use parameterised queries, keep dependencies updated. Correct, but unfalsifiable and untethered from the code in front of it.</p>
+        <p>The knowledge base flips that around. Instead of a vague prompt, the agent <em>detects the stack</em>, pulls the checks that apply, and works through them one by one — the way a human AppSec reviewer would, but in seconds. Card text is strictly defensive guidance; it never contains exploit payloads.</p>
+      </section>
+
+      <!-- SECTION 3 -->
+      <section id="coverage">
+        <h2>What's inside</h2>
+        <p>Cards come from official OWASP material and a handful of high-quality community baselines, each with its own licence recorded.</p>
+        <table>
+          <thead>
+            <tr><th>Source</th><th>Cards</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>OWASP Cheat Sheet Series</td><td>1,032</td></tr>
+            <tr><td>secure-coding-baseline (Tier-2)</td><td>353</td></tr>
+            <tr><td>OWASP ASVS 5.0</td><td>339</td></tr>
+            <tr><td>OWASP WSTG</td><td>112</td></tr>
+            <tr><td>OWASP MASTG / MASVS (mobile)</td><td>52</td></tr>
+            <tr><td>Smart-contract &amp; API checklists</td><td>62</td></tr>
+            <tr><td>Authored (Telegram, Chrome, Electron)</td><td>15</td></tr>
+            <tr><td><strong>Total</strong></td><td><strong>2,052</strong></td></tr>
+          </tbody>
+        </table>
+        <p>Cards use source-identity IDs such as <code>SKB-ASVS-V3-4-5</code> or <code>SKB-WSTG-INFO-01</code>, and merged cards keep every historical id in <code>aliases[]</code> so nothing ever stops resolving.</p>
+      </section>
+
+      <!-- SECTION 4 -->
+      <section id="workflow">
+        <h2>The five-step workflow</h2>
+        <p>It ships as a CLI, an MCP server (9 tools), and an Agent Skills bundle, so it drops into Claude Code, Codex, OpenCode and any MCP-capable harness.</p>
+        <ol>
+          <li><strong>Detect</strong> the stack — <code>secure-kb detect /path/to/project</code> returns ranked platforms.</li>
+          <li><strong>Profile</strong> it — <code>profile web --gate fast</code>.</li>
+          <li><strong>Gate</strong> — the top checks by priority, domain-balanced, inside a small token budget.</li>
+          <li><strong>Drill down</strong> — <code>get &lt;id&gt;</code>, or search by CWE / ASVS / MASVS reference.</li>
+          <li><strong>Report</strong> — pass / fail / n-a / unknown, each with evidence. No "pass" without evidence.</li>
+        </ol>
+
+        <div class="showcase-card">
+          <img src="preview-quickstart.jpg" alt="secure-kb quick start" class="showcase-image">
+          <div class="showcase-caption">Zero required dependencies — standard-library Python only. The index builds itself on first use.</div>
+        </div>
+      </section>
+
+      <!-- SECTION 5 -->
+      <section id="attestation">
+        <h2>Verifiable attestation</h2>
+        <p>An agent's security claim is normally unfalsifiable prose. secure-kb can instead emit a <strong>Verifiable Security Attestation</strong> — a deterministic, tamper-evident record of which checks ran, against which KB build, on which exact code fingerprint — that anyone can verify offline.</p>
+        <p>Change the checks, use a different KB build, or edit the target, and verification fails. It is also available over MCP as <code>attest</code> and <code>verify_attestation</code>.</p>
+      </section>
+
+      <!-- SECTION 6 -->
+      <section id="try">
+        <h2>Use it</h2>
+        <p>Clone it, run <code>detect</code>, and you have an answer in under a minute. The project is currently a public beta (v0.9.x): the build is deterministic and reproducible, but the retrieval targets are not yet met, so it is deliberately not v1.0.0.</p>
+
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px;">
+          <a href="https://pavnxet.github.io/ai-security-knowledge-base/" target="_blank" rel="noopener noreferrer" style="background: var(--ink); color: #fff; padding: 10px 22px; border-radius: 24px; text-decoration: none; font-weight: 500; font-family: var(--sans);">Visit the website ↗</a>
+          <a href="https://github.com/pavnxet/ai-security-knowledge-base" target="_blank" rel="noopener noreferrer" style="background: var(--cream2); color: var(--ink); border: 1px solid var(--cream3); padding: 10px 22px; border-radius: 24px; text-decoration: none; font-weight: 500; font-family: var(--sans);">GitHub Repository ↗</a>
+        </div>
+      </section>
+
+    </article>
+  </main>
+</div>
+
+<!-- ── FOOTER ────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo-text">pavn<span class="logo-x">x</span>et</span>
+      <p>Crafting quiet, useful tools for the modern web.</p>
+    </div>
+    <div class="footer-copy">
+      <span>© 2026 Pavneet</span>
+      <span id="siteVersion"></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../version.js"></script>
+<script src="../../js/article.js"></script>
+</body>
+</html>

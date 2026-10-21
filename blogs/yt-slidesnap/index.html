@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>yt-slidesnap — Turn a Lecture Video Into a PDF of Its Slides — Pavneet</title>
+<meta name="description" content="yt-slidesnap takes a lecture video and the timestamps where each question is on screen, and gives back a clean PDF of the slides — one page each, no answers, no video downloaded.">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pavnxet.github.io/blogs/yt-slidesnap/index.html">
+<meta property="og:title" content="yt-slidesnap — Turn a Lecture Video Into a PDF of Its Slides — Pavneet">
+<meta property="og:description" content="Give it a video and timestamps; get a clean PDF of the slides — no video download, no answers.">
+<meta property="og:image" content="https://pavnxet.github.io/blogs/yt-slidesnap/cover.svg">
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://pavnxet.github.io/blogs/yt-slidesnap/index.html">
+<meta property="twitter:title" content="yt-slidesnap — Turn a Lecture Video Into a PDF of Its Slides — Pavneet">
+<meta property="twitter:description" content="Give it a video and timestamps; get a clean PDF of the slides — no video download, no answers.">
+<meta property="twitter:image" content="https://pavnxet.github.io/blogs/yt-slidesnap/cover.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="canonical" href="https://pavnxet.github.io/blogs/yt-slidesnap/">
+</head>
+<body>
+
+<!-- ── NAV ───────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="../../index.html" class="back-link">
+      <svg viewBox="0 0 24 24" class="back-icon"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to home
+    </a>
+    <div class="logo">
+      <span class="logo-text">pavn<span class="logo-x">x</span>et</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ── ARTICLE HERO ──────────────────────────────────────── -->
+<header class="article-header">
+  <span class="tag">Tech</span>
+  <h1 class="article-title">yt-slidesnap — Turn a Lecture Video Into a PDF of Its Slides</h1>
+  <div class="article-meta">
+    <img class="meta-avatar" src="../../images/logo.jpg" alt="Pavneet Logo">
+    <span class="meta-author">pavn<span class="logo-x">x</span>et</span>
+    <span class="meta-dot"></span>
+    <span>October 15, 2026</span>
+    <span class="meta-dot"></span>
+    <span>4 min read</span>
+  </div>
+</header>
+
+<div class="hero-image-wrap">
+  <div class="hero-banner">
+    <img src="cover.svg" alt="yt-slidesnap Cover">
+  </div>
+</div>
+
+<!-- ── PAGE LAYOUT ────────────────────────────────────────── -->
+<div class="page-layout">
+
+  <!-- Left Side: TOC Sidebar -->
+  <aside class="toc-sidebar">
+    <div class="toc-card">
+      <h3 class="toc-heading">Table of Contents</h3>
+      <ul class="toc-list">
+        <li><a href="#what-it-is" class="toc-link active">What it is</a></li>
+        <li><a href="#tedious" class="toc-link">The tedious case</a></li>
+        <li><a href="#how" class="toc-link">How it works</a></li>
+        <li><a href="#timestamps" class="toc-link">Timestamp handling</a></li>
+        <li><a href="#webui" class="toc-link">The web UI</a></li>
+        <li><a href="#try" class="toc-link">Install it</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Right Side: Article Body -->
+  <main class="article-container">
+    <article>
+
+      <!-- SECTION 1 -->
+      <section id="what-it-is">
+        <h2>What it is</h2>
+        <p><strong>yt-slidesnap</strong> takes a lecture video and the timestamps where each question is on screen, and gives back a clean <strong>PDF of the slides</strong> — one page each, no answers, no video downloaded. It pulls frames straight from the stream, so a 2.5-hour class becomes a tidy document in seconds.</p>
+
+        <div class="showcase-card">
+          <img src="preview-webui.jpg" alt="yt-slidesnap web UI" class="showcase-image">
+          <div class="showcase-caption">The local web UI: paste a video URL and your timestamps, click once, get a PDF.</div>
+        </div>
+      </section>
+
+      <!-- SECTION 2 -->
+      <section id="tedious">
+        <h2>The tedious case</h2>
+        <p>It is built for the exact situation that made me write it: a long recorded class with dozens of questions in it, where you want the question slides in a document instead of scrubbing a timeline by hand and screenshotting each one. Doing that once is tedious; doing it every week is a waste of an evening.</p>
+      </section>
+
+      <!-- SECTION 3 -->
+      <section id="how">
+        <h2>How it works</h2>
+        <ol>
+          <li>You give it a video URL and a list of timestamps.</li>
+          <li>It resolves the stream (no full download) and seeks to each window.</li>
+          <li>For each slide it samples several candidate frames and picks the one where the presenter is least likely to be blocking the slide.</li>
+          <li>It assembles the chosen frames into a single PDF, and writes an <code>auto_picked.png</code> contact sheet so you can eyeball what it chose.</li>
+        </ol>
+        <p>A full run of 16 slides takes roughly 25 seconds, including resolving the stream URL. You do not need ffmpeg installed — a build ships inside the tool's dependencies.</p>
+      </section>
+
+      <!-- SECTION 4 -->
+      <section id="timestamps">
+        <h2>Timestamp handling</h2>
+        <p>The input is deliberately forgiving. Paste whatever you have — <code>Q22: Question 01:34:21 | Answer 01:34:53 (C)</code>, a markdown table, or a pipe- or comma-separated list — and it sorts it out.</p>
+        <p>Two rules exist because guessing wrong would silently capture the wrong frame:</p>
+        <ul>
+          <li><strong>The first stamp on a line is when the slide appears.</strong> Every later stamp is a ceiling and the earliest one wins, so an answer can never leak into the PDF.</li>
+          <li><strong>Two rules on ambiguity:</strong> a two-part stamp is always minutes:seconds (write <code>1:34:21</code> for an hour), and a lone integer is treated as seconds only when it cannot be an id. When in doubt, write <code>5661s</code>.</li>
+        </ul>
+        <p>Run it with <code>--dry-run</code> first and it prints exactly the window it understood for each row — so a misread shows up before you spend a run on it.</p>
+      </section>
+
+      <!-- SECTION 5 -->
+      <section id="webui">
+        <h2>The web UI</h2>
+        <p>If you would rather click than type flags, <code>yt-slidesnap serve</code> starts a local web page on <code>127.0.0.1:8765</code> — no account, no cloud. Same engine, a couple of text boxes and a button.</p>
+      </section>
+
+      <!-- SECTION 6 -->
+      <section id="try">
+        <h2>Install it</h2>
+        <p>Install it as a command with <code>pipx install git+https://github.com/pavnxet/yt-slidesnap</code>, or clone the repo and run <code>python slidesnap.py</code>.</p>
+
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px;">
+          <a href="https://github.com/pavnxet/yt-slidesnap" target="_blank" rel="noopener noreferrer" style="background: var(--ink); color: #fff; padding: 10px 22px; border-radius: 24px; text-decoration: none; font-weight: 500; font-family: var(--sans);">GitHub Repository ↗</a>
+        </div>
+      </section>
+
+    </article>
+  </main>
+</div>
+
+<!-- ── FOOTER ────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo-text">pavn<span class="logo-x">x</span>et</span>
+      <p>Crafting quiet, useful tools for the modern web.</p>
+    </div>
+    <div class="footer-copy">
+      <span>© 2026 Pavneet</span>
+      <span id="siteVersion"></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../version.js"></script>
+<script src="../../js/article.js"></script>
+</body>
+</html>

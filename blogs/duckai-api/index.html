@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DuckAI API — An OpenAI-Compatible Proxy for Duck.ai, Driven by a Real Browser — Pavneet</title>
+<meta name="description" content="DuckAI API turns DuckDuckGo's AI Chat into a standard OpenAI-compatible endpoint. Free GPT-6 Luna, Claude Haiku 4.5 and Mistral with live token streaming, a built-in web GUI and zero API cost.">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pavnxet.github.io/blogs/duckai-api/index.html">
+<meta property="og:title" content="DuckAI API — An OpenAI-Compatible Proxy for Duck.ai — Pavneet">
+<meta property="og:description" content="A hardened OpenAI-compatible proxy for Duck.ai with streaming SSE, a built-in chat GUI and no API cost.">
+<meta property="og:image" content="https://pavnxet.github.io/blogs/duckai-api/cover.svg">
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://pavnxet.github.io/blogs/duckai-api/index.html">
+<meta property="twitter:title" content="DuckAI API — An OpenAI-Compatible Proxy for Duck.ai — Pavneet">
+<meta property="twitter:description" content="A hardened OpenAI-compatible proxy for Duck.ai with streaming SSE, a built-in chat GUI and no API cost.">
+<meta property="twitter:image" content="https://pavnxet.github.io/blogs/duckai-api/cover.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="canonical" href="https://pavnxet.github.io/blogs/duckai-api/">
+</head>
+<body>
+
+<!-- ── NAV ───────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="../../index.html" class="back-link">
+      <svg viewBox="0 0 24 24" class="back-icon"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to home
+    </a>
+    <div class="logo">
+      <span class="logo-text">pavn<span class="logo-x">x</span>et</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ── ARTICLE HERO ──────────────────────────────────────── -->
+<header class="article-header">
+  <span class="tag">Tech</span>
+  <h1 class="article-title">DuckAI API — An OpenAI-Compatible Proxy for Duck.ai, Driven by a Real Browser</h1>
+  <div class="article-meta">
+    <img class="meta-avatar" src="../../images/logo.jpg" alt="Pavneet Logo">
+    <span class="meta-author">pavn<span class="logo-x">x</span>et</span>
+    <span class="meta-dot"></span>
+    <span>October 21, 2026</span>
+    <span class="meta-dot"></span>
+    <span>5 min read</span>
+  </div>
+</header>
+
+<div class="hero-image-wrap">
+  <div class="hero-banner">
+    <img src="cover.svg" alt="DuckAI API Cover">
+  </div>
+</div>
+
+<!-- ── PAGE LAYOUT ────────────────────────────────────────── -->
+<div class="page-layout">
+
+  <!-- Left Side: TOC Sidebar -->
+  <aside class="toc-sidebar">
+    <div class="toc-card">
+      <h3 class="toc-heading">Table of Contents</h3>
+      <ul class="toc-list">
+        <li><a href="#what-it-is" class="toc-link active">What it is</a></li>
+        <li><a href="#why" class="toc-link">Why I built it</a></li>
+        <li><a href="#models" class="toc-link">Supported models</a></li>
+        <li><a href="#how" class="toc-link">How it works</a></li>
+        <li><a href="#hardening" class="toc-link">Security &amp; hardening</a></li>
+        <li><a href="#try" class="toc-link">Run it yourself</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Right Side: Article Body -->
+  <main class="article-container">
+    <article>
+
+      <!-- SECTION 1 -->
+      <section id="what-it-is">
+        <h2>What it is</h2>
+        <p><strong>DuckAI API</strong> is a small, self-hosted service that makes DuckDuckGo's privacy-first AI Chat (<em>duck.ai</em>) look like a standard <strong>OpenAI-compatible API</strong>. It opens Duck.ai in a real headless Chromium session, types your prompt into the composer, streams the answer back token by token, and re-exposes it at <code>/v1/chat/completions</code>.</p>
+        <p>That means any client that already speaks the OpenAI format — Chatbox, Cherry Studio, NextChat, Open WebUI, Cursor, the official Python SDK, LangChain, or a plain <code>curl</code> — can talk to it by changing one base URL. No API key to buy, no per-token bill.</p>
+
+        <div class="showcase-card">
+          <img src="preview-landing.jpg" alt="DuckAI API landing page" class="showcase-image">
+          <div class="showcase-caption">The project site: one endpoint, a built-in GUI, streaming SSE and Docker support.</div>
+        </div>
+      </section>
+
+      <!-- SECTION 2 -->
+      <section id="why">
+        <h2>Why I built it</h2>
+        <p>Duck.ai publishes no public API. It is a browser interface, protected by dynamic anti-bot challenges, and it is designed to be used by a human sitting in front of a tab. I wanted the models behind it — GPT-6 Luna, Claude Haiku 4.5, Mistral Small 4 — available to my own tools, my editor, and my scripts, without a paid key.</p>
+        <p>So the project does the obvious thing: it <em>drives the real browser</em>. A Playwright-controlled Chromium session solves the challenge, sends the prompt, and intercepts the outgoing Server-Sent Events stream, which the proxy reformats into OpenAI's <code>delta.content</code> chunks. The result is a local microservice that behaves exactly like the API your tools already expect.</p>
+      </section>
+
+      <!-- SECTION 3 -->
+      <section id="models">
+        <h2>Supported models</h2>
+        <p>Standard OpenAI model names are mapped onto Duck.ai's models, so you can keep your existing client configs and just point them at the proxy.</p>
+        <table>
+          <thead>
+            <tr><th>Model</th><th>Aliases</th><th>Best for</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>GPT-6 Luna</td><td><code>gpt-6-luna</code>, <code>default</code></td><td>Flagship general-purpose work</td></tr>
+            <tr><td>Claude Haiku 4.5</td><td><code>claude-haiku-4.5</code>, <code>claude</code></td><td>Fast reasoning and code analysis</td></tr>
+            <tr><td>GPT-5.4 mini</td><td><code>gpt-5.4-mini</code>, <code>gpt-4o-mini</code></td><td>Lightweight, quick tasks</td></tr>
+            <tr><td>Mistral Small 4</td><td><code>mistral-small-4</code></td><td>Multilingual, open weights</td></tr>
+            <tr><td>GPT-OSS 120B</td><td><code>gpt-oss-120b</code></td><td>Large open-weights model</td></tr>
+            <tr><td>Gemma 4 31B</td><td><code>gemma-4-31b</code></td><td>Google's open model (beta)</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- SECTION 4 -->
+      <section id="how">
+        <h2>How it works</h2>
+        <p>Under the hood it is a FastAPI server and a browser bridge:</p>
+        <ul>
+          <li><strong>The API surface:</strong> <code>/v1/chat/completions</code> (streaming and non-streaming), <code>/v1/models</code>, a <code>/health</code> probe, and an interactive Swagger UI at <code>/docs</code>.</li>
+          <li><strong>The bridge:</strong> a persistent headless Chromium page that carries the Duck.ai session, solves challenges, and reads the SSE stream back out.</li>
+          <li><strong>Token isolation:</strong> every generation is tagged with a generation id, so a late packet from a cancelled request can never bleed into the next answer.</li>
+          <li><strong>Memory recycling:</strong> the browser page is recycled after a configurable number of requests or hours, keeping RAM and the DOM clean for 24/7 self-hosting.</li>
+        </ul>
+
+        <div class="showcase-card">
+          <img src="preview-api.jpg" alt="DuckAI API quick-start and API reference" class="showcase-image">
+          <div class="showcase-caption">Three steps to a working endpoint: install, start the server, point any OpenAI client at <code>localhost:3006/v1</code>.</div>
+        </div>
+      </section>
+
+      <!-- SECTION 5 -->
+      <section id="hardening">
+        <h2>Security &amp; hardening</h2>
+        <p>The codebase went through several rounds of adversarial review. A few of the fixes worth calling out:</p>
+        <ul>
+          <li><strong>XSS-hardened frontend:</strong> every markdown payload in the bundled GUI is sanitised through DOMPurify before it renders.</li>
+          <li><strong>Client-disconnect cancellation:</strong> aborting the HTTP stream triggers Duck.ai's <em>Stop generating</em>, freeing compute instead of leaking a runaway generation.</li>
+          <li><strong>Deadlock-free locks:</strong> bounded lock acquisition prevents head-of-line blocking under concurrency.</li>
+          <li><strong>Constant-time auth:</strong> when an <code>API_KEY</code> is set, credentials are compared with <code>hmac.compare_digest</code> to avoid timing attacks.</li>
+        </ul>
+      </section>
+
+      <!-- SECTION 6 -->
+      <section id="try">
+        <h2>Run it yourself</h2>
+        <p>Clone the repo, install the dependencies, and start it — the browser bridge comes up automatically. Docker Compose is supported too, with a single <code>docker compose up -d --build</code>.</p>
+        <p>DuckAI API is a reverse-engineered interoperability tool for personal and educational use. It is not affiliated with DuckDuckGo.</p>
+
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px;">
+          <a href="https://pavnxet.github.io/duckai-api/" target="_blank" rel="noopener noreferrer" style="background: var(--ink); color: #fff; padding: 10px 22px; border-radius: 24px; text-decoration: none; font-weight: 500; font-family: var(--sans);">Read the docs ↗</a>
+          <a href="https://github.com/pavnxet/duckai-api" target="_blank" rel="noopener noreferrer" style="background: var(--cream2); color: var(--ink); border: 1px solid var(--cream3); padding: 10px 22px; border-radius: 24px; text-decoration: none; font-weight: 500; font-family: var(--sans);">GitHub Repository ↗</a>
+        </div>
+      </section>
+
+    </article>
+  </main>
+</div>
+
+<!-- ── FOOTER ────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo-text">pavn<span class="logo-x">x</span>et</span>
+      <p>Crafting quiet, useful tools for the modern web.</p>
+    </div>
+    <div class="footer-copy">
+      <span>© 2026 Pavneet</span>
+      <span id="siteVersion"></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../version.js"></script>
+<script src="../../js/article.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;1,500&amp;family=Sora:wght@300;400;500;600;700&amp;display=swap');
+      .t { font-family: 'Lora', Georgia, serif; font-weight: 500; fill: #1e1a15; }
+      .ti { font-family: 'Lora', Georgia, serif; font-style: italic; fill: #b07d4a; }
+      .s { font-family: 'Sora', system-ui, sans-serif; }
+      .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+    </style>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#a07846" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="500" fill="#f4ede2"/>
+  <path d="M470 0 L800 0 L800 500 L330 500 Z" fill="#ecdfd0" opacity="0.6"/>
+
+  <g opacity="0.8">
+    <line x1="60" y1="50" x2="740" y2="50" stroke="#e8d5b7" stroke-width="1" stroke-dasharray="4 8"/>
+    <line x1="60" y1="320" x2="740" y2="320" stroke="#e8d5b7" stroke-width="1" stroke-dasharray="4 8"/>
+    <line x1="100" y1="30" x2="100" y2="470" stroke="#e8d5b7" stroke-width="1" stroke-dasharray="4 8"/>
+    <line x1="700" y1="30" x2="700" y2="470" stroke="#e8d5b7" stroke-width="1" stroke-dasharray="4 8"/>
+    <circle cx="100" cy="50" r="3" fill="none" stroke="#c9a87c" stroke-width="1"/>
+    <circle cx="700" cy="50" r="3" fill="none" stroke="#c9a87c" stroke-width="1"/>
+    <circle cx="100" cy="320" r="3" fill="none" stroke="#c9a87c" stroke-width="1"/>
+    <circle cx="700" cy="320" r="3" fill="none" stroke="#c9a87c" stroke-width="1"/>
+  </g>
+
+  <g transform="translate(0,-8)">
+    <!-- channels panel -->
+    <g transform="translate(150,78)">
+      <rect width="220" height="190" rx="16" fill="#fffdf9" filter="url(#sh)"/>
+      <text x="18" y="30" class="s" font-size="11" font-weight="600" fill="#1e1a15">Your channels</text>
+      <text x="202" y="30" class="s" font-size="8.5" fill="#8c7e6e" text-anchor="end">read-only</text>
+
+      <g transform="translate(18,48)">
+        <circle cx="10" cy="10" r="10" fill="#f4ede2"/>
+        <text x="10" y="14" class="s" font-size="11" font-weight="600" fill="#b07d4a" text-anchor="middle">#</text>
+        <text x="28" y="9" class="s" font-size="9.5" font-weight="600" fill="#4a4038">News Daily</text>
+        <text x="28" y="21" class="s" font-size="8" fill="#8c7e6e">12 messages · 24h</text>
+      </g>
+      <g transform="translate(18,82)">
+        <circle cx="10" cy="10" r="10" fill="#f4ede2"/>
+        <text x="10" y="14" class="s" font-size="11" font-weight="600" fill="#b07d4a" text-anchor="middle">#</text>
+        <text x="28" y="9" class="s" font-size="9.5" font-weight="600" fill="#4a4038">Exam Alerts</text>
+        <text x="28" y="21" class="s" font-size="8" fill="#8c7e6e">7 messages · 24h</text>
+      </g>
+      <g transform="translate(18,116)">
+        <circle cx="10" cy="10" r="10" fill="#f4ede2"/>
+        <text x="10" y="14" class="s" font-size="11" font-weight="600" fill="#b07d4a" text-anchor="middle">#</text>
+        <text x="28" y="9" class="s" font-size="9.5" font-weight="600" fill="#4a4038">Tech Digest</text>
+        <text x="28" y="21" class="s" font-size="8" fill="#8c7e6e">31 messages · 24h</text>
+      </g>
+
+      <rect x="18" y="150" width="184" height="24" rx="12" fill="#b07d4a"/>
+      <text x="110" y="166" class="s" font-size="9.5" font-weight="600" fill="#fffdf9" text-anchor="middle">/run</text>
+    </g>
+
+    <!-- arrow -->
+    <path d="M380 172 L410 172" stroke="#b07d4a" stroke-width="2"/>
+    <path d="M410 172 L402 167 L402 177 Z" fill="#b07d4a"/>
+
+    <!-- json panel -->
+    <g transform="translate(424,78)">
+      <rect width="226" height="190" rx="16" fill="#fffdf9" filter="url(#sh)"/>
+      <rect x="0" y="0" width="226" height="34" rx="16" fill="#faf6f0"/>
+      <circle cx="18" cy="17" r="4" fill="#e8d5b7"/>
+      <circle cx="30" cy="17" r="4" fill="#e8d5b7"/>
+      <text x="113" y="21" class="mono" font-size="9" fill="#8c7e6e" text-anchor="middle">digest.json</text>
+      <text x="16" y="58" class="mono" font-size="9" fill="#b07d4a">{</text>
+      <text x="28" y="76" class="mono" font-size="9" fill="#4a4038">"channel": "News Daily",</text>
+      <text x="28" y="94" class="mono" font-size="9" fill="#4a4038">"window": "24h",</text>
+      <text x="28" y="112" class="mono" font-size="9" fill="#4a4038">"messages": 12,</text>
+      <text x="28" y="130" class="mono" font-size="9" fill="#4a4038">"prompt": "Summarise…"</text>
+      <text x="16" y="148" class="mono" font-size="9" fill="#b07d4a">}</text>
+      <text x="113" y="176" class="s" font-size="8.5" fill="#8c7e6e" text-anchor="middle">paste into any AI</text>
+    </g>
+  </g>
+
+  <g>
+    <text x="400" y="362" class="t" font-size="28" text-anchor="middle">tg-digest — <tspan class="ti">read-only channel digester</tspan></text>
+    <text x="400" y="396" class="s" font-size="13.5" font-weight="300" fill="#4a4038" text-anchor="middle">Collect the channels you choose into one digest JSON — driven from a private control bot.</text>
+    <circle cx="400" cy="433" r="2" fill="#b07d4a"/>
+    <line x1="352" y1="433" x2="385" y2="433" stroke="#e8d5b7" stroke-width="1"/>
+    <line x1="415" y1="433" x2="448" y2="433" stroke="#e8d5b7" stroke-width="1"/>
+  </g>
+</svg>

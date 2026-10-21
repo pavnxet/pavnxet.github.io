@@ -1,86 +1,218 @@
 [
   {
+    "title": "DuckAI API — An OpenAI-Compatible Proxy for Duck.ai, Driven by a Real Browser",
+    "type": "project",
+    "url": "blogs/duckai-api/index.html",
+    "description": "Turn DuckDuckGo's AI Chat into a standard OpenAI endpoint — free GPT-6 Luna, Claude Haiku 4.5 and Mistral with live token streaming and a built-in chat GUI.",
+    "tags": [
+      "tech"
+    ]
+  },
+  {
+    "title": "AI Security Knowledge Base — 2,052 OWASP Check Cards for AI Coding Agents",
+    "type": "project",
+    "url": "blogs/ai-security-knowledge-base/index.html",
+    "description": "A retrieval layer for AI agents: 2,052 atomic security checks distilled from 67 tracked sources, each traceable to a real file and commit.",
+    "tags": [
+      "tech"
+    ]
+  },
+  {
+    "title": "tg-digest — A Read-Only Telegram Channel Digester You Drive From a Bot",
+    "type": "project",
+    "url": "blogs/tg-digest-userbot/index.html",
+    "description": "Collect the channels you choose into one digest JSON with an embedded summary prompt — driven entirely from a private, owner-only control bot.",
+    "tags": [
+      "tech"
+    ]
+  },
+  {
+    "title": "YT Video Queue — A Passkey-Protected Watch Queue for Any Video Link",
+    "type": "project",
+    "url": "blogs/yt-video-queue/index.html",
+    "description": "Order links into series, watch one by one, and pick up exactly where you left off — passkey-only login, no passwords, no accounts.",
+    "tags": [
+      "tech"
+    ]
+  },
+  {
+    "title": "YT Silence Cutter — A Browser Extension That Skips the Quiet Parts",
+    "type": "project",
+    "url": "blogs/yt-silence-cutter/index.html",
+    "description": "Fast-forwards the silent and low-volume stretches of any video right in the page, with a live waveform and a fully local stats page.",
+    "tags": [
+      "tech"
+    ]
+  },
+  {
+    "title": "StandBy Mode Pro — Turning an Old Phone Into a Smart Desk Display",
+    "type": "project",
+    "url": "blogs/standby-mode-pro/index.html",
+    "description": "11 clock styles, 9 widgets, duo and quad layouts, and OLED burn-in protection for a phone-turned-desk-dashboard.",
+    "tags": [
+      "design"
+    ]
+  },
+  {
+    "title": "yt-slidesnap — Turn a Lecture Video Into a PDF of Its Slides",
+    "type": "project",
+    "url": "blogs/yt-slidesnap/index.html",
+    "description": "Give it a video and the timestamps where each question appears; get a clean PDF of the slides — no video download, no answers.",
+    "tags": [
+      "tech"
+    ]
+  },
+  {
     "title": "Linager: The Simple, Passwordless Link Manager That Works Everywhere",
     "type": "project",
     "url": "blogs/linager/index.html",
     "description": "Linager lets you save links online, organize with tags, pin favorites, and access them from any device with biometric Passkey authentication — zero passwords.",
-    "tags": ["tech", "passkeys", "cloudflare-workers", "turso", "sqlite", "productivity"]
+    "tags": [
+      "tech",
+      "passkeys",
+      "cloudflare-workers",
+      "turso",
+      "sqlite",
+      "productivity"
+    ]
   },
   {
     "title": "Pastel Drop: I Shipped 16 Wallpapers Inside One HTML File",
     "type": "project",
     "url": "blogs/pastel-drop/index.html",
     "description": "16 soft, OLED-friendly wallpapers for your phone. No installer, no build step — just one HTML file with everything base64'd. Free forever.",
-    "tags": ["design", "wallpapers", "open-source", "react", "single-file"]
+    "tags": [
+      "design",
+      "wallpapers",
+      "open-source",
+      "react",
+      "single-file"
+    ]
   },
   {
     "title": "FitGirl DirectLink Extractor: Stopping the 40-Part Download Nightmare",
     "type": "project",
     "url": "blogs/fitgirl-direct-link-extractor/index.html",
     "description": "FuckingFast Scraper is a serverless utility to bypass host redirect chains, resolve up to 30 URLs in parallel, and batch extract direct links.",
-    "tags": ["tech", "automation", "cloudflare-workers", "javascript", "gaming"]
+    "tags": [
+      "tech",
+      "automation",
+      "cloudflare-workers",
+      "javascript",
+      "gaming"
+    ]
   },
   {
     "title": "FitGirl Repacks Archive Scanner: A Faster Way to Search and Explore the Archive",
     "type": "project",
     "url": "blogs/fitgirl-extractor/index.html",
     "description": "FitGirl Repacks Archive Scanner is a web-based tool that scans archive pages and turns them into a searchable database you can explore in real time, running entirely on Cloudflare Workers.",
-    "tags": ["tech", "web-scraping", "cloudflare-workers", "javascript", "search", "gaming"]
+    "tags": [
+      "tech",
+      "web-scraping",
+      "cloudflare-workers",
+      "javascript",
+      "search",
+      "gaming"
+    ]
   },
   {
     "title": "I Made 3rd Grade Result Website — A Faster Way to Search RSSB Results Without Scrolling PDFs",
     "type": "project",
     "url": "blogs/3rd%20grade%20results/index.html",
     "description": "This project turns the RSSB 3rd Grade result PDF into a fast and simple web-based search tool, allowing candidates to search by name and instantly view detailed results.",
-    "tags": ["tech", "education", "javascript", "html", "rssb"]
+    "tags": [
+      "tech",
+      "education",
+      "javascript",
+      "html",
+      "rssb"
+    ]
   },
   {
     "title": "How I Built an AI-Ready Project Bundler — Turning Massive Codebases into LLM-Friendly Packages",
     "type": "project",
     "url": "blogs/treebundle/index.html",
     "description": "TreeBundle is a browser-based tool that gathers source code and documents from multiple sources, organizes them into a structured project bundle, and prepares them for AI analysis, running entirely in the browser.",
-    "tags": ["tech", "ai", "bundler"]
+    "tags": [
+      "tech",
+      "ai",
+      "bundler"
+    ]
   },
   {
     "title": "How I Built a Multi-Platform, Privacy-First Tool to Strip Trackable Links and Metadata from PDFs",
     "type": "project",
     "url": "blogs/clearlink/index.html",
     "description": "Every time we share a PDF document, we share more data than we realize. I built ClearLink-PDF to strip away trackable hyperlinks, structural bookmarks, and sensitive system metadata entirely from documents, running 100% offline.",
-    "tags": ["tech", "pdf", "privacy"]
+    "tags": [
+      "tech",
+      "pdf",
+      "privacy"
+    ]
   },
   {
     "title": "My Tools Directory: Direct Access to All Built Projects",
     "type": "project",
     "url": "blogs/tools/index.html",
     "description": "A centralized directory providing quick, direct access to the live demos, GitHub repositories, and original stories of all digital tools I have built, including TreeBundle, ClearLink-PDF, and more.",
-    "tags": ["tech", "utility", "tools", "directory"]
+    "tags": [
+      "tech",
+      "utility",
+      "tools",
+      "directory"
+    ]
   },
   {
     "title": "Tic Tac Toe",
     "type": "project",
     "url": "blogs/tictactoe/index.html",
     "description": "A classic Tic Tac Toe game with AI opponent. Play against the computer in your browser with a clean, creamy glassmorphism design.",
-    "tags": ["game", "fun", "ai", "browser"]
+    "tags": [
+      "game",
+      "fun",
+      "ai",
+      "browser"
+    ]
   },
   {
     "title": "InstaFit.io — Client-Side Image Aspect Ratio Normalizer",
     "type": "project",
     "url": "blogs/instafit.io/index.html",
     "description": "A client-side utility that normalizes any image to standard aspect ratios — square, portrait, landscape, stories — with background padding, running entirely in the browser.",
-    "tags": ["tech", "image-processing", "utility", "canvas", "browser"]
+    "tags": [
+      "tech",
+      "image-processing",
+      "utility",
+      "canvas",
+      "browser"
+    ]
   },
   {
     "title": "I Got Tired of Broken Book Download Links, So I Fixed Them Myself",
     "type": "project",
     "url": "blogs/annalib/index.html",
     "description": "How I built Anna's Archive Download — a single-file frontend + MCP server backend that bypasses region blocks and resolves fresh LibGen download links instantly.",
-    "tags": ["tech", "scraping", "serverless", "javascript", "open-source"]
+    "tags": [
+      "tech",
+      "scraping",
+      "serverless",
+      "javascript",
+      "open-source"
+    ]
   },
   {
     "title": "MP3.pm Automated Downloader Hub — Serverless Edge Scraper & Bulk Downloader",
     "type": "project",
     "url": "blogs/mp3dl/index.html",
     "description": "A high-performance serverless utility on Cloudflare Workers for search scraping, metadata cleaning, 2-layer song deduplication, and 1-click batch downloading.",
-    "tags": ["tech", "cloudflare-workers", "automation", "web-scraping", "javascript", "open-source"]
+    "tags": [
+      "tech",
+      "cloudflare-workers",
+      "automation",
+      "web-scraping",
+      "javascript",
+      "open-source"
+    ]
   }
 ]

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YT Silence Cutter — A Browser Extension That Skips the Quiet Parts — Pavneet</title>
+<meta name="description" content="YT Silence Cutter watches the audio of any playing video, fast-forwards the silent and low-volume stretches, and returns to normal speed the instant speech resumes. Fully local, no network.">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pavnxet.github.io/blogs/yt-silence-cutter/index.html">
+<meta property="og:title" content="YT Silence Cutter — A Browser Extension That Skips the Quiet Parts — Pavneet">
+<meta property="og:description" content="Fast-forward silence and low-volume stretches right in the page, with a live waveform and a local stats page.">
+<meta property="og:image" content="https://pavnxet.github.io/blogs/yt-silence-cutter/cover.svg">
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://pavnxet.github.io/blogs/yt-silence-cutter/index.html">
+<meta property="twitter:title" content="YT Silence Cutter — A Browser Extension That Skips the Quiet Parts — Pavneet">
+<meta property="twitter:description" content="Fast-forward silence and low-volume stretches right in the page, with a live waveform and a local stats page.">
+<meta property="twitter:image" content="https://pavnxet.github.io/blogs/yt-silence-cutter/cover.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/article.css">
+<link rel="canonical" href="https://pavnxet.github.io/blogs/yt-silence-cutter/">
+</head>
+<body>
+
+<!-- ── NAV ───────────────────────────────────────────────── -->
+<nav>
+  <div class="nav-inner">
+    <a href="../../index.html" class="back-link">
+      <svg viewBox="0 0 24 24" class="back-icon"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to home
+    </a>
+    <div class="logo">
+      <span class="logo-text">pavn<span class="logo-x">x</span>et</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ── ARTICLE HERO ──────────────────────────────────────── -->
+<header class="article-header">
+  <span class="tag">Tech</span>
+  <h1 class="article-title">YT Silence Cutter — A Browser Extension That Skips the Quiet Parts</h1>
+  <div class="article-meta">
+    <img class="meta-avatar" src="../../images/logo.jpg" alt="Pavneet Logo">
+    <span class="meta-author">pavn<span class="logo-x">x</span>et</span>
+    <span class="meta-dot"></span>
+    <span>October 17, 2026</span>
+    <span class="meta-dot"></span>
+    <span>5 min read</span>
+  </div>
+</header>
+
+<div class="hero-image-wrap">
+  <div class="hero-banner">
+    <img src="cover.svg" alt="YT Silence Cutter Cover">
+  </div>
+</div>
+
+<!-- ── PAGE LAYOUT ────────────────────────────────────────── -->
+<div class="page-layout">
+
+  <!-- Left Side: TOC Sidebar -->
+  <aside class="toc-sidebar">
+    <div class="toc-card">
+      <h3 class="toc-heading">Table of Contents</h3>
+      <ul class="toc-list">
+        <li><a href="#what-it-is" class="toc-link active">What it is</a></li>
+        <li><a href="#why" class="toc-link">Why I built it</a></li>
+        <li><a href="#controls" class="toc-link">The controls</a></li>
+        <li><a href="#guard" class="toc-link">The speech guard</a></li>
+        <li><a href="#stats" class="toc-link">Stats &amp; privacy</a></li>
+        <li><a href="#try" class="toc-link">Install it</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Right Side: Article Body -->
+  <main class="article-container">
+    <article>
+
+      <!-- SECTION 1 -->
+      <section id="what-it-is">
+        <h2>What it is</h2>
+        <p><strong>YT Silence Cutter</strong> automatically fast-forwards the silent and low-volume parts of any video you watch — right in your browser. It watches the audio of any playing <code>&lt;video&gt;</code> element, speeds through the quiet stretches, and returns to normal speed the instant speech resumes.</p>
+        <p>Despite the name, it is not YouTube-specific: it is generic HTML5-video logic, so it works on any site, handles several videos on a page at once, and keeps a separate skip state for each.</p>
+
+        <div class="showcase-card">
+          <img src="preview-popup.jpg" alt="YT Silence Cutter popup" class="showcase-image" style="max-width: 340px;">
+          <div class="showcase-caption">The popup: a live waveform with speech, skipped and guard segments, plus the controls and a running time-saved readout.</div>
+        </div>
+      </section>
+
+      <!-- SECTION 2 -->
+      <section id="why">
+        <h2>Why I built it</h2>
+        <p>Lectures and long talks are full of dead air — the pause while someone thinks, the breath before a sentence, the gap between slides. Playing them at 2× rushes the parts you actually want to hear. I wanted the opposite: keep speech at a comfortable speed, and quietly race through everything else.</p>
+      </section>
+
+      <!-- SECTION 3 -->
+      <section id="controls">
+        <h2>The controls</h2>
+        <table>
+          <thead>
+            <tr><th>Control</th><th>What it does</th><th>Default</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Skip silence</td><td>Master on/off</td><td>On</td></tr>
+            <tr><td>Playback speed</td><td>Your base speed</td><td>1×</td></tr>
+            <tr><td>Silence boost</td><td>Multiplier applied while skipping</td><td>4×</td></tr>
+            <tr><td>Sensitivity</td><td>Loudness below which audio is "silence"</td><td>−45 dB</td></tr>
+            <tr><td>Speech guard</td><td>Untouched margin around speech</td><td>150 ms</td></tr>
+          </tbody>
+        </table>
+        <p>A worked example: base <strong>1.5×</strong> with a <strong>4×</strong> boost plays silence at <strong>6×</strong> and speech at <strong>1.5×</strong>.</p>
+      </section>
+
+      <!-- SECTION 4 -->
+      <section id="guard">
+        <h2>The speech guard</h2>
+        <p>At a high skip speed the detector can overshoot into the start of a word — 50 ms of real time at 8× is 400 ms of content. The speech guard attacks this three ways: a lead-in before the fast-forward starts, a release only once the level actually reaches your sensitivity line, and an early release on a sharp rise above the recent quiet floor.</p>
+        <p>It also shrinks the sampling interval as the skip speed rises, so the detector sees roughly a constant ~40 ms of content per frame — cutting the fast-forwarded overshoot from about 120 ms at 8× down to about 70 ms. The trade-off is deliberate: a stutter mid-silence is far more noticeable than a tiny clip at the very start of a word.</p>
+      </section>
+
+      <!-- SECTION 5 -->
+      <section id="stats">
+        <h2>Stats &amp; privacy</h2>
+        <p>Everything is local. The extension makes <strong>no network requests of any kind</strong> — there is no account, no server, and nothing is transmitted anywhere. Stats live in <code>chrome.storage.local</code>.</p>
+
+        <div class="showcase-card">
+          <img src="preview-stats.jpg" alt="YT Silence Cutter stats page" class="showcase-image">
+          <div class="showcase-caption">The stats page: total time saved, silence skipped, videos processed, sessions, and a last-14-days bar chart.</div>
+        </div>
+      </section>
+
+      <!-- SECTION 6 -->
+      <section id="try">
+        <h2>Install it</h2>
+        <p>No build step — the extension is plain HTML, CSS and JS. Load it unpacked in Chrome, Edge or Brave, or as a temporary add-on in Firefox via <code>about:debugging</code>.</p>
+
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px;">
+          <a href="https://github.com/pavnxet/yt-silence-cutter" target="_blank" rel="noopener noreferrer" style="background: var(--ink); color: #fff; padding: 10px 22px; border-radius: 24px; text-decoration: none; font-weight: 500; font-family: var(--sans);">GitHub Repository ↗</a>
+        </div>
+      </section>
+
+    </article>
+  </main>
+</div>
+
+<!-- ── FOOTER ────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo-text">pavn<span class="logo-x">x</span>et</span>
+      <p>Crafting quiet, useful tools for the modern web.</p>
+    </div>
+    <div class="footer-copy">
+      <span>© 2026 Pavneet</span>
+      <span id="siteVersion"></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../version.js"></script>
+<script src="../../js/article.js"></script>
+</body>
+</html>
